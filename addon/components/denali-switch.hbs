@@ -1,0 +1,13 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<label class="switch denali-switch">
+  <input
+    type="checkbox"
+    checked={{this.isEnabled}}
+    disabled={{this.isDisabled}}
+    {{on "click" this.onChange}}
+    ...attributes
+  >
+  <span class="slider"></span>
+  <span class="off label">{{@offLabel}}</span>
+  <span class="on label">{{@onLabel}}</span>
+</label>

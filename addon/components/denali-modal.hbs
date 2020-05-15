@@ -1,0 +1,13 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+{{#if this.isOpen}}
+  <div class="modal is-active" ...attributes>
+    <div class="modal-container {{this.fullScreenClass}}">
+      <span role="button" class="close link" {{on "click" @onClose}}>
+        <i class="d-icon d-close"></i>
+      </span>
+      {{yield (hash Header=(component "denali-div" class="modal-header"))}}
+      {{yield (hash Content=(component "denali-div" class="modal-content"))}}
+      {{yield (hash Footer=(component "denali-div" class="modal-footer"))}}
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,21 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="input
+  {{this.hasIconFrontClass}}
+  {{this.hasIconBackClass}}
+  {{this.inverseClass}}
+  {{this.sizeClass}}
+  {{this.activeClass}}
+  {{this.warningClass}}"
+>
+  {{#if @iconFront}}
+    <span class="d-icon d-{{@iconFront}} {{this.iconFrontClass}}"></span>
+  {{/if}}
+  <input ...attributes>
+  {{#if @iconBack}}
+    <span class="d-icon d-{{this.iconBack}} {{this.iconBackClass}}"></span>
+  {{/if}}
+
+  {{#if this.warningClass}}
+    <p class="message">{{this.warningMsg}}</p>
+  {{/if}}
+</div>

@@ -1,0 +1,11 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<button
+  class="button {{this.isActiveClass}} {{this.styleClass}} {{this.sizeClass}} {{this.isInverseClass}} {{this.hasIconClass}}"
+  type={{this.type}}
+  ...attributes
+>
+  {{#if @icon}}
+    <i class="d-icon {{this.iconClass}} is-small"></i>
+  {{/if}}
+  {{yield}}
+</button>

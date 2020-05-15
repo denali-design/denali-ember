@@ -1,0 +1,7 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<DenaliNavbar::Section class="nav-left" ...attributes as |Left|>
+  {{yield Left}}
+  <div class="float-right hide-small-desktop-up">
+    <span role="button" class="nav-responsive-menu nav-icon" {{on "click" @onMenuClick}}><i class="d-icon d-more-vertical"></i></span>
+  </div>
+</DenaliNavbar::Section>

@@ -1,0 +1,28 @@
+<h2>Simple Input</h2>
+<DenaliInput />
+
+<h2>Input Types</h2>
+<DenaliInput type="text" placeholder="Text Field" />
+<DenaliInput type="email" placeholder="Email Field" />
+<DenaliInput type="number" placeholder="Number Field" />
+<DenaliInput type="password" placeholder="Password Field" />
+
+<h2>Input Sizes</h2>
+<DenaliInput type="text" placeholder="Text Field" />
+<DenaliInput type="text" placeholder="Small Text Field" @size="small" />
+<DenaliInput type="text" placeholder="Medium Text Field" @size="medium" />
+
+<h2>Inverse Input</h2>
+<div class="flex has-bg-grey-800">
+  <DenaliInput type="text" placeholder="Inverse Text Field" @isInverse={{true}} />
+</div>
+
+<h2>Input States</h2>
+<DenaliInput disabled={{true}} placeholder="Disabled Input" />
+<DenaliInput @state="active" placeholder="Active Input" />
+<DenaliInput @state="warning" placeholder="Input with warning" @warningMsg="Invalid Input" />
+
+<br>
+<h2>Icons</h2>
+<DenaliInput type="text" placeholder="Front Icon" @iconFront="search" />
+<DenaliInput type="text" placeholder="Back Icon" @iconBack="close-circle" />

@@ -1,0 +1,139 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="denali-title-examples">
+  <h2 class="denali-title-header">Arguments</h2>
+  <DenaliTitle @title="My Title" @caption="My Caption" class="denali-title" />
+
+  <h2 class="denali-title-header">Blocks</h2>
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1>My Title</Title.h1>
+    <Title.h4>My Caption</Title.h4>
+  </DenaliTitle>
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2>My Title</Title.h2>
+    <Title.h5>My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3>My Title</Title.h3>
+    <Title.h6>My Caption</Title.h6>
+  </DenaliTitle>
+
+  <h2 class="denali-title-header">Bar Modifiers</h2>
+  <DenaliTitle @hasWideBar={{true}} class="denali-title" as |Title|>
+    <Title.h3>My Title</Title.h3>
+    <Title.h6>My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle @backgroundStatus="danger" class="denali-title" as |Title|>
+    <Title.h3>My Title</Title.h3>
+    <Title.h6>My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle @backgroundStatus="warning" class="denali-title" as |Title|>
+    <Title.h3>My Title</Title.h3>
+    <Title.h6>My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle @backgroundStatus="success" class="denali-title" as |Title|>
+    <Title.h3>My Title</Title.h3>
+    <Title.h6>My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle @backgroundStatus="info" class="denali-title" as |Title|>
+    <Title.h3>My Title</Title.h3>
+    <Title.h6>My Caption</Title.h6>
+  </DenaliTitle>
+
+  <h2 class="denali-title-header">Regular Text</h2>
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1 @isRegular="true">My Title</Title.h1>
+    <Title.h4 @isRegular="true">My Caption</Title.h4>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2 @isRegular="true">My Title</Title.h2>
+    <Title.h5 @isRegular="true">My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3 @isRegular="true">My Title</Title.h3>
+    <Title.h6 @isRegular="true">My Caption</Title.h6>
+  </DenaliTitle>
+
+  <h2 class="denali-title-header">Upper Case Text</h2>
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1 @isUpperCase="true">My Title</Title.h1>
+    <Title.h4 @isUpperCase="true">My Caption</Title.h4>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2 @isUpperCase="true">My Title</Title.h2>
+    <Title.h5 @isUpperCase="true">My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3 @isUpperCase="true">My Title</Title.h3>
+    <Title.h6 @isUpperCase="true">My Caption</Title.h6>
+  </DenaliTitle>
+
+  <h2 class="denali-title-header">Text Status</h2>
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1 @status="danger">My Title</Title.h1>
+    <Title.h4 @status="danger">My Caption</Title.h4>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2 @status="danger">My Title</Title.h2>
+    <Title.h5 @status="danger">My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3 @status="danger">My Title</Title.h3>
+    <Title.h6 @status="danger">My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1 @status="warning">My Title</Title.h1>
+    <Title.h4 @status="warning">My Caption</Title.h4>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2 @status="warning">My Title</Title.h2>
+    <Title.h5 @status="warning">My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3 @status="warning">My Title</Title.h3>
+    <Title.h6 @status="warning">My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1 @status="success">My Title</Title.h1>
+    <Title.h4 @status="success">My Caption</Title.h4>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2 @status="success">My Title</Title.h2>
+    <Title.h5 @status="success">My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3 @status="success">My Title</Title.h3>
+    <Title.h6 @status="success">My Caption</Title.h6>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h1 @status="info">My Title</Title.h1>
+    <Title.h4 @status="info">My Caption</Title.h4>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h2 @status="info">My Title</Title.h2>
+    <Title.h5 @status="info">My Caption</Title.h5>
+  </DenaliTitle>
+
+  <DenaliTitle class="denali-title" as |Title|>
+    <Title.h3 @status="info">My Title</Title.h3>
+    <Title.h6 @status="info">My Caption</Title.h6>
+  </DenaliTitle>
+</div>

@@ -1,0 +1,4 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="toggle {{this.isSmallClass}} {{this.isInverseClass}}" ...attributes>
+  {{yield (hash Option=(component "denali-radio-toggle/option" group=this.componentId onSelect=this.onChanged))}}
+</div>

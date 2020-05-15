@@ -1,0 +1,23 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+{{!-- template-lint-disable link-href-attributes --}}
+<a class="denali-link
+  {{@class}}
+  {{this.activeClass}}
+  {{this.disabledClass}}
+  {{this.hasIconBackClass}}
+  {{this.hasIconFrontClass}}
+  {{this.secondaryClass}}
+  {{this.sizeClass}}
+  {{this.isSubClass}}"
+  ...attributes
+>
+  {{#if this.iconFront}}
+    <DenaliIcon class={{this.iconFrontClass}} @icon={{this.iconFront}}/>
+  {{/if}}
+
+  {{yield}}
+
+  {{#if this.iconBack}}
+    <DenaliIcon class={{this.iconBackClass}} @icon={{this.iconBack}}/>
+  {{/if}}
+</a>

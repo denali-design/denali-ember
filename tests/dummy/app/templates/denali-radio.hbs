@@ -1,0 +1,13 @@
+<h2>Radio Group</h2>
+<DenaliRadio
+  @onChanged={{fn (mut this.selectedValue)}}
+  as |Radio|
+>
+  <Radio.Option @value={{1}}>Stuff 1</Radio.Option> <br>
+  <Radio.Option @value={{2}}>Stuff 2</Radio.Option> <br>
+  <Radio.Option @value="surprise" @checked={{true}}>Stuff 3</Radio.Option> <br>
+  <Radio.Option @value={{4}}>Stuff 4</Radio.Option> <br>
+  <Radio.Option @value={{5}} @disabled={{true}}>Stuff 5</Radio.Option> <br>
+</DenaliRadio>
+
+Selected Value: {{this.selectedValue}}

@@ -1,0 +1,8 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="box" ...attributes>
+  {{yield (hash
+    Header=(component "denali-box/header")
+    SubHeader=(component "denali-box/sub-header")
+    Footer=(component "denali-box/footer")
+  )}}
+</div>

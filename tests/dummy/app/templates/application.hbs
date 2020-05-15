@@ -1,0 +1,18 @@
+<DenaliNavbar @isResponsive={{true}} as |Nav| >
+  <Nav.Left as |Left|>
+    <Left.Logo @src="https://denali.design/assets/images/denali-logo.svg" />
+  </Nav.Left>
+  <Nav.Center as |Center|>
+    <Center.Control>
+      <div class="input has-icon-back is-inverse">
+        <input type="text" placeholder="Search"><i class="d-icon d-search"/>
+      </div>
+    </Center.Control>
+  </Nav.Center>
+  <Nav.Right as |Right|>
+    <a href="https://github.com/denali-design/denali-ember">
+      <Right.Icon @icon="github"/>
+    </a>
+  </Nav.Right>
+</DenaliNavbar>
+{{outlet}}
