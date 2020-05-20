@@ -16,6 +16,8 @@
 /.gitignore
 /.template-lintrc.js
 /.travis.yml
+/screwdriver.yaml
+/build-scripts/
 /.watchmanconfig
 /bower.json
 /config/ember-try.js
