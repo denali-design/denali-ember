@@ -1,0 +1,18 @@
+cache:
+  pipeline: [~/.npm]
+
+shared:
+  image: node:12
+
+jobs:
+  main:
+    annotations:
+      screwdriver.cd/ram: TURBO
+      screwdriver.cd/cpu: TURBO
+    steps:
+      - install-chrome: ./build-scripts/setup-chrome.sh
+      - install: npm ci
+      - test: npm test
+    requires:
+      - ~pr
+      - ~commit
