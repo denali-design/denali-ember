@@ -1,6 +1,6 @@
 {
   "name": "@denali-design/ember",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Ember.JS component library for the Denali CSS Framework",
   "keywords": [
     "ember-addon"
@@ -20,7 +20,8 @@
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each"
+    "test:ember-compatibility": "ember try:each",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.0",
@@ -64,12 +65,25 @@
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "qunit-dom": "^1.2.0",
-    "sass": "^1.25.0"
+    "sass": "^1.25.0",
+    "semantic-release": "^17.0.7",
+    "validate-commit": "^3.4.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "validate-commit-msg"
     }
+  },
+  "release": {
+    "branches": [
+      "next",
+      {
+        "name": "master",
+        "channel": "alpha",
+        "prerelease": "alpha"
+      }
+    ]
   },
   "engines": {
     "node": "10.* || >= 12"

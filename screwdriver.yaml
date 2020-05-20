@@ -16,3 +16,11 @@ jobs:
     requires:
       - ~pr
       - ~commit
+
+  publish:
+    requires: main
+    steps:
+      - publish: npx semantic-release --dry-run
+    secrets:
+      - NPM_TOKEN
+      - GH_TOKEN
