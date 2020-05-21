@@ -76,6 +76,7 @@
     }
   },
   "release": {
+    "repositoryUrl": "git@github.com:denali-design/denali-ember.git",
     "branches": [
       "next",
       {
