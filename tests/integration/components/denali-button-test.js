@@ -140,4 +140,26 @@ module('Integration | Component | denali-button', function (hooks) {
     this.set('iconOnly', true);
     assert.dom('.button').hasClass('has-icon', 'DenaliButton has a `has-icon` class when iconOnly arg is set to true');
   });
+
+  test('it supports loading', async function (assert) {
+    await render(hbs`
+      <DenaliButton 
+        @isLoading={{this.isLoading}} 
+        @icon="save"
+      >
+        Save
+      </DenaliButton>
+    `);
+
+    assert.dom('.button').doesNotHaveClass('has-loader', 'DenaliButton does not have a `has-loader` class by default');
+    assert.dom('.button').hasText('Save', 'DenaliButton renders inner text by default');
+    assert.dom('.button .d-icon').exists('DenaliButton renders an icon when specified');
+    assert.dom('.button div.loader').doesNotExist('DenaliButton does render a loader by default');
+
+    this.set('isLoading', true);
+    assert.dom('.button').hasClass('has-loader', 'DenaliButton has `has-loader` class when `@isLoading` arg is true');
+    assert.dom('.button').hasNoText('DenaliButton does not render inner text when `@isLoading` arg is true');
+    assert.dom('.button .d-icon').doesNotExist('DenaliButton does not render an icon when `@isLoading` arg is true');
+    assert.dom('.button div.loader').exists('DenaliButton renders a loader when `@isLoading` arg is true');
+  });
 });
