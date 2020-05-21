@@ -31,6 +31,9 @@ export default class DenaliButtonComponent extends Component {
   @arg(boolean)
   iconOnly;
 
+  @arg(boolean)
+  isLoading = false;
+
   //TODO deprecate after https://github.com/emberjs/ember.js/issues/18232
   @arg(oneOf(types))
   type = types[0];
@@ -57,5 +60,9 @@ export default class DenaliButtonComponent extends Component {
 
   get hasIconClass() {
     return this.iconOnly ? 'has-icon' : undefined;
+  }
+
+  get hasLoaderClass() {
+    return this.isLoading ? 'has-loader' : undefined;
   }
 }
