@@ -26,4 +26,5 @@ jobs:
           npx semantic-release --dry-run
     secrets:
       - NPM_TOKEN
+      - GH_TOKEN
       - GIT_KEY_BASE64
