@@ -25,4 +25,5 @@ Router.map(function () {
   this.route('denali-switch');
   this.route('denali-tabs');
   this.route('denali-tag');
+  this.route('denali-select');
 });
