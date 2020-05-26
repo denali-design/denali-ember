@@ -22,7 +22,7 @@ module('Integration | Component | denali-select', function (hooks) {
   });
 
   test('it renders an option string', async function (assert) {
-    assert.expect(4);
+    assert.expect(3);
 
     await render(hbs`
       <DenaliSelect @options={{array "Item 1"}} @onChange={{this.onChange}} as |option|>
@@ -38,7 +38,7 @@ module('Integration | Component | denali-select', function (hooks) {
   });
 
   test('it renders an option object', async function (assert) {
-    assert.expect(4);
+    assert.expect(3);
 
     await render(hbs`
       <DenaliSelect @options={{array (hash text="Item 1")}} as |option|>
@@ -46,9 +46,7 @@ module('Integration | Component | denali-select', function (hooks) {
       </DenaliSelect>
     `);
 
-    assert.dom('div').hasClass('input', 'DenaliSelect renders a select input.');
-
-    assert.dom('div').hasClass('has-arrow', 'DenaliSelect renders an arrow.');
+    assert.dom('div.input.has-arrow').exists('DenaliSelect renders an wrapper div');
 
     assert.dom('select').exists('DenaliSelect renders a select element.');
 
@@ -114,7 +112,9 @@ module('Integration | Component | denali-select', function (hooks) {
     assert.dom('div.input').doesNotHaveClass('is-inverse', 'DenaliSelect does not have inverse styling by default');
 
     this.set('isInverse', 'true');
-    assert.dom('div.input').hasClass('is-inverse', 'DenaliSelect has inverse styling when `@isInverse` arg is set to true');
+    assert
+      .dom('div.input')
+      .hasClass('is-inverse', 'DenaliSelect has inverse styling when `@isInverse` arg is set to true');
   });
 
   test('it handles change events', async function (assert) {
@@ -136,7 +136,7 @@ module('Integration | Component | denali-select', function (hooks) {
 
     this.set('onChange', (option) => {
       this.set('selectedOption', option);
-      assert.equal(find('select').selectedIndex, 1);
+      assert.equal(option, this.options[1], 'DenaliSelect @onChange action provides the object selected');
     });
     await fillIn('select', 'Item 2');
   });
