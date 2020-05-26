@@ -27,8 +27,8 @@ export default class DenaliSelectComponent extends Component {
   onChange;
 
   @action
-  onSelect(ev) {
-    this.onChange(this.options[ev.target.selectedIndex]);
+  onSelect(e) {
+    this.onChange(this.options[e.target.selectedIndex]);
   }
 
   get isSmallClass() {
