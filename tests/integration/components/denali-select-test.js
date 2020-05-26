@@ -34,7 +34,7 @@ module('Integration | Component | denali-select', function (hooks) {
 
     assert.dom('div.input select').exists('DenaliSelect renders a select element.');
 
-    assert.dom('option').hasText('Item 1', 'DenaliSelect option exists and renders text.');
+    assert.dom('div.input option').hasText('Item 1', 'DenaliSelect option exists and renders text.');
   });
 
   test('it renders an option object', async function (assert) {
