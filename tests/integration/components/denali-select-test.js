@@ -95,7 +95,7 @@ module('Integration | Component | denali-select', function (hooks) {
     `);
 
     this.set('options', [option]);
-    assert.dom('div').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
+    assert.dom('div.input').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
 
     this.set('isSmall', 'true');
     assert.dom('div').hasClass('is-small', 'DenaliSelect has a small size when `@isSmall` arg is set to true');
