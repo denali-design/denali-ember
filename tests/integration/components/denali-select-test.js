@@ -30,9 +30,7 @@ module('Integration | Component | denali-select', function (hooks) {
       </DenaliSelect>
     `);
 
-    assert.dom('div').hasClass('input', 'DenaliSelect renders a select input.');
-
-    assert.dom('div').hasClass('has-arrow', 'DenaliSelect renders an arrow.');
+    assert.dom('div.input.has-arrow').exists('DenaliSelect renders an wrapper div');
 
     assert.dom('select').exists('DenaliSelect renders a select element.');
 
@@ -97,10 +95,10 @@ module('Integration | Component | denali-select', function (hooks) {
     `);
 
     this.set('options', [option]);
-    assert.dom('div').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
+    assert.dom('div.input').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
 
     this.set('isSmall', 'true');
-    assert.dom('div').hasClass('is-small', 'DenaliSelect has a small size when `@isSmall` arg is set to true');
+    assert.dom('div.input').hasClass('is-small', 'DenaliSelect has a small size when `@isSmall` arg is set to true');
   });
 
   test('it supports inverse colors', async function (assert) {
@@ -113,10 +111,10 @@ module('Integration | Component | denali-select', function (hooks) {
     `);
 
     this.set('options', [option]);
-    assert.dom('div').doesNotHaveClass('is-inverse', 'DenaliSelect does not have inverse styling by default');
+    assert.dom('div.input').doesNotHaveClass('is-inverse', 'DenaliSelect does not have inverse styling by default');
 
     this.set('isInverse', 'true');
-    assert.dom('div').hasClass('is-inverse', 'DenaliSelect has inverse styling when `@isInverse` arg is set to true');
+    assert.dom('div.input').hasClass('is-inverse', 'DenaliSelect has inverse styling when `@isInverse` arg is set to true');
   });
 
   test('it handles change events', async function (assert) {
