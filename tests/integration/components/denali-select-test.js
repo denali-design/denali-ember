@@ -98,7 +98,7 @@ module('Integration | Component | denali-select', function (hooks) {
     assert.dom('div.input').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
 
     this.set('isSmall', 'true');
-    assert.dom('div').hasClass('is-small', 'DenaliSelect has a small size when `@isSmall` arg is set to true');
+    assert.dom('div.input').hasClass('is-small', 'DenaliSelect has a small size when `@isSmall` arg is set to true');
   });
 
   test('it supports inverse colors', async function (assert) {
