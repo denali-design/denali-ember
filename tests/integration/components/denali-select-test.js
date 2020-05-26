@@ -64,7 +64,7 @@ module('Integration | Component | denali-select', function (hooks) {
 
     this.set('options', [option]);
     this.set('selectedOption', option);
-    assert.equal(find('select').selectedIndex, 0);
+    assert.equal(find('select').selectedIndex, 0, 'DenaliSelect selects the object given by the `@selectedOption` arg');
   });
 
   test('an option is disabled', async function (assert) {
