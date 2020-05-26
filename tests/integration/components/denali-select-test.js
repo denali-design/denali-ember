@@ -32,8 +32,6 @@ module('Integration | Component | denali-select', function (hooks) {
 
     assert.dom('div.input.has-arrow').exists('DenaliSelect renders an wrapper div');
 
-    assert.dom('div').hasClass('has-arrow', 'DenaliSelect renders an arrow.');
-
     assert.dom('select').exists('DenaliSelect renders a select element.');
 
     assert.dom('option').hasText('Item 1', 'DenaliSelect option exists and renders text.');
