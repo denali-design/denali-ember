@@ -1,9 +1,9 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, find, fillIn } from '@ember/test-helpers';
+import { render, setupOnerror, find, findAll, fillIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-const option = { text: 'Item 1' };
+const opts = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }];
 
 module('Integration | Component | denali-select', function (hooks) {
   setupRenderingTest(hooks);
@@ -48,9 +48,9 @@ module('Integration | Component | denali-select', function (hooks) {
 
     assert.dom('div.input.has-arrow').exists('DenaliSelect renders an wrapper div');
 
-    assert.dom('select').exists('DenaliSelect renders a select element.');
+    assert.dom('div.input select').exists('DenaliSelect renders a select element.');
 
-    assert.dom('option').hasText('Item 1', 'DenaliSelect option exists and renders an object.');
+    assert.dom('div.input option').hasText('Item 1', 'DenaliSelect option exists and renders an object.');
   });
 
   test('an option is active', async function (assert) {
@@ -62,13 +62,17 @@ module('Integration | Component | denali-select', function (hooks) {
       </DenaliSelect>
     `);
 
-    this.set('options', [option]);
-    this.set('selectedOption', option);
-    assert.equal(find('select').selectedIndex, 0, 'DenaliSelect selects the object given by the `@selectedOption` arg');
+    this.set('options', opts);
+    this.set('selectedOption', opts[1]);
+    assert.equal(
+      find('div.input select').selectedIndex,
+      1,
+      'DenaliSelect selects the object given by the `@selectedOption` arg'
+    );
   });
 
   test('an option is disabled', async function (assert) {
-    assert.expect(2);
+    assert.expect(1);
 
     await render(hbs`
       <DenaliSelect @options={{this.options}} @disabledOptions={{this.disabled}} as |option|>
@@ -76,11 +80,15 @@ module('Integration | Component | denali-select', function (hooks) {
       </DenaliSelect>
     `);
 
-    this.set('options', [option]);
-    assert.dom('option').doesNotHaveAttribute('disabled', 'DenaliSelect options are not disabled by default');
-
-    this.set('disabled', [option]);
-    assert.dom('option').isDisabled('DenaliSelect option is disabled when `@disabledOptions` arg is set');
+    this.set('options', opts);
+    this.set('disabled', [opts[1]]);
+    assert.deepEqual(
+      findAll('div.input option').map((e) => {
+        return e.disabled;
+      }),
+      [false, true, false],
+      'DenaliSelect options are enabled and disabled as specified.'
+    );
   });
 
   test('it supports small size', async function (assert) {
@@ -92,7 +100,7 @@ module('Integration | Component | denali-select', function (hooks) {
       </DenaliSelect>
     `);
 
-    this.set('options', [option]);
+    this.set('options', opts);
     assert.dom('div.input').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
 
     this.set('isSmall', 'true');
@@ -108,7 +116,7 @@ module('Integration | Component | denali-select', function (hooks) {
       </DenaliSelect>
     `);
 
-    this.set('options', [option]);
+    this.set('options', opts);
     assert.dom('div.input').doesNotHaveClass('is-inverse', 'DenaliSelect does not have inverse styling by default');
 
     this.set('isInverse', 'true');
@@ -132,12 +140,12 @@ module('Integration | Component | denali-select', function (hooks) {
 
     this.set('options', [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }]);
     this.set('selectedOption', this.options[2]);
-    assert.equal(find('select').selectedIndex, 2);
+    assert.equal(find('div.input select').selectedIndex, 2);
 
     this.set('onChange', (option) => {
       this.set('selectedOption', option);
       assert.equal(option, this.options[1], 'DenaliSelect @onChange action provides the object selected');
     });
-    await fillIn('select', 'Item 2');
+    await fillIn('div.input select', 'Item 2');
   });
 });
