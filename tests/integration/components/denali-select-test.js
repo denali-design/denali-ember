@@ -114,7 +114,7 @@ module('Integration | Component | denali-select', function (hooks) {
     assert.dom('div.input').doesNotHaveClass('is-inverse', 'DenaliSelect does not have inverse styling by default');
 
     this.set('isInverse', 'true');
-    assert.dom('div').hasClass('is-inverse', 'DenaliSelect has inverse styling when `@isInverse` arg is set to true');
+    assert.dom('div.input').hasClass('is-inverse', 'DenaliSelect has inverse styling when `@isInverse` arg is set to true');
   });
 
   test('it handles change events', async function (assert) {
