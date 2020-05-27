@@ -83,9 +83,7 @@ module('Integration | Component | denali-select', function (hooks) {
     this.set('options', opts);
     this.set('disabled', [opts[1]]);
     assert.deepEqual(
-      findAll('div.input option').map((e) => {
-        return e.disabled;
-      }),
+      findAll('div.input option').map((e) => e.disabled),
       [false, true, false],
       'DenaliSelect options are enabled and disabled as specified.'
     );
