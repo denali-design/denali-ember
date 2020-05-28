@@ -1,0 +1,24 @@
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="alert {{this.typeClass}} {{this.isBlockClass}}" ...attributes>
+  <span class="d-icon {{this.iconClass}}"></span>
+  <div>
+    {{#if (has-block)}}
+      {{yield (hash
+        Title=(component "denali-alert/title")
+      )}}
+      {{yield (hash
+        Context=(component "denali-alert/context")
+      )}}
+    {{else}}
+      <h5>{{this.title}}</h5>
+      {{#unless (is-empty this.context)}}
+        <p>{{this.context}}</p>
+      {{/unless}}
+    {{/if}}
+  </div>
+  {{#if this.onClose}}
+    <span class="link close is-secondary" {{on "click" this.onClose}}>
+      <span class="d-icon d-close is-sub"></span>
+    </span>
+  {{/if}}
+</div>
