@@ -1,0 +1,10 @@
+<div class="input-group {{this.isStackedClass}} {{this.isResponsiveClass}} {{this.autoWidthClass}}">
+  <label>{{this.label}}</label>
+  {{yield (hash Button=(component "denali-button"))}}
+  {{yield (hash Input=(component "denali-input"))}}
+  {{yield (hash Radio=(component "denali-radio"))}}
+  {{yield (hash Toggle=(component "denali-toggle"))}}
+  {{yield (hash Checkbox=(component "denali-checkbox"))}}
+  {{yield (hash Switch=(component "denali-switch"))}}
+  {{yield (hash Select=(component "denali-select"))}}
+</div>
