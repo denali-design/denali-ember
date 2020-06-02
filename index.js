@@ -2,10 +2,9 @@
 
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
-const path = require('path');
 
-const denaliCssPath = path.join(__dirname, 'node_modules', 'denali-css');
-const denaliIconPath = path.join(__dirname, 'node_modules', 'denali-icon-font');
+const denaliCssPath = require('denali-css').getFilePath();
+const denaliIconPath = require('denali-icon-font').getFilePath();
 
 const iconFiles = ['css', 'eot', 'svg', 'ttf', 'woff'];
 
@@ -14,8 +13,8 @@ module.exports = {
 
   options: {
     'ember-composable-helpers': {
-      only: ['contains']
-    }
+      only: ['contains'],
+    },
   },
 
   treeForVendor(tree) {
@@ -24,14 +23,14 @@ module.exports = {
     if (!this.hasSass) {
       const denali = new Funnel(denaliCssPath, {
         srcDir: 'css',
-        files: ['denali.css']
+        files: ['denali.css'],
       });
       trees.push(denali);
     }
 
     const icons = new Funnel(denaliIconPath, {
       srcDir: 'dist',
-      files: iconFiles.map(ext => `denali-icon-font.${ext}`)
+      files: iconFiles.map((ext) => `denali-icon-font.${ext}`),
     });
     trees.push(icons);
 
@@ -44,7 +43,7 @@ module.exports = {
     if (this.hasSass) {
       const denali = new Funnel(denaliCssPath, {
         srcDir: 'scss',
-        destDir: 'denali'
+        destDir: 'denali',
       });
       trees.push(denali);
     }
@@ -62,10 +61,10 @@ module.exports = {
     }
 
     // Icon Files
-    iconFiles.forEach(ext => {
+    iconFiles.forEach((ext) => {
       app.import(`vendor/denali-icon-font.${ext}`, {
-        destDir: 'assets'
+        destDir: 'assets',
       });
     });
-  }
+  },
 };
