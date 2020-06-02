@@ -149,7 +149,7 @@ module('Integration | Component | denali-input-group', function (hooks) {
     assert.expect(1);
 
     await render(hbs`
-      <DenaliInputGroup @label="My Label" @autoWidth={{true}} as |Group|>
+      <DenaliInputGroup @label="My Label" @hasAutoWidth={{true}} as |Group|>
         <Group.Input type="text" placeholder="Text Field" />
       </DenaliInputGroup>
     `);

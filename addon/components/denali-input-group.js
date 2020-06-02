@@ -24,6 +24,6 @@ export default class DenaliInputGroupComponent extends Component {
   }
 
   get autoWidthClass() {
-    return this.autoWidth ? 'auto' : undefined;
+    return this.hasAutoWidth ? 'auto' : undefined;
   }
 }
