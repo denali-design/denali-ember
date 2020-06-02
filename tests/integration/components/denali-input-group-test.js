@@ -128,7 +128,7 @@ module('Integration | Component | denali-input-group', function (hooks) {
       <DenaliInputGroup @label="My Label" @isStacked={{true}} as |Group|>
         <Group.Checkbox>
           Test
-        </DenaliCheckbox>
+        </Group.Checkbox>
       </DenaliInputGroup>
     `);
     assert.dom('div.is-stacked').exists('An input group is rendered stacked');
