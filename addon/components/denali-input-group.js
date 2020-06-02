@@ -13,7 +13,7 @@ export default class DenaliInputGroupComponent extends Component {
   isResponsive = false;
 
   @arg(boolean)
-  autoWidth;
+  hasAutoWidth = false;
 
   get isStackedClass() {
     return this.isStacked ? 'is-stacked' : undefined;
