@@ -1,4 +1,5 @@
-<div class="input-group {{this.isStackedClass}} {{this.isResponsiveClass}} {{this.autoWidthClass}}">
+{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="input-group {{this.isStackedClass}} {{this.isResponsiveClass}} {{this.autoWidthClass}}" ...attributes>
   <label>{{this.label}}</label>
   {{yield (hash
     Button=(component "denali-button")
