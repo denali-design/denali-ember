@@ -7,7 +7,7 @@ export default class DenaliInputGroupComponent extends Component {
   label;
 
   @arg(boolean)
-  isStacked;
+  isStacked = false;
 
   @arg(boolean)
   isResponsive;
