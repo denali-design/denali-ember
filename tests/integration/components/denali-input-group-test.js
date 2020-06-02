@@ -126,7 +126,7 @@ module('Integration | Component | denali-input-group', function (hooks) {
 
     await render(hbs`
       <DenaliInputGroup @label="My Label" @isStacked={{true}} as |Group|>
-        <DenaliCheckbox>
+        <Group.Checkbox>
           Test
         </DenaliCheckbox>
       </DenaliInputGroup>
