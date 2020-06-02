@@ -26,4 +26,5 @@ Router.map(function () {
   this.route('denali-tabs');
   this.route('denali-tag');
   this.route('denali-select');
+  this.route('denali-chip');
 });
