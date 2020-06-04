@@ -26,7 +26,7 @@ module('Integration | Component | denali-chip', function (hooks) {
     `);
 
     assert.dom('.chips').exists({ count: 1 }, 'DenaliChip can render without a size set');
-    assert.dom('.chips').lacksClass('is-', 'Ensure that when no size class is not rendered');
+    assert.dom('.chips').lacksClass(/is-[^\s]*/, 'Ensure that when no size class is not rendered');
 
     this.set('size', 'small');
     assert.dom('.chips').hasClass('is-small', 'DenaliChip has a small size when `@size` arg is set to small');
@@ -40,16 +40,18 @@ module('Integration | Component | denali-chip', function (hooks) {
     `);
 
     assert.dom('.chips').exists({ count: 1 }, 'DenaliChip can render without set colors');
-    assert.dom('.chips').lacksClass('is--', 'Ensure that when no textColor class is not rendered');
-    assert.dom('.chips').lacksClass('has-bg--', 'Ensure that when no backgroundColor class is not rendered');
+    assert.dom('.chips').lacksClass(/is-[^\s]*-[^\s]*/, 'Ensure that when no textColor class is not rendered');
+    assert
+      .dom('.chips')
+      .lacksClass(/has-bg-[^\s]*-[^\s]*/, 'Ensure that when no backgroundColor class is not rendered');
 
     this.set('textShade', '300');
-    assert.dom('.chips').lacksClass('is--300', 'Ensure that when no textColor class is not rendered with shade');
+    assert.dom('.chips').lacksClass(/is-[^\s]*-300/, 'Ensure that when no textColor class is not rendered with shade');
 
     this.set('backgroundShade', '300');
     assert
       .dom('.chips')
-      .lacksClass('has-bg--300', 'Ensure that when no backgroundColor class is not rendered with shade');
+      .lacksClass(/has-bg-[^\s]*-300/, 'Ensure that when no backgroundColor class is not rendered with shade');
 
     this.set('textShade', undefined);
     this.set('backgroundShade', undefined);

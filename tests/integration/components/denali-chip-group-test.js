@@ -8,8 +8,8 @@ module('Integration | Component | denali-chip-group', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(hbs`
-      <DenaliChipGroup>
-        <DenaliChip>Grouped</DenaliChip> <DenaliChip>Chips</DenaliChip>
+      <DenaliChipGroup as | Group |>
+        <Group.Chip>Grouped</Group.Chip> <Group.Chip>Chips</Group.Chip>
       </DenaliChipGroup>
     `);
 

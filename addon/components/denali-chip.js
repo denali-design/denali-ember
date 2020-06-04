@@ -23,10 +23,10 @@ export default class DenaliChipComponent extends Component {
   textColor;
 
   @arg(oneOf(shade))
-  backgroundShade;
+  backgroundShade = '500';
 
   @arg(oneOf(shade))
-  textShade;
+  textShade = '500';
 
   get sizeClass() {
     return this.size ? `is-${this.size}` : undefined;
@@ -34,7 +34,7 @@ export default class DenaliChipComponent extends Component {
 
   get backgroundColorClass() {
     if (this.backgroundColor) {
-      return `has-bg-${this.backgroundColor}-${this.backgroundShade || '500'}`;
+      return `has-bg-${this.backgroundColor}-${this.backgroundShade}`;
     }
 
     return undefined;
@@ -42,7 +42,7 @@ export default class DenaliChipComponent extends Component {
 
   get textColorClass() {
     if (this.textColor) {
-      return `is-${this.textColor}-${this.textShade || '500'}`;
+      return `is-${this.textColor}-${this.textShade}`;
     }
 
     return undefined;
