@@ -4,7 +4,7 @@
 
   <DenaliSelect
     @options={{this.options}}
-    @selectedOption={{this.default}}
+    @selectedOption={{this.selected}}
     @disabledOptions={{this.disabled}}
     @onChange={{this.onChange}}
     as |option|>
@@ -14,7 +14,7 @@
   <h2 class="denali-toggle-header">Small Select</h2>
   <DenaliSelect @isSmall={{true}}
     @options={{this.optionsSmall}}
-    @selectedOption={{this.defaultSmall}}
+    @selectedOption={{this.selectedSmall}}
     @onChange={{this.onChangeSmall}}
     as |option|>
     {{option}}
@@ -24,7 +24,7 @@
   <div class="denali-toggle-inverse-example">
     <DenaliSelect @isInverse={{true}}
       @options={{this.optionsInverse}}
-      @selectedOption={{this.defaultInverse}}
+      @selectedOption={{this.selectedInverse}}
       @onChange={{this.onChangeInverse}}
       as |option|>
       {{option}}

@@ -1,0 +1,53 @@
+<h1>DenaliAlert</h1>
+
+<h2>Alert Types</h2>
+
+<DenaliAlert as |Alert|>
+  <Alert.Title>This is a default alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @type="info" as |Alert|>
+  <Alert.Title>This is an informational alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @type="warning" as |Alert|>
+  <Alert.Title>This is warning alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @type="danger" as |Alert|>
+  <Alert.Title>This is danger alert</Alert.Title>
+</DenaliAlert>
+
+<h2>Alert Context</h2>
+
+<DenaliAlert @type="danger" as |Alert|>
+  <Alert.Title>This is danger alert</Alert.Title>
+  <Alert.Context>
+    This domain can’t be deleted because there is another product using this domain.
+  </Alert.Context>
+</DenaliAlert>
+
+<h2>Block Level</h2>
+
+<DenaliAlert @isBlock={{true}} as |Alert|>
+  <Alert.Title>This is a default alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @isBlock={{true}} @type="info" as |Alert|>
+  <Alert.Title>This is an informational alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @isBlock={{true}} @type="warning" as |Alert|>
+  <Alert.Title>This is warning alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @isBlock={{true}} @type="danger" as |Alert|>
+  <Alert.Title>This is danger alert</Alert.Title>
+</DenaliAlert>
+
+<DenaliAlert @type="danger" @isBlock={{true}} as |Alert|>
+  <Alert.Title>This is danger alert</Alert.Title>
+  <Alert.Context>
+    This domain can’t be deleted because there is another product using this domain.
+  </Alert.Context>
+</DenaliAlert>

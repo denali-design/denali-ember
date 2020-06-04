@@ -15,11 +15,11 @@ export default class DenaliSelectController extends Controller {
 
   optionsSmall = optsSmall;
 
-  @tracked selected = opts[0];
+  @tracked selected = opts[1];
 
-  @tracked selectedInverse = optsInverse[0];
+  @tracked selectedInverse = optsInverse[3];
 
-  @tracked selectedSmall = optsSmall[0];
+  @tracked selectedSmall = optsSmall[2];
 
   disabled = [opts[3]];
 

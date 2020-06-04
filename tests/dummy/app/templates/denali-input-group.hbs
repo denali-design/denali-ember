@@ -1,0 +1,70 @@
+<h2>Basic Input Groups</h2>
+
+<DenaliInputGroup @label="My Input" as |Group|>
+  <Group.Input type="text" placeholder="Text Field" />
+</DenaliInputGroup><br>
+
+<DenaliInputGroup @label="My Input" as |Group|>
+  <Group.Button>Click Me</Group.Button>
+</DenaliInputGroup><br>
+
+<DenaliInputGroup @label="My Checkbox" as |Group|>
+  <Group.Checkbox>Simple Checkbox</Group.Checkbox>
+  <Group.Checkbox checked={{true}}>Checked Checkbox</Group.Checkbox>
+  <Group.Checkbox disabled={{true}}>Disabled Checkbox</Group.Checkbox>
+  <Group.Checkbox data-partial={{true}}>Partial Data Checkbox</Group.Checkbox>
+</DenaliInputGroup><br>
+
+<DenaliInputGroup @label="My Radio Buttons" as |Group|>
+  <Group.Radio
+    @onChanged={{fn (mut this.selectedValue)}}
+    as |Radio|
+  >
+    <Radio.Option @value={{1}}>Stuff 1</Radio.Option> <br>
+    <Radio.Option @value={{2}}>Stuff 2</Radio.Option> <br>
+    <Radio.Option @value="surprise" @checked={{true}}>Stuff 3</Radio.Option> <br>
+    <Radio.Option @value={{4}}>Stuff 4</Radio.Option> <br>
+    <Radio.Option @value={{5}} @disabled={{true}}>Stuff 5</Radio.Option> <br>
+  </Group.Radio>
+</DenaliInputGroup><br>
+
+<DenaliInputGroup @label="My Toggle" as |Group|>
+  <Group.Toggle
+    @options={{this.toggleOptions}}
+    @activeOption={{this.toggleActive}}
+    @disabled={{this.toggleDisabled}}
+    @onChange={{this.toggleChangeActive}} as |option|
+  >
+    {{option.text}}
+  </Group.Toggle>
+</DenaliInputGroup><br>
+
+<DenaliInputGroup @label="My Switch" as |Group|>
+  <Group.Switch @onLabel="Lights On" @offLabel="Lights Off" />
+</DenaliInputGroup><br>
+
+<DenaliInputGroup @label="My Select" as |Group|>
+  <Group.Select
+    @options={{this.selectOptions}}
+    @selectedOption={{this.selectedOption}}
+    @disabledOptions={{this.selectDisabled}}
+    @onChange={{this.selectOnChange}}
+    as |option|>
+    {{option.text}}
+  </Group.Select>
+</DenaliInputGroup><br>
+
+<h2>Stacked</h2>
+<DenaliInputGroup @label="My Input" @isStacked={{true}} as |Group|>
+  <Group.Input type="text" placeholder="Text Field" />
+</DenaliInputGroup><br>
+
+<h2>Responsive</h2>
+<DenaliInputGroup @label="My Input" @isResponsive={{true}} as |Group|>
+  <Group.Input type="text" placeholder="Text Field" />
+</DenaliInputGroup><br>
+
+<h2>Auto Labels</h2>
+<DenaliInputGroup @label="My Input" @hasAutoWidth={{true}} as |Group|>
+  <Group.Input type="text" placeholder="Text Field" />
+</DenaliInputGroup><br>
