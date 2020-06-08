@@ -1,16 +1,21 @@
 {{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
-<div class="alert is-inline {{if this.type (concat "has-bg-status-" this.type)}}" ...attributes>
+<div class="alert is-inline {{this.typeClass}}" ...attributes>
   <p>
     {{#if (has-block)}}
-      {{yield (hash 
-        Title=(component "denali-alert-inline/title")
+      {{yield (hash
+        Title=(component "denali-span" class="is-bold")
+      )}}
+      {{yield (hash
+        Context=(component "denali-span")
       )}}
     {{else}}
-      <DenaliAlertInline::Title>
+      <DenaliSpan @class="is-bold">
         {{this.title}}
-      </DenaliAlertInline::Title>
+      </DenaliSpan>
       {{#unless (is-empty this.context)}}
-        {{this.context}}
+        <DenaliSpan>
+          {{this.context}}
+        </DenaliSpan>
       {{/unless}}
     {{/if}}
   </p>

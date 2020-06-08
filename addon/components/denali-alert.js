@@ -43,6 +43,6 @@ export default class DenaliAlertComponent extends Component {
 
   get typeClass() {
     const { type } = this;
-    return type !== type[0] ? `is-${type}` : undefined;
+    return type !== types[0] ? `is-${type}` : undefined;
   }
 }

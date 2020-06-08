@@ -55,7 +55,7 @@ module('Integration | Component | denali-alert-inline', function(hooks) {
     await render(hbs`
       <DenaliAlertInline as |Alert|>
         <Alert.Title>Test Title:</Alert.Title>
-        Alert Context Details
+        <Alert.Context>Alert Context Details</Alert.Context>
       </DenaliAlertInline>
     `);
 
