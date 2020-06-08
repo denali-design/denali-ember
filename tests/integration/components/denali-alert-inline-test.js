@@ -95,5 +95,4 @@ module('Integration | Component | denali-alert-inline', function(hooks) {
     this.set('type', 'danger')
     assert.dom('.alert.is-inline').hasClass('has-bg-status-danger', 'DenaliAlertInline has danger styles when `@type` arg is set to danger');
   });
-
 });
