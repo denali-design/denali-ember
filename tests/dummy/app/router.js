@@ -29,4 +29,5 @@ Router.map(function () {
   this.route('denali-chip');
   this.route('denali-alert');
   this.route('denali-input-group');
+  this.route('denali-alert-inline');
 });
