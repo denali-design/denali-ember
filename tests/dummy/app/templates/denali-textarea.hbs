@@ -1,0 +1,8 @@
+<h2>Simple Input</h2>
+<DenaliTextarea />
+<br>
+
+<h2>Input States</h2>
+<DenaliTextarea disabled={{true}} placeholder="Disabled Input" />
+<DenaliTextarea @state="active" placeholder="Active Input" />
+<DenaliTextarea @state="warning" placeholder="Input with warning" @warningMsg="Invalid Input" />
