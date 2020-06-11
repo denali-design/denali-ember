@@ -3,7 +3,7 @@
   {{this.activeClass}}
   {{this.warningClass}}"
 >
-  <textarea ...attributes></textarea>
+  <textarea ...attributes>{{attributes.value}}</textarea>
   {{#if this.warningClass}}
     <p class="message">{{this.warningMsg}}</p>
   {{/if}}

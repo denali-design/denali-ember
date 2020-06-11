@@ -1,19 +1,19 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { fillIn, render, settled } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | denali-textarea', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(2);
+    assert.expect(3);
 
     await render(hbs`<DenaliTextarea value="My Input" />`);
 
     assert.dom('.input textarea').exists('An textarea is rendered within a wrapper div with class `.input`');
     assert.dom('.input textarea').isNotDisabled('The textarea is not disabled by default');
-    //assert.dom('.input textarea').hasValue('My Input', 'The textarea has the specified value');
+    assert.dom('.input textarea').hasValue('My Input', 'The textarea has the specified value');
   });
 
   test('states', async function (assert) {
@@ -55,16 +55,16 @@ module('Integration | Component | denali-textarea', function (hooks) {
   });
 
   test('actions', async function (assert) {
-    assert.expect(0);
+    assert.expect(2);
 
     this.set('handleInput', (event) => {
       assert.equal(event.target.value, 'Random Text', 'the action passed in configured correctly');
     });
     await render(hbs`<DenaliTextarea
-      {{on "textarea" (action this.handleInput)}}
+      {{on 'input' (action this.handleInput)}}
     />`);
 
-    /*await fillIn('.input textarea', 'Random Text');
+    await fillIn('.input textarea', 'Random Text');
 
     this.set('handleInput', (event) => {
       assert.equal(event.target.value, 'More Random Text', 'the action is configured correctly');
@@ -72,6 +72,6 @@ module('Integration | Component | denali-textarea', function (hooks) {
 
     this.element.querySelector('.input textarea').value = 'More Random Text';
     this.element.querySelector('.input textarea').dispatchEvent(new Event('input'));
-    await settled();*/
+    await settled();
   });
 });
