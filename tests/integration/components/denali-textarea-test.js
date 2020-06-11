@@ -9,7 +9,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('it renders', async function (assert) {
     assert.expect(3);
 
-    await render(hbs`<DenaliTextarea value="My Input" />`);
+    await render(hbs`<DenaliTextarea @value="My Input" />`);
 
     assert.dom('.input textarea').exists('An textarea is rendered within a wrapper div with class `.input`');
     assert.dom('.input textarea').isNotDisabled('The textarea is not disabled by default');
