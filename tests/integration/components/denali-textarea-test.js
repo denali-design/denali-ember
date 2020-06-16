@@ -60,9 +60,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
     this.set('handleInput', (event) => {
       assert.equal(event.target.value, 'Random Text', 'the action passed in configured correctly');
     });
-    await render(hbs`<DenaliTextarea
-      {{on 'input' (action this.handleInput)}}
-    />`);
+    await render(hbs`<DenaliTextarea {{on 'input' this.handleInput}} />`);
 
     await fillIn('.input textarea', 'Random Text');
 
@@ -72,6 +70,5 @@ module('Integration | Component | denali-textarea', function (hooks) {
 
     this.element.querySelector('.input textarea').value = 'More Random Text';
     this.element.querySelector('.input textarea').dispatchEvent(new Event('input'));
-    await settled();
   });
 });
