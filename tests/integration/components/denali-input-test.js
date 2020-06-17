@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { fillIn, render, settled } from '@ember/test-helpers';
+import { fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | denali-input', function (hooks) {
@@ -143,6 +143,5 @@ module('Integration | Component | denali-input', function (hooks) {
 
     this.element.querySelector('.input input').value = 'More Random Text';
     this.element.querySelector('.input input').dispatchEvent(new Event('input'));
-    await settled();
   });
 });
