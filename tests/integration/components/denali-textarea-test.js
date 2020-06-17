@@ -9,7 +9,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('it renders', async function (assert) {
     assert.expect(3);
 
-    await render(hbs`<DenaliTextarea @value="My Input" />`);
+    await render(hbs`<DenaliTextArea @value="My Input" />`);
 
     assert.dom('.input textarea').exists('An textarea is rendered within a wrapper div with class `.input`');
     assert.dom('.input textarea').isNotDisabled('The textarea is not disabled by default');
@@ -19,7 +19,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('states', async function (assert) {
     assert.expect(2);
 
-    await render(hbs`<DenaliTextarea @state={{this.state}} />`);
+    await render(hbs`<DenaliTextArea @state={{this.state}} />`);
 
     this.set('state', 'active');
     assert.dom('.input').hasClass('is-active', 'The input wrapper has the appropriate class for active');
@@ -31,14 +31,14 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('disabled', async function (assert) {
     assert.expect(1);
 
-    await render(hbs`<DenaliTextarea disabled={{true}}/>`);
+    await render(hbs`<DenaliTextArea disabled={{true}}/>`);
     assert.dom('.input textarea').isDisabled('The textarea is disabled when specified');
   });
 
   test('placeholder', async function (assert) {
     assert.expect(1);
 
-    await render(hbs`<DenaliTextarea placeholder="Text field"/>`);
+    await render(hbs`<DenaliTextArea placeholder="Text field"/>`);
     assert
       .dom('.input textarea')
       .hasAttribute('placeholder', 'Text field', 'The textarea is has the specified placeholder');
@@ -47,7 +47,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('warning message', async function (assert) {
     assert.expect(2);
 
-    await render(hbs`<DenaliTextarea @state="warning" @warningMsg={{this.warningMsg}} />`);
+    await render(hbs`<DenaliTextArea @state="warning" @warningMsg={{this.warningMsg}} />`);
     assert.dom('.input.is-warning .message').hasNoText('No message is rendered when none is specified');
 
     this.set('warningMsg', 'Email Invalid');
@@ -60,7 +60,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
     this.set('handleInput', (event) => {
       assert.equal(event.target.value, 'Random Text', 'the action passed in configured correctly');
     });
-    await render(hbs`<DenaliTextarea {{on 'input' this.handleInput}} />`);
+    await render(hbs`<DenaliTextArea {{on 'input' this.handleInput}} />`);
 
     await fillIn('.input textarea', 'Random Text');
 

@@ -8,7 +8,7 @@ import { oneOf, string } from 'prop-types';
 
 const states = ['active', 'warning'];
 
-export default class DenaliTextareaComponent extends Component {
+export default class DenaliTextAreaComponent extends Component {
   @arg(oneOf(states)) state;
   @arg(string) warningMsg;
 

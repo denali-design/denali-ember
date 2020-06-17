@@ -1,1 +1,1 @@
-export { default } from '@denali-design/ember/components/denali-textarea';
+export { default } from '@denali-design/ember/components/denali-text-area';
