@@ -9,7 +9,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('it renders', async function (assert) {
     assert.expect(3);
 
-    await render(hbs`<DenaliTextArea @value="My Input" />`);
+    await render(hbs`<DenaliTextArea>My Input</ DenaliTextArea>`);
 
     assert.dom('.input textarea').exists('An textarea is rendered within a wrapper div with class `.input`');
     assert.dom('.input textarea').isNotDisabled('The textarea is not disabled by default');
@@ -19,7 +19,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('states', async function (assert) {
     assert.expect(2);
 
-    await render(hbs`<DenaliTextArea @state={{this.state}} />`);
+    await render(hbs`<DenaliTextArea @state={{this.state}} @warningMsg="warning"/>`);
 
     this.set('state', 'active');
     assert.dom('.input').hasClass('is-active', 'The input wrapper has the appropriate class for active');
@@ -48,7 +48,7 @@ module('Integration | Component | denali-textarea', function (hooks) {
     assert.expect(2);
 
     await render(hbs`<DenaliTextArea @state="warning" @warningMsg={{this.warningMsg}} />`);
-    assert.dom('.input.is-warning .message').hasNoText('No message is rendered when none is specified');
+    assert.dom('.input').doesNotHaveClass('is-warning', 'The input wrapper has the appropriate class.');
 
     this.set('warningMsg', 'Email Invalid');
     assert.dom('.input.is-warning .message').hasText('Email Invalid', 'The specified warning message is rendered');

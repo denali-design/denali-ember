@@ -17,6 +17,12 @@ export default class DenaliTextAreaComponent extends Component {
   }
 
   get warningClass() {
-    return this.state === 'warning' ? 'is-warning' : undefined;
+    if (this.state === 'warning') {
+      if (this.warningMsg) {
+        return 'is-warning';
+      }
+      return undefined;
+    }
+    return undefined;
   }
 }
