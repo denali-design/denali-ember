@@ -6,20 +6,20 @@ import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { oneOf, string } from 'prop-types';
 
-const states = ['active', 'warning'];
+const states = ['active', 'error'];
 
 export default class DenaliTextAreaComponent extends Component {
   @arg(oneOf(states)) state;
-  @arg(string) warningMsg;
+  @arg(string) errorMsg;
 
   get activeClass() {
     return this.state === 'active' ? 'is-active' : undefined;
   }
 
-  get warningClass() {
-    if (this.state === 'warning') {
-      if (this.warningMsg) {
-        return 'is-warning';
+  get errorClass() {
+    if (this.state === 'error') {
+      if (this.errorMsg) {
+        return 'is-error';
       }
       return undefined;
     }

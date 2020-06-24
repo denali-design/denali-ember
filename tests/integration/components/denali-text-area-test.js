@@ -19,13 +19,13 @@ module('Integration | Component | denali-textarea', function (hooks) {
   test('states', async function (assert) {
     assert.expect(2);
 
-    await render(hbs`<DenaliTextArea @state={{this.state}} @warningMsg="warning"/>`);
+    await render(hbs`<DenaliTextArea @state={{this.state}} @errorMsg="error"/>`);
 
     this.set('state', 'active');
     assert.dom('.input').hasClass('is-active', 'The input wrapper has the appropriate class for active');
 
-    this.set('state', 'warning');
-    assert.dom('.input').hasClass('is-warning', 'The input wrapper has the appropriate class for warning');
+    this.set('state', 'error');
+    assert.dom('.input').hasClass('is-error', 'The input wrapper has the appropriate class for error');
   });
 
   test('disabled', async function (assert) {
@@ -44,14 +44,14 @@ module('Integration | Component | denali-textarea', function (hooks) {
       .hasAttribute('placeholder', 'Text field', 'The textarea is has the specified placeholder');
   });
 
-  test('warning message', async function (assert) {
+  test('error message', async function (assert) {
     assert.expect(2);
 
-    await render(hbs`<DenaliTextArea @state="warning" @warningMsg={{this.warningMsg}} />`);
-    assert.dom('.input').doesNotHaveClass('is-warning', 'The input wrapper has the appropriate class.');
+    await render(hbs`<DenaliTextArea @state="error" @errorMsg={{this.errorMsg}} />`);
+    assert.dom('.input').doesNotHaveClass('is-error', 'The input wrapper has the appropriate class.');
 
-    this.set('warningMsg', 'Email Invalid');
-    assert.dom('.input.is-warning .message').hasText('Email Invalid', 'The specified warning message is rendered');
+    this.set('errorMsg', 'Email Invalid');
+    assert.dom('.input.is-error .message').hasText('Email Invalid', 'The specified error message is rendered');
   });
 
   test('actions', async function (assert) {
