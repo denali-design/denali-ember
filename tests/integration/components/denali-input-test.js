@@ -53,8 +53,8 @@ module('Integration | Component | denali-input', function (hooks) {
     this.set('state', 'active');
     assert.dom('.input').hasClass('is-active', 'The input wrapper has the appropriate class for active');
 
-    this.set('state', 'warning');
-    assert.dom('.input').hasClass('is-warning', 'The input wrapper has the appropriate class for warning');
+    this.set('state', 'error');
+    assert.dom('.input').hasClass('is-error', 'The input wrapper has the appropriate class for error');
   });
 
   test('disabled', async function (assert) {
@@ -81,14 +81,14 @@ module('Integration | Component | denali-input', function (hooks) {
     assert.dom('.input').hasClass('is-inverse', 'The input wrapper has the inverse class when specified');
   });
 
-  test('warning message', async function (assert) {
+  test('error message', async function (assert) {
     assert.expect(2);
 
-    await render(hbs`<DenaliInput @state="warning" @warningMsg={{this.warningMsg}} />`);
-    assert.dom('.input.is-warning .message').hasNoText('No message is rendered when none is specified');
+    await render(hbs`<DenaliInput @state="error" @errorMsg={{this.errorMsg}} />`);
+    assert.dom('.input.is-error .message').hasNoText('No message is rendered when none is specified');
 
-    this.set('warningMsg', 'Email Invalid');
-    assert.dom('.input.is-warning .message').hasText('Email Invalid', 'The specified warning message is rendered');
+    this.set('errorMsg', 'Email Invalid');
+    assert.dom('.input.is-error .message').hasText('Email Invalid', 'The specified error message is rendered');
   });
 
   test('icons', async function (assert) {
