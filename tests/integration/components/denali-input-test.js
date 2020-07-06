@@ -85,7 +85,7 @@ module('Integration | Component | denali-input', function (hooks) {
     assert.expect(2);
 
     await render(hbs`<DenaliInput @state="error" @errorMsg={{this.errorMsg}} />`);
-    assert.dom('.input.is-error .message').hasNoText('No message is rendered when none is specified');
+    assert.dom('.input.is-error .message').doesNotExist();
 
     this.set('errorMsg', 'Email Invalid');
     assert.dom('.input.is-error .message').hasText('Email Invalid', 'The specified error message is rendered');
