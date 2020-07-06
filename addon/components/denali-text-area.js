@@ -21,7 +21,6 @@ export default class DenaliTextAreaComponent extends Component {
       if (this.errorMsg) {
         return 'is-error';
       }
-      return undefined;
     }
     return undefined;
   }

@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | denali-textarea', function (hooks) {
+module('Integration | Component | denali-text-area', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
