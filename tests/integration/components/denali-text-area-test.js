@@ -48,7 +48,7 @@ module('Integration | Component | denali-text-area', function (hooks) {
     assert.expect(2);
 
     await render(hbs`<DenaliTextArea @state="error" @errorMsg={{this.errorMsg}} />`);
-    assert.dom('.input').doesNotHaveClass('is-error', 'The input wrapper has the appropriate class.');
+    assert.dom('.input').hasClass('is-error', 'The input wrapper has the appropriate class.');
 
     this.set('errorMsg', 'Email Invalid');
     assert.dom('.input.is-error .message').hasText('Email Invalid', 'The specified error message is rendered');
