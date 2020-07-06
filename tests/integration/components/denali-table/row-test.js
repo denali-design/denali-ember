@@ -26,25 +26,25 @@ module('Integration | Component | denali-table/row', function (hooks) {
 
   test('it can yield a `th` sub component', async function (assert) {
     await render(hbs`
-      <DenaliTable::Row as |Row|>
-        <Row.th>
-          A row
-        </Row.th>
-      </DenaliTable::Row>
+    <DenaliTable as |Table|>
+      <Table.tr as |Tr|>
+        <Tr.th>Its a header</Tr.th>
+      </Table.tr>
+    </DenaliTable>
     `);
 
-    assert.dom('.tr th').exists();
+    assert.dom('.table tr th').exists();
   });
 
   test('it can yield a `td` sub component', async function (assert) {
     await render(hbs`
-      <DenaliTable::Row as |Row|>
-        <Row.td>
-          A row
-        </Row.td>
-      </DenaliTable::Row>
+    <DenaliTable as |Table|>
+      <Table.tr as |Tr|>
+        <Tr.td>Its a data element</Tr.td>
+      </Table.tr>
+    </DenaliTable>
     `);
 
-    assert.dom('.tr td').exists();
+    assert.dom('.table tr td').exists();
   });
 });

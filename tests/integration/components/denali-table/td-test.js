@@ -28,17 +28,35 @@ module('Integration | Component | denali-table/td', function (hooks) {
     assert.expect(4);
 
     await render(hbs`
-        <DenaliTable::Td>
-          template block text
-        </DenaliTable::Td>
+    <DenaliTable as |Table|>
+      <Table.tr as |Tr|>
+        <Tr.td>Its a data element</Tr.td>
+      </Table.tr>
+    </DenaliTable>
     `);
 
-    assert.dom('.td').doesNotHaveClass('is-left', 'The td does not have the `is-left` class by default');
-    assert.dom('.td').doesNotHaveClass('is-right', 'The td does not have the `is-right` class by default');
+    assert.dom('.table tr td').doesNotHaveClass('is-left', 'The td does not have the `is-left` class by default');
+    assert.dom('.table tr td').doesNotHaveClass('is-right', 'The td does not have the `is-right` class by default');
 
     this.set('alignContent', 'left');
-    assert.dom('.td').hasClass('is-left', 'The td has the `is-left` class when alignContent is set to left');
+    await render(hbs`
+    <DenaliTable as |Table|>
+      <Table.tr as |Tr|>
+        <Tr.td @alignContent={{this.alignContent}}>Its a data element</Tr.td>
+      </Table.tr>
+    </DenaliTable>
+    `);
+    assert.dom('.table tr td').hasClass('is-left', 'The td has the `is-left` class when alignContent is set to left');
     this.set('alignContent', 'right');
-    assert.dom('.td').hasClass('is-right', 'The menu has the `is-right` class when alignContent is set to right');
+    await render(hbs`
+    <DenaliTable as |Table|>
+      <Table.tr as |Tr|>
+        <Tr.td @alignContent={{this.alignContent}}>Its a data element</Tr.td>
+      </Table.tr>
+    </DenaliTable>
+    `);
+    assert
+      .dom('.table tr td')
+      .hasClass('is-right', 'The td has the `is-right` class when alignContent is set to right');
   });
 });
