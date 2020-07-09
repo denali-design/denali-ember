@@ -30,4 +30,5 @@ Router.map(function () {
   this.route('denali-alert');
   this.route('denali-input-group');
   this.route('denali-alert-inline');
+  this.route('denali-text-area');
 });

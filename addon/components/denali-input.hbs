@@ -5,7 +5,7 @@
   {{this.inverseClass}}
   {{this.sizeClass}}
   {{this.activeClass}}
-  {{this.warningClass}}"
+  {{this.errorClass}}"
 >
   {{#if @iconFront}}
     <span class="d-icon d-{{@iconFront}} {{this.iconFrontClass}}"></span>
@@ -15,7 +15,7 @@
     <span class="d-icon d-{{this.iconBack}} {{this.iconBackClass}}"></span>
   {{/if}}
 
-  {{#if this.warningClass}}
-    <p class="message">{{this.warningMsg}}</p>
+  {{#if this.errorMsg}}
+    <p class="message">{{this.errorMsg}}</p>
   {{/if}}
 </div>

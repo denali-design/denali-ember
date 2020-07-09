@@ -1,0 +1,9 @@
+{{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
+<h2>DenaliTextArea</h2>
+<DenaliTextArea />
+<br>
+
+<h2>Input States</h2>
+<DenaliTextArea disabled={{true}} placeholder="Disabled Input" />
+<DenaliTextArea @state="active" placeholder="Active Input" />
+<DenaliTextArea @state="error" placeholder="Input with errir" @errorMsg="Invalid Input" />

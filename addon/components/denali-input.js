@@ -7,7 +7,7 @@ import { arg } from 'ember-arg-types';
 import { boolean, oneOf, string } from 'prop-types';
 
 const sizes = ['small', 'medium'];
-const states = ['active', 'warning'];
+const states = ['active', 'error'];
 
 export default class DenaliInputComponent extends Component {
   @arg(oneOf(sizes)) size;
@@ -24,7 +24,7 @@ export default class DenaliInputComponent extends Component {
 
   @arg(string) iconBackClass;
 
-  @arg(string) warningMsg;
+  @arg(string) errorMsg;
 
   get sizeClass() {
     return this.size ? `is-${this.size}` : undefined;
@@ -34,8 +34,8 @@ export default class DenaliInputComponent extends Component {
     return this.state === 'active' ? 'is-active' : undefined;
   }
 
-  get warningClass() {
-    return this.state === 'warning' ? 'is-warning' : undefined;
+  get errorClass() {
+    return this.state === 'error' ? 'is-error' : undefined;
   }
 
   get hasIconBackClass() {
