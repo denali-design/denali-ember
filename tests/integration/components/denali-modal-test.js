@@ -17,7 +17,7 @@ module('Integration | Component | denali-modal', function (hooks) {
         @onClose={{fn (mut this.isOpen) false}}
         as | Modal |
       >
-        <Modal.Content @class="denali-modal__content">Content</Modal.Content>
+        <Modal.Content class="denali-modal__content">Content</Modal.Content>
       </DenaliModal>
     `);
 
@@ -27,7 +27,7 @@ module('Integration | Component | denali-modal', function (hooks) {
     this.set('isOpen', true);
     assert.dom('.denali-modal.modal').exists('Denali Modal is rendered only when isActive is set to true');
     assert
-      .dom('.denali-modal.modal .denali-modal__content')
+      .dom('.modal-content.denali-modal__content')
       .hasText('Content', 'Denali Modal Content is rendered in the modal');
     assert.dom('.denali-modal.modal .close').exists('Denali Modal renders a close icon in the modal');
 
@@ -69,13 +69,13 @@ module('Integration | Component | denali-modal', function (hooks) {
         @onClose={{fn (mut this.isOpen) false}}
         as | Modal |
       >
-        <Modal.Header @class="denali-modal__header">Header</Modal.Header>
+        <Modal.Header class="denali-modal__header">Header</Modal.Header>
         <Modal.Content>Content</Modal.Content>
-        <Modal.Footer @class="denali-modal__footer">Footer</Modal.Footer>
+        <Modal.Footer class="denali-modal__footer">Footer</Modal.Footer>
       </DenaliModal>
     `);
 
-    assert.dom('.denali-modal__header').hasText('Header', 'Denali Modal header is rendered');
-    assert.dom('.denali-modal__footer').hasText('Footer', 'Denali Modal footer is rendered');
+    assert.dom('.modal-header.denali-modal__header').hasText('Header', 'Denali Modal header is rendered');
+    assert.dom('.modal-footer.denali-modal__footer').hasText('Footer', 'Denali Modal footer is rendered');
   });
 });
