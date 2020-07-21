@@ -1,0 +1,17 @@
+{{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
+<div {{on "click" (toggle "isOpen" this)}} class="input has-arrow {{this.isSmallClass}} {{this.isInverseClass}}">
+  <input readonly ...attributes>
+</div>
+{{#if this.isOpen}}
+  <div class="br-8 shadow-1">
+    <ul>
+      {{#each options as |option|}}
+        <li>
+          <DenaliCheckbox>
+            {{yield option}}
+          </DenaliCheckbox>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

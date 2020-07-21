@@ -1,0 +1,23 @@
+{{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
+<h2>Basic Multi Select</h2>
+
+<DenaliMultiSelect
+  @options={{this.options}}
+  @selectedOption={{this.selected}}
+  @disabledOptions={{this.disabled}}
+  @onChange={{this.onChange}}
+  as |option|>
+  {{option.text}}
+</DenaliMultiSelect>
+
+<h2>Multi Select With Search</h2>
+
+<DenaliMultiSelect
+  @options={{this.options}}
+  @isSearchEnabled={{true}}
+  @selectedOption={{this.selected}}
+  @disabledOptions={{this.disabled}}
+  @onChange={{this.onChange}}
+  as |option|>
+  {{option.text}}
+</DenaliMultiSelect>
