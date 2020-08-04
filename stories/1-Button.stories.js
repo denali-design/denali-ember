@@ -9,7 +9,7 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Solid = () => ({
+export const Button = () => ({
   template: hbs`
     <DenaliButton
       @isActive={{active}}
@@ -24,13 +24,13 @@ export const Solid = () => ({
     </DenaliButton>
   `,
   context: {
+    text: text('Button Text', 'Button'),
     active: boolean('Active', false),
     disabled: boolean('Disabled', false),
     inverse: boolean('Inverse', false),
     onClick: action('clicked'),
     size: select('Size', SIZES),
     style: select('Style', STYLES),
-    text: text('Button Text', 'Button'),
     type: select('Type', TYPES),
   },
 });
