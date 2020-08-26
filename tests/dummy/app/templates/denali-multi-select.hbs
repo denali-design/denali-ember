@@ -4,7 +4,7 @@
 <DenaliMultiSelect
   @options={{this.options}}
   @selectedOption={{this.selected}}
-  @disabledOptions={{this.disabled}}
+  @searchFunc={{this.searchFunc}}
   @onChange={{this.onChange}}
   as |option|>
   {{option.text}}
@@ -15,8 +15,8 @@
 <DenaliMultiSelect
   @options={{this.options}}
   @isSearchEnabled={{true}}
+  @searchFunc={{this.searchFunc}}
   @selectedOption={{this.selected}}
-  @disabledOptions={{this.disabled}}
   @onChange={{this.onChange}}
   as |option|>
   {{option.text}}

@@ -1,0 +1,95 @@
+.pane {
+  display: flex;
+  box-sizing: border-box;
+  width: inherit;
+  background: $alert-bg-color;
+  color: $alert-text-color;
+  border-color: $color-grey-400;
+  border-style: $alert-border-style;
+  border-width: 2px;
+  box-shadow: $alert-shadow;
+  z-index: 999 !important;
+  margin-top: $fields-sizes-default-height + 1;
+  position: absolute;
+}
+
+.option-list {
+  display: inline;
+
+  &-item {
+    display: inline;
+    margin-right: 3px;
+  }
+}
+
+.multi-select {
+  display: flex;
+  position: relative;
+  width: $fields-sizes-default-width;
+  min-height: $fields-sizes-default-height;
+
+  &-search {
+    width: auto !important;
+  }
+
+  &-table {
+    table-layout: fixed;
+
+    td {
+      display: flex;
+    }
+  }
+
+  ul {
+    margin: 0;
+    appearance: none;
+    border: none;
+    box-shadow: none;
+    flex: 1 0 auto;
+    font: inherit;
+    outline: none;
+    text-align: left;
+    padding: 10px 5px;
+    width: inherit;
+
+    &:active,
+    &:focus {
+      transition: 300ms;
+    }
+
+    background: $fields-default-bg;
+    border-radius: $fields-corner-radius;
+    color: $fields-default-text-color;
+    box-shadow: $fields-default-border;
+
+    &:active,
+    &:focus {
+      box-shadow: $fields-focus-border;
+    }
+
+    &::placeholder {
+      color: $fields-placeholder-text-color;
+    }
+
+    &[disabled] {
+      background: $fields-disabled-bg;
+      color: $fields-disabled-text-color;
+      box-shadow: $fields-disabled-border;
+      &::placeholder {
+        color: $fields-placeholder-text-color;
+      }
+    }
+
+    &.has-arrow:before {
+      content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path style="fill:#{$fields-dropdown-arrow-color}" d="M24,27.17,13.4,16.59a2,2,0,0,0-3.05.25,2.07,2.07,0,0,0,.3,2.65L22.59,31.41a2,2,0,0,0,2.83,0L37.35,19.49a2.07,2.07,0,0,0,.3-2.65,2,2,0,0,0-3-.25Z"/></svg>');
+      pointer-events: none;
+      opacity: 0.4;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+      height: 18px;
+      width: 18px;
+    }
+  }
+}

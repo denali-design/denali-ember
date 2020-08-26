@@ -7,7 +7,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { arg } from 'ember-arg-types';
 import { func, boolean, array, any } from 'prop-types';
-import { action } from '@ember/object';
+import { action, computed, set } from '@ember/object';
 
 export default class DenaliMultiSelectComponent extends Component {
   @arg(boolean)
@@ -19,14 +19,14 @@ export default class DenaliMultiSelectComponent extends Component {
   @arg(boolean)
   isSearchEnabled = false;
 
+  @arg(func.isRequired)
+  searchFunc = () => {};
+
   @arg(array.isRequired)
   options;
 
   @arg(any)
   selectedOption;
-
-  @arg(array)
-  disabledOptions = [];
 
   @arg(func.isRequired)
   onChange;
@@ -34,9 +34,49 @@ export default class DenaliMultiSelectComponent extends Component {
   @tracked
   isOpen = false;
 
+  @tracked
+  _options;
+
+  @computed('_options')
+  get filteredOptions() {
+    if (this._options === undefined) {
+      this._options = this.options.map((option) => {
+        return { item: option, checked: false };
+      });
+    }
+    return this._options;
+  }
+
+  set filteredOptions(value) {
+    this._options = value;
+  }
+  @computed('_options')
+  get selections() {
+    if (this._options) {
+      debugger;
+      return this._options.filter((option) => option.checked).map((option) => option.item);
+    }
+    return [];
+  }
+
   @action
   onSelect(e) {
-    this.onChange(this.options[e.target.selectedIndex]);
+    const selectedValue = e.target.nextElementSibling.textContent.trim();
+    const selectedIndex = this.filteredOptions.findIndex((option) => this.searchFunc(option.item, selectedValue));
+    let test = this._options[selectedIndex];
+    set(test, 'checked', !this._options[selectedIndex].checked);
+    // this._options[selectedIndex].checked = !this._options[selectedIndex].checked;
+  }
+
+  @action
+  filterOptions(e) {
+    if (e.target.value) {
+      set(
+        this,
+        '_options',
+        this._options.filter((val) => this.searchFunc(val.item, e.target.value))
+      );
+    }
   }
 
   get isSmallClass() {

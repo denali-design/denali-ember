@@ -1,17 +1,34 @@
 {{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
-<div {{on "click" (toggle "isOpen" this)}} class="input has-arrow {{this.isSmallClass}} {{this.isInverseClass}}">
-  <input readonly ...attributes>
+<div class="multi-select {{this.isSmallClass}} {{this.isInverseClass}}">
+  <ul {{on "click" (toggle "isOpen" this)}} class="option-list has-arrow">
+    {{#each this.selections as |selected|}}
+      <li class="option-list-item">
+        <DenaliChip>{{selected}}</DenaliChip>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if this.isOpen}}
+    <div class="pane">
+      <table class="table is-striped multi-select-table">
+        <tbody>
+          {{#if this.isSearchEnabled}}
+            <tr>
+              <td>
+                <DenaliInput {{on "keyup" this.filterOptions}} type="text" placeholder="Front Icon" @iconBack="search" class="multi-select-search" />
+              </td>
+            </tr>
+          {{/if}}
+          {{#each this.filteredOptions as |option|}}
+            <tr>
+              <td>
+                <DenaliCheckbox {{on "click" this.onSelect}} checked={{option.checked}}>
+                  {{yield option.item}}
+                </DenaliCheckbox>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/if}}
 </div>
-{{#if this.isOpen}}
-  <div class="br-8 shadow-1">
-    <ul>
-      {{#each options as |option|}}
-        <li>
-          <DenaliCheckbox>
-            {{yield option}}
-          </DenaliCheckbox>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-{{/if}}
