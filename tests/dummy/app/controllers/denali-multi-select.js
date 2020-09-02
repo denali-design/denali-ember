@@ -15,22 +15,14 @@ export default class DenaliMultiSelectController extends Controller {
 
   optionsSmall = optsSmall;
 
-  @tracked selected = opts[1];
-
-  @tracked selectedInverse = optsInverse[3];
-
-  @tracked selectedSmall = optsSmall[2];
-
-  disabled = [opts[3]];
-
   @action
   onChange(option) {
     this.selected = option;
   }
 
   @action
-  searchFunc(val, target) {
-    return val.text.toLowerCase().includes(target.toLowerCase());
+  onChangeSmall(option) {
+    this.selectedSmall = option;
   }
 
   @action
@@ -39,7 +31,7 @@ export default class DenaliMultiSelectController extends Controller {
   }
 
   @action
-  onChangeSmall(option) {
-    this.selectedSmall = option;
+  searchFunc(val, target) {
+    return val.text.toLowerCase().includes(target.toLowerCase());
   }
 }

@@ -11,23 +11,23 @@
 
 <h2>Multi Select small</h2>
 <DenaliMultiSelect
-  @options={{this.options}}
+  @options={{this.optionsSmall}}
   @selectedOption={{this.selected}}
   @onChange={{this.onChange}}
   @isSmall={{true}}
   as |option|>
-  {{option.text}}
+  {{option}}
 </DenaliMultiSelect>
 
 <h2>Multi Select inverse</h2>
 <div class="denali-toggle-inverse-example">
   <DenaliMultiSelect
-    @options={{this.options}}
+    @options={{this.optionsInverse}}
     @selectedOption={{this.selected}}
-    @onChange={{this.onChange}}
+    @onChange={{this.onChangeInverse}}
     @isInverse={{true}}
     as |option|>
-    {{option.text}}
+    {{option}}
   </DenaliMultiSelect>
 </div>
 
