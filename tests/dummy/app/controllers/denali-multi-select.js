@@ -30,7 +30,7 @@ export default class DenaliMultiSelectController extends Controller {
 
   @action
   searchFunc(val, target) {
-    return val.text.toLowerCase().startsWith(target.toLowerCase());
+    return val.text.toLowerCase().includes(target.toLowerCase());
   }
 
   @action

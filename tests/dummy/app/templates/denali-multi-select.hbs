@@ -1,6 +1,5 @@
 {{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
 <h2>Basic Multi Select</h2>
-
 <DenaliMultiSelect
   @options={{this.options}}
   @selectedOption={{this.selected}}
@@ -10,8 +9,29 @@
   {{option.text}}
 </DenaliMultiSelect>
 
-<h2>Multi Select With Search</h2>
+<h2>Multi Select small</h2>
+<DenaliMultiSelect
+  @options={{this.options}}
+  @selectedOption={{this.selected}}
+  @onChange={{this.onChange}}
+  @isSmall={{true}}
+  as |option|>
+  {{option.text}}
+</DenaliMultiSelect>
 
+<h2>Multi Select inverse</h2>
+<div class="denali-toggle-inverse-example">
+  <DenaliMultiSelect
+    @options={{this.options}}
+    @selectedOption={{this.selected}}
+    @onChange={{this.onChange}}
+    @isInverse={{true}}
+    as |option|>
+    {{option.text}}
+  </DenaliMultiSelect>
+</div>
+
+<h2>Multi Select With Search</h2>
 <DenaliMultiSelect
   @options={{this.options}}
   @isSearchEnabled={{true}}
