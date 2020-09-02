@@ -1,0 +1,149 @@
+/**
+ * Copyright 2020, Verizon Media
+ * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
+ */
+
+.pane {
+  background: $alert-bg-color;
+  border-color: $color-grey-400;
+  box-shadow: $alert-shadow;
+  border-style: $alert-border-style;
+  border-width: 2px;
+  box-sizing: border-box;
+  color: $alert-text-color;
+  display: flex;
+  margin-top: 2px;
+  position: absolute;
+  width: inherit;
+  z-index: 999 !important;
+}
+
+.selections {
+  display: inline;
+}
+
+.select {
+  display: inline;
+  margin: 4px 5px 4px 0px;
+}
+
+.multi-select {
+  position: relative;
+  min-height: $fields-sizes-default-height;
+  width: $fields-sizes-default-width;
+
+  &-search {
+    width: auto !important;
+  }
+
+  &-table {
+    table-layout: fixed;
+
+    td {
+      display: flex;
+    }
+  }
+
+  .input {
+    display: flex;
+
+    .d-search {
+      margin-top: 9px;
+    }
+  }
+
+  ul {
+    align-content: center;
+    appearance: none;
+    background: $fields-default-bg;
+    border: none;
+    border-radius: $fields-corner-radius;
+    box-shadow: $fields-default-border;
+    color: $fields-default-text-color;
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: wrap;
+    font: inherit;
+    margin: 0;
+    min-height: $fields-sizes-default-height;
+    outline: none;
+    padding: 2px 5px;
+    text-align: left;
+    width: inherit;
+
+    &:active,
+    &:focus {
+      transition: 300ms;
+    }
+
+    &.activate,
+    &:active,
+    &:focus {
+      box-shadow: $fields-focus-border;
+    }
+
+    &::placeholder {
+      color: $fields-placeholder-text-color;
+    }
+
+    &[disabled] {
+      background: $fields-disabled-bg;
+      box-shadow: $fields-disabled-border;
+      color: $fields-disabled-text-color;
+      &::placeholder {
+        color: $fields-placeholder-text-color;
+      }
+    }
+
+    &.has-arrow:before {
+      content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path style="fill:#{$fields-dropdown-arrow-color}" d="M24,27.17,13.4,16.59a2,2,0,0,0-3.05.25,2.07,2.07,0,0,0,.3,2.65L22.59,31.41a2,2,0,0,0,2.83,0L37.35,19.49a2.07,2.07,0,0,0,.3-2.65,2,2,0,0,0-3-.25Z"/></svg>');
+      height: 18px;
+      opacity: 0.4;
+      pointer-events: none;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+    }
+  }
+
+  &.is-inverse {
+    ul {
+      background: rgba(242, 242, 242, 0.1);
+      color: $color-grey-100;
+
+      &::placeholder {
+        color: rgba($color-grey-100, 0.6);
+      }
+
+      &.activate,
+      &:active,
+      &:focus {
+        background: rgba(242, 242, 242, 0.1);
+        box-shadow: inset 0 -2px 0 $color-brand-400;
+      }
+
+      &[disabled] {
+        background: rgba($color-grey-100, 0.1);
+        box-shadow: inset 0 -2px 0 rgba($color-grey-100, 0.05);
+        color: rgba($color-grey-100, 0.1);
+
+        &::placeholder {
+          color: rgba($color-grey-100, 0.2);
+        }
+      }
+
+      &.has-arrow:before {
+        content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path style="fill:white;" d="M24,27.17,13.4,16.59a2,2,0,0,0-3.05.25,2.07,2.07,0,0,0,.3,2.65L22.59,31.41a2,2,0,0,0,2.83,0L37.35,19.49a2.07,2.07,0,0,0,.3-2.65,2,2,0,0,0-3-.25Z"/></svg>');
+      }
+    }
+  }
+
+  &.is-small > ul {
+    min-height: $fields-sizes-small-height;
+    &.has-arrow:before {
+      top: 48%;
+    }
+  }
+}
