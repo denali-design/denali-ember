@@ -56,14 +56,7 @@ export default class DenaliMultiSelectComponent extends Component {
 
   @computed('_options.@each.checked')
   get selections() {
-    return this._options
-      .filter((option) => option.checked)
-      .map((option) => {
-        // if (option.item.text) {
-        //   return option.item.text;
-        // }
-        return option.item;
-      });
+    return this._options.filter((option) => option.checked).map((option) => option.item);
   }
 
   @action
