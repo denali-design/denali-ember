@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 const opts = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }, { text: 'Item 5' }];
