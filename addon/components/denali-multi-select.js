@@ -59,9 +59,9 @@ export default class DenaliMultiSelectComponent extends Component {
     return this._options
       .filter((option) => option.checked)
       .map((option) => {
-        if (option.item.text) {
-          return option.item.text;
-        }
+        // if (option.item.text) {
+        //   return option.item.text;
+        // }
         return option.item;
       });
   }

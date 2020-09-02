@@ -6,7 +6,7 @@
     {{/if}}
     {{#each this.selections as |selected|}}
       <li class="select">
-        <DenaliChip>{{selected}}</DenaliChip>
+        <DenaliChip>{{yield selected}}</DenaliChip>
       </li>
     {{/each}}
   </ul>
