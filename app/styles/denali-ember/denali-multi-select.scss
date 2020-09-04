@@ -15,7 +15,7 @@
   margin-top: 2px;
   position: absolute;
   width: inherit;
-  z-index: 999 !important;
+  z-index: 999;
 }
 
 .selections {
@@ -32,8 +32,8 @@
   position: relative;
   width: $fields-sizes-default-width;
 
-  &-search {
-    width: auto !important;
+  input.multi-select-search {
+    width: auto;
   }
 
   &-table {

@@ -129,7 +129,7 @@ module('Integration | Component | denali-multi-select', function (hooks) {
       .hasClass('is-inverse', 'DenaliMultiSelect has inverse colors when `@isInverse` arg is set to true');
   });
 
-  test('it renders a selection', async function (assert) {
+  test('it searches for an element', async function (assert) {
     assert.expect(2);
 
     this.set('options', [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }]);
