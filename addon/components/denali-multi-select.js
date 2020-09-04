@@ -7,7 +7,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { arg } from 'ember-arg-types';
 import { func, boolean, array, string } from 'prop-types';
-import { action, computed, set } from '@ember/object';
+import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 
 export default class DenaliMultiSelectComponent extends Component {
@@ -49,7 +49,6 @@ export default class DenaliMultiSelectComponent extends Component {
     });
   }
 
-  @computed('_isFiltered')
   get displayOptions() {
     return this._isFiltered ? this._options.filter((option) => option.filtered) : this._options;
   }
