@@ -38,6 +38,9 @@ export default class DenaliMultiSelectComponent extends Component {
   @tracked
   _options;
 
+  @tracked
+  _isFiltered = false;
+
   constructor(owner, args) {
     super(owner, args);
 
@@ -48,10 +51,7 @@ export default class DenaliMultiSelectComponent extends Component {
 
   @computed('_options.@each.filtered')
   get displayOptions() {
-    if (this._options.every((option) => option.filtered === null)) {
-      return this._options;
-    }
-    return this._options.filter((option) => option.filtered);
+    return this._isFiltered ? this._options.filter((option) => option.filtered) : this._options;
   }
 
   @computed('_options.@each.checked')
@@ -66,17 +66,14 @@ export default class DenaliMultiSelectComponent extends Component {
   }
 
   @action
-  filterOptions(e) {
-    if (e.target.value && e.target.value !== '') {
-      this._options.forEach((option) => {
-        if (this.searchFunc(option.item, e.target.value)) {
-          set(option, 'filtered', true);
-        } else {
-          set(option, 'filtered', false);
-        }
-      });
-    } else if (e.target.value === '') {
-      this._options.forEach((option) => set(option, 'filtered', null));
+  filterOptions({ target: { value } }) {
+    if (value?.length) {
+      this._options = this._options.map(option => 
+        Object.assign({}, option, { filtered: this.searchFunc(option.item, e.target.value) }) 
+      );
+      this._isFiltered = true;
+    } else if (value === '') {
+      this._isFiltered = false;
     }
   }
 
