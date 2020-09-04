@@ -49,20 +49,20 @@ export default class DenaliMultiSelectComponent extends Component {
     });
   }
 
-  @computed('_options.@each.filtered', '_isFiltered')
+  @computed('_isFiltered')
   get displayOptions() {
     return this._isFiltered ? this._options.filter((option) => option.filtered) : this._options;
   }
 
-  @computed('_options.@each.checked')
   get selections() {
     return this._options.filter((option) => option.checked).map((option) => option.item);
   }
 
   @action
   onSelect(el) {
-    const selectedIndex = this._options.findIndex((option) => option.id === el.id);
-    set(this._options[selectedIndex], 'checked', !this._options[selectedIndex].checked);
+    this._options = this._options.map((option) =>
+      option.id === el.id ? Object.assign({}, option, { checked: !option.checked }) : option
+    );
   }
 
   @action
