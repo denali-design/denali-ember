@@ -1,8 +1,8 @@
 {{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
 <BasicDropdown @tagName="div" @matchTriggerWidth={{true}} @verticalPosition="below" @renderInPlace={{true}} class="multi-select {{this.isSmallClass}} {{this.isInverseClass}}" as |dd|>
-  <ul  {{on "click" dd.actions.toggle}} class="selections has-arrow {{if dd.isOpen "activate" ""}}" data-ebd-id="{{dd.uniqueId}}-trigger" ...attributes>
+  <ul  {{on "click" dd.actions.toggle}} class="selections has-arrow {{if dd.isOpen "activate"}}" data-ebd-id="{{dd.uniqueId}}-trigger" ...attributes>
     {{#if (eq this.selections.length 0)}}
-      <li class="select">{{placeholder}}</li>
+      <li class="select">{{this.placeholder}}</li>
     {{/if}}
     {{#each this.selections as |selected|}}
       <li class="select">
