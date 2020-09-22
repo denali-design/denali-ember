@@ -10,11 +10,12 @@ module('Integration | Component | denali-modal', function (hooks) {
     assert.expect(6);
 
     this.set('isOpen', false);
+    this.set('onClose', () => this.set('isOpen', false));
     await render(hbs`
       <DenaliModal
         class="denali-modal"
         @isOpen={{this.isOpen}}
-        @onClose={{fn (mut this.isOpen) false}}
+        @onClose={{this.onClose}}
         as | Modal |
       >
         <Modal.Content class="denali-modal__content">Content</Modal.Content>
@@ -43,7 +44,6 @@ module('Integration | Component | denali-modal', function (hooks) {
         class="denali-modal"
         @isOpen={{true}}
         @isFullScreen={{this.fullScreen}}
-        @onClose={{fn (mut this.isOpen) false}}
         as | Modal |
       >
         <Modal.Content>Content</Modal.Content>
@@ -66,7 +66,6 @@ module('Integration | Component | denali-modal', function (hooks) {
       <DenaliModal
         class="denali-modal"
         @isOpen={{true}}
-        @onClose={{fn (mut this.isOpen) false}}
         as | Modal |
       >
         <Modal.Header class="denali-modal__header">Header</Modal.Header>
