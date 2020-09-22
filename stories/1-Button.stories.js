@@ -11,17 +11,17 @@ export default {
 
 export const Default = () => ({
   template: hbs`
-    <DenaliButton>{{text}}</DenaliButton>
+    <DenaliButton>{{children}}</DenaliButton>
   `,
   context: {
-    text: text('Button Text', 'Button'),
+    children: text('children', 'Button'),
   },
 });
 
 export const Playground = () => ({
   template: hbs`
     <DenaliButton
-      @isActive={{active}}
+      @isActive={{isActive}}
       @isInverse={{inverse}}
       @size={{size}}
       @style={{style}}
@@ -29,17 +29,17 @@ export const Playground = () => ({
       disabled={{disabled}}
       onClick={{onClick}}
     >
-      {{text}}
+      {{children}}
     </DenaliButton>
   `,
   context: {
-    text: text('Button Text', 'Button'),
-    active: boolean('Active', false),
-    disabled: boolean('Disabled', false),
-    inverse: boolean('Inverse', false),
+    children: text('children', 'Button'),
+    isActive: boolean('isActive', false),
+    disabled: boolean('disabled', false),
+    isInverse: boolean('isInverse', false),
     onClick: action('clicked'),
-    size: select('Size', SIZES),
-    style: select('Style', STYLES),
-    type: select('Type', TYPES),
+    size: select('size', SIZES),
+    style: select('style', STYLES),
+    type: select('type', TYPES),
   },
 });
