@@ -9,7 +9,16 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Button = () => ({
+export const Default = () => ({
+  template: hbs`
+    <DenaliButton>{{text}}</DenaliButton>
+  `,
+  context: {
+    text: text('Button Text', 'Button'),
+  },
+});
+
+export const Playground = () => ({
   template: hbs`
     <DenaliButton
       @isActive={{active}}
