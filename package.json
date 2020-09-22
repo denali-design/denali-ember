@@ -23,7 +23,8 @@
     "test:ember-compatibility": "ember try:each",
     "semantic-release": "semantic-release",
     "build-storybook": "ember build && build-storybook -s dist",
-    "storybook": "ember serve & start-storybook -p 9001 -s dist"
+    "storybook": "ember serve & start-storybook -p 9001 -s dist",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "@glimmer/component": "^1.0.1",
@@ -46,6 +47,7 @@
     "@storybook/addon-storysource": "^6.0.21",
     "@storybook/ember": "^6.0.21",
     "@storybook/ember-cli-storybook": "^0.2.1",
+    "@storybook/storybook-deployer": "^2.8.6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-ember-modules-api-polyfill": "^3.1.1",
@@ -109,5 +111,10 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "storybook-deployer": {
+    "gitUsername": "denali-bot",
+    "gitEmail": "denali@verizonmedia.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
   }
 }
