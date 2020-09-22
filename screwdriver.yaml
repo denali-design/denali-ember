@@ -35,6 +35,7 @@ jobs:
       - setup-ci: git clone https://github.com/screwdriver-cd/toolbox.git /tmp/ci
       - install: npm ci
       - docs: |
-          npm run deploy-storybook -- --ci
+          . /tmp/ci/git-ssh.sh
+          npm run deploy-storybook
     secrets:
-      - GH_TOKEN
+      - GIT_KEY_BASE64
