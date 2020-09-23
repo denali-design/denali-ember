@@ -27,7 +27,7 @@ export const BlockForm = () => ({
     </DenaliAlert>
   `,
   context: {
-    title: text('title', 'This is a default alert'),
+    title: text('title', 'This is a default block-form alert'),
     context: text('context', 'Optional alert details'),
   },
 });

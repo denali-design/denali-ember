@@ -13,7 +13,7 @@ export const Default = () => ({
     <DenaliAlertInline @title={{title}} @context={{context}}/>
   `,
   context: {
-    title: text('title', 'This is a default alert'),
+    title: text('title', 'This is a default inline alert'),
     context: text('context', 'Optional alert details'),
   },
 });
@@ -26,7 +26,7 @@ export const BlockForm = () => ({
     </DenaliAlertInline>
   `,
   context: {
-    title: text('title', 'This is a default alert'),
+    title: text('title', 'This is a default block-form inline alert'),
     context: text('context', 'Optional alert details'),
   },
 });
@@ -40,7 +40,7 @@ export const Playground = () => ({
     />
   `,
   context: {
-    title: text('title', 'This is an alert'),
+    title: text('title', 'This is an inline alert'),
     context: text('context', 'Optional alert details'),
     type: select('type', TYPES),
   },
