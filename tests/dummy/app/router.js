@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import config from 'dummy/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
@@ -9,7 +9,6 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('four-oh-four');
   this.route('denali-box');
-  this.route('denali-button');
   this.route('denali-loader');
   this.route('denali-title');
   this.route('denali-radio');
@@ -27,9 +26,7 @@ Router.map(function () {
   this.route('denali-tag');
   this.route('denali-select');
   this.route('denali-chip');
-  this.route('denali-alert');
   this.route('denali-input-group');
-  this.route('denali-alert-inline');
   this.route('denali-text-area');
   this.route('denali-multi-select');
 });

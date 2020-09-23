@@ -2,7 +2,7 @@
 {{#if this.isOpen}}
   <div class="modal is-active" ...attributes>
     <div class="modal-container {{this.fullScreenClass}}">
-      <span role="button" class="close link" {{on "click" @onClose}}>
+      <span role="button" class="close link" {{on "click" this.onClose}}>
         <i class="d-icon d-close"></i>
       </span>
       {{yield (hash Header=(component "denali-div" class="modal-header"))}}

@@ -2,12 +2,12 @@
 
 <h3>Simple Modal</h3>
 
-<button type="button" {{on "click" (fn (mut this.isOpen) true)}}>Click for Modal</button>
+<button type="button" {{on "click" this.toggleModal}}>Click for Modal</button>
 
 <DenaliModal
   class="denali-modal"
   @isOpen={{this.isOpen}}
-  @onClose={{fn (mut this.isOpen) false}}
+  @onClose={{this.toggleModal}}
   as | modal |
 >
   <modal.Header>Header</modal.Header>

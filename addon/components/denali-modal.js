@@ -4,11 +4,17 @@
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { boolean } from 'prop-types';
+import { boolean, func } from 'prop-types';
 
 export default class DenaliModalComponent extends Component {
-  @arg(boolean) isFullScreen;
-  @arg(boolean) isOpen;
+  @arg(boolean)
+  isFullScreen = false;
+
+  @arg(boolean)
+  isOpen = false;
+
+  @arg(func)
+  onClose = () => null;
 
   get fullScreenClass() {
     return this.isFullScreen ? 'is-full' : undefined;

@@ -5,21 +5,16 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, oneOf, string } from 'prop-types';
-
-const styles = ['solid', 'outline', 'ghost', 'text', 'danger'];
-
-const sizes = ['small', 'medium', 'large', 'full'];
-
-const types = ['button', 'submit', 'reset'];
+import { STYLES, SIZES, TYPES } from './denali-button-enums';
 
 export default class DenaliButtonComponent extends Component {
   @arg(boolean)
   isActive = false;
 
-  @arg(oneOf(styles))
-  style = styles[0];
+  @arg(oneOf(STYLES))
+  style = STYLES[0];
 
-  @arg(oneOf(sizes))
+  @arg(oneOf(SIZES))
   size;
 
   @arg(boolean)
@@ -35,8 +30,8 @@ export default class DenaliButtonComponent extends Component {
   isLoading = false;
 
   //TODO deprecate after https://github.com/emberjs/ember.js/issues/18232
-  @arg(oneOf(types))
-  type = types[0];
+  @arg(oneOf(TYPES))
+  type = TYPES[0];
 
   get isActiveClass() {
     return this.isActive ? 'is-active' : undefined;
