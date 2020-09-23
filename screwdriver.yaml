@@ -36,6 +36,7 @@ jobs:
       - install: npm ci
       - docs: |
           . /tmp/ci/git-ssh.sh
+          git remote set-url origin `git remote get-url --push origin`
           npm run deploy-storybook
     secrets:
       - GIT_KEY_BASE64
