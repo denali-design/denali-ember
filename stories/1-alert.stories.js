@@ -2,6 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import { TYPES } from '../addon/components/denali-alert-enums';
+import { argument, attribute } from './knob-categories';
 
 export default {
   title: 'DenaliAlert',
@@ -14,8 +15,8 @@ export const Default = () => ({
     <DenaliAlert @title={{title}} @context={{context}}/>
   `,
   context: {
-    title: text('title', 'This is a default alert'),
-    context: text('context', 'Optional alert details'),
+    title: 'Denali Alert',
+    context: 'Optional alert details',
   },
 });
 
@@ -27,8 +28,8 @@ export const BlockForm = () => ({
     </DenaliAlert>
   `,
   context: {
-    title: text('title', 'This is a default block-form alert'),
-    context: text('context', 'Optional alert details'),
+    title: 'Denali Alert (Block Form)',
+    context: 'Optional alert details',
   },
 });
 
@@ -40,13 +41,15 @@ export const Playground = () => ({
       @type={{type}}
       @isBlock={{isBlock}}
       @onClose={{onClose}}
+      class={{class}}
     />
   `,
   context: {
-    title: text('title', 'This is an alert'),
-    context: text('context', 'Optional alert details'),
-    type: select('type', TYPES),
-    isBlock: boolean('isBlock'),
-    onClose: action('onClose'),
+    title: text('title', 'Denali Alert', argument),
+    context: text('context', 'Optional alert details', argument),
+    type: select('type', TYPES, TYPES[0], argument),
+    isBlock: boolean('isBlock', false, argument),
+    onClose: action('onClose', argument),
+    class: text('class', '', attribute),
   },
 });

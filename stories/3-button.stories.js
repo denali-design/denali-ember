@@ -2,6 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { STYLES, SIZES, TYPES } from '../addon/components/denali-button-enums';
+import { attribute, argument, content } from './knob-categories';
 
 export default {
   title: 'DenaliButton',
@@ -11,10 +12,10 @@ export default {
 
 export const Default = () => ({
   template: hbs`
-    <DenaliButton>{{children}}</DenaliButton>
+    <DenaliButton>{{content}}</DenaliButton>
   `,
   context: {
-    children: text('children', 'Button'),
+    content: 'Denali Button',
   },
 });
 
@@ -28,18 +29,20 @@ export const Playground = () => ({
       @type={{type}}
       disabled={{disabled}}
       onClick={{onClick}}
+      class={{class}}
     >
-      {{children}}
+      {{content}}
     </DenaliButton>
   `,
   context: {
-    children: text('children', 'Button'),
-    isActive: boolean('isActive', false),
-    disabled: boolean('disabled', false),
-    isInverse: boolean('isInverse', false),
-    onClick: action('onClick'),
-    size: select('size', SIZES),
-    style: select('style', STYLES),
-    type: select('type', TYPES),
+    isActive: boolean('isActive', false, argument),
+    isInverse: boolean('isInverse', false, argument),
+    onClick: action('onClick', argument),
+    size: select('size', SIZES, SIZES[0], argument),
+    style: select('style', STYLES, STYLES[0], argument),
+    type: select('type', TYPES, TYPES[0], argument),
+    class: text('class', '', attribute),
+    disabled: boolean('disabled', false, attribute),
+    content: text('content', 'Denali Button', content),
   },
 });
