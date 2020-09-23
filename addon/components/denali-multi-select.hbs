@@ -1,10 +1,10 @@
 {{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
-<BasicDropdown @tagName="div" @matchTriggerWidth={{true}} @verticalPosition="below" @renderInPlace={{true}} class="multi-select {{this.isSmallClass}} {{this.isInverseClass}}" as |dd|>
-  <ul  {{on "click" dd.actions.toggle}} class="selections has-arrow {{if dd.isOpen "activate"}}" data-ebd-id="{{dd.uniqueId}}-trigger" ...attributes>
-    {{#if (eq this.selections.length 0)}}
+<BasicDropdown @tagName="div" @matchTriggerWidth={{true}} @renderInPlace={{true}} class="multi-select {{this.isSmallClass}} {{this.isInverseClass}}" as |dd|>
+  <ul  {{on "click" dd.actions.toggle}} class="selections has-arrow {{if dd.isOpen "activate" ""}}" data-ebd-id="{{dd.uniqueId}}-trigger" ...attributes>
+    {{#if (eq this.selectedOptions.length 0)}}
       <li class="select">{{this.placeholder}}</li>
     {{/if}}
-    {{#each this.selections as |selected|}}
+    {{#each this.selectedOptions as |selected|}}
       <li class="select">
         <DenaliChip>{{yield selected}}</DenaliChip>
       </li>
@@ -16,15 +16,17 @@
         {{#if this.isSearchEnabled}}
           <tr>
             <td>
-              <DenaliInput class="search" {{on "keyup" this.filterOptions}} type="text" placeholder="Search" @iconBack="search" class="multi-select-search" />
+              <DenaliInput class="search" value={{this.searchValue}} {{on "keyup" this.filterOptions}} type="text" placeholder="Search" @iconBack="search" class="multi-select-search" />
             </td>
           </tr>
         {{/if}}
-        {{#each this.displayOptions as |option|}}
+        {{#each this.options as |opt|}}
           <tr>
             <td>
-              <DenaliCheckbox {{on "click" (fn this.onSelect option)}} checked={{option.checked}} class="option">
-                {{yield option.item}}
+              <DenaliCheckbox {{on "click" (fn this.onSelect opt)}} class="option"
+                disabled={{if (contains opt this.disabledOptions) true}}
+                checked={{if (contains opt this.selectedOptions) true}}>
+                {{yield opt}}
               </DenaliCheckbox>
             </td>
           </tr>

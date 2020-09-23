@@ -6,9 +6,8 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { arg } from 'ember-arg-types';
-import { func, boolean, array, string } from 'prop-types';
+import { any, func, boolean, array, string } from 'prop-types';
 import { action } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
 
 export default class DenaliMultiSelectComponent extends Component {
   @arg(boolean)
@@ -24,7 +23,7 @@ export default class DenaliMultiSelectComponent extends Component {
   isSearchEnabled = false;
 
   @arg(func)
-  searchFunc = () => {};
+  onSearch = () => {};
 
   @arg(array.isRequired)
   options;
@@ -32,48 +31,24 @@ export default class DenaliMultiSelectComponent extends Component {
   @arg(func.isRequired)
   onChange;
 
-  @tracked
-  isOpen = false;
+  @arg(any)
+  selectedOptions;
+
+  @arg(array)
+  disabledOptions = [];
 
   @tracked
-  _options;
-
-  @tracked
-  _isFiltered = false;
-
-  constructor(owner, args) {
-    super(owner, args);
-
-    this._options = this.options.map((option) => {
-      return { id: guidFor(option), item: option, checked: false, filtered: null };
-    });
-  }
-
-  get displayOptions() {
-    return this._isFiltered ? this._options.filter((option) => option.filtered) : this._options;
-  }
-
-  get selections() {
-    return this._options.filter((option) => option.checked).map((option) => option.item);
-  }
+  searchValue = '';
 
   @action
   onSelect(el) {
-    this._options = this._options.map((option) =>
-      option.id === el.id ? Object.assign({}, option, { checked: !option.checked }) : option
-    );
+    this.onChange(el);
   }
 
   @action
   filterOptions({ target: { value } }) {
-    if (value?.length) {
-      this._options = this._options.map((option) =>
-        Object.assign({}, option, { filtered: this.searchFunc(option.item, value) })
-      );
-      this._isFiltered = true;
-    } else if (value === '') {
-      this._isFiltered = false;
-    }
+    this.searchValue = value;
+    this.onSearch(value);
   }
 
   get isSmallClass() {

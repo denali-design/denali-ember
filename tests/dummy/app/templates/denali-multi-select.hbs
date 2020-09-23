@@ -2,7 +2,8 @@
 <h2>Basic Multi Select</h2>
 <DenaliMultiSelect
   @options={{this.options}}
-  @selectedOption={{this.selected}}
+  @selectedOptions={{this.selected}}
+  @disabledOptions={{this.disabled}}
   @searchFunc={{this.searchFunc}}
   @onChange={{this.onChange}}
   as |option|>
@@ -12,8 +13,8 @@
 <h2>Multi Select small</h2>
 <DenaliMultiSelect
   @options={{this.optionsSmall}}
-  @selectedOption={{this.selected}}
-  @onChange={{this.onChange}}
+  @selectedOptions={{this.selectedSmall}}
+  @onChange={{this.onChangeSmall}}
   @isSmall={{true}}
   as |option|>
   {{option}}
@@ -23,7 +24,7 @@
 <div class="denali-toggle-inverse-example">
   <DenaliMultiSelect
     @options={{this.optionsInverse}}
-    @selectedOption={{this.selected}}
+    @selectedOptions={{this.selectedInverse}}
     @onChange={{this.onChangeInverse}}
     @isInverse={{true}}
     as |option|>
@@ -33,11 +34,11 @@
 
 <h2>Multi Select With Search</h2>
 <DenaliMultiSelect
-  @options={{this.options}}
+  @options={{this.optionsSearch}}
+  @selectedOptions={{this.selectedSearch}}
   @isSearchEnabled={{true}}
-  @searchFunc={{this.searchFunc}}
-  @selectedOption={{this.selected}}
-  @onChange={{this.onChange}}
+  @onSearch={{this.onSearch}}
+  @onChange={{this.onChangeSearch}}
   as |option|>
   {{option.text}}
 </DenaliMultiSelect>
