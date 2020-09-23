@@ -38,7 +38,6 @@ export const Playground = () => ({
       @title={{title}}
       @context={{context}}
       @type={{type}}
-      @icon={{icon}}
       @isBlock={{isBlock}}
       @onClose={{onClose}}
     />
