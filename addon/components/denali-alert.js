@@ -5,20 +5,11 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, func, oneOf, string } from 'prop-types';
-
-const typeIcons = {
-  default: 'notification',
-  info: 'information-circle',
-  warning: 'warning',
-  success: 'success',
-  danger: 'stop-warning'
-}
-
-const types = Object.keys(typeIcons);
+import { TYPES, TYPE_ICONS } from './denali-alert-enums';
 
 export default class DenaliAlertComponent extends Component {
-  @arg(oneOf(types))
-  type = types[0];
+  @arg(oneOf(TYPES))
+  type = TYPES[0];
 
   @arg(boolean)
   isBlock = false;
@@ -33,16 +24,16 @@ export default class DenaliAlertComponent extends Component {
   onClose;
 
   get isBlockClass() {
-    return this.isBlock ? 'is-block': undefined;
+    return this.isBlock ? 'is-block' : undefined;
   }
 
   get iconClass() {
     const { type, isBlock } = this;
-    return `d-${typeIcons[type]}${isBlock ? '-solid' : ''}`;
+    return `d-${TYPE_ICONS[type]}${isBlock ? '-solid' : ''}`;
   }
 
   get typeClass() {
     const { type } = this;
-    return type !== types[0] ? `is-${type}` : undefined;
+    return type !== TYPES[0] ? `is-${type}` : undefined;
   }
 }

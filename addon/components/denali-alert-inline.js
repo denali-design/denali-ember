@@ -6,11 +6,11 @@ import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { oneOf, string } from 'prop-types';
 
-const statusTypes = ['default', 'danger', 'success', 'warning', 'info'];
+import { TYPES } from './denali-alert-enums';
 
 export default class DenaliAlertInlineComponent extends Component {
-  @arg(oneOf(statusTypes))
-  type = statusTypes[0];
+  @arg(oneOf(TYPES))
+  type = TYPES[0];
 
   @arg(string)
   title;
@@ -20,6 +20,6 @@ export default class DenaliAlertInlineComponent extends Component {
 
   get typeClass() {
     const { type } = this;
-    return type !== statusTypes[0] ? `has-bg-status-${type}` : undefined;
+    return type !== TYPES[0] ? `has-bg-status-${type}` : undefined;
   }
 }
