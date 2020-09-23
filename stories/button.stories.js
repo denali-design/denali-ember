@@ -37,7 +37,7 @@ export const Playground = () => ({
   context: {
     isActive: boolean('isActive', false, argument),
     isInverse: boolean('isInverse', false, argument),
-    onClick: action('onClick', attribute),
+    onClick: action('onClick'),
     size: select('size', SIZES, SIZES[0], argument),
     style: select('style', STYLES, STYLES[0], argument),
     type: select('type', TYPES, TYPES[0], argument),

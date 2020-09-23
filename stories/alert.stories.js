@@ -49,7 +49,7 @@ export const Playground = () => ({
     context: text('context', 'Optional alert details', argument),
     type: select('type', TYPES, TYPES[0], argument),
     isBlock: boolean('isBlock', false, argument),
-    onClose: action('onClose', argument),
+    onClose: action('onClose'),
     class: text('class', '', attribute),
   },
 });
