@@ -37,7 +37,7 @@ export const Playground = () => ({
     isActive: boolean('isActive', false),
     disabled: boolean('disabled', false),
     isInverse: boolean('isInverse', false),
-    onClick: action('clicked'),
+    onClick: action('onClick'),
     size: select('size', SIZES),
     style: select('style', STYLES),
     type: select('type', TYPES),
