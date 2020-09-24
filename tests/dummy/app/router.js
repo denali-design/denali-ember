@@ -16,7 +16,6 @@ Router.map(function () {
   this.route('denali-input');
   this.route('denali-menu');
   this.route('denali-link');
-  this.route('denali-icon');
   this.route('denali-modal');
   this.route('denali-switch');
   this.route('denali-tabs');
