@@ -23,13 +23,13 @@ export const Playground = () => ({
   template: hbs`
     <DenaliButton
       @isActive={{isActive}}
-      @isInverse={{inverse}}
+      @isInverse={{isInverse}}
       @size={{size}}
       @style={{style}}
       @type={{type}}
       disabled={{disabled}}
-      onClick={{onClick}}
       class={{class}}
+      {{on 'click' onClick}}
     >
       {{content}}
     </DenaliButton>
