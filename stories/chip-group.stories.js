@@ -12,13 +12,13 @@ export const Default = () => ({
   template: hbs`
     <DenaliChipGroup as |Group|>
       <Group.Chip 
-        @backgroundColor='purple'
+        @backgroundColor="purple"
       >
         Denali
       </Group.Chip>
       <Group.Chip 
         @backgroundColor='purple'
-        @backgroundShade=300
+        @backgroundShade="300"
       >
         Chip Group
       </Group.Chip>
@@ -34,7 +34,7 @@ export const Playground = () => ({
     >
       {{#each items as |item index|}}
         <Group.Chip 
-          @backgroundColor='purple'  
+          @backgroundColor="purple" 
           @backgroundShade={{if index '500' '300'}}
         >
           {{item}} 

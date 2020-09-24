@@ -32,7 +32,7 @@ export const Playground = () => ({
       disabled={{disabled}}
       type={{type}}
       class={{class}}
-      {{on 'input' onInput}}
+      {{on "input" onInput}}
     />
   `,
   context: {

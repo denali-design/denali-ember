@@ -29,7 +29,7 @@ export const Playground = () => ({
       @type={{type}}
       disabled={{disabled}}
       class={{class}}
-      {{on 'click' onClick}}
+      {{on "click" onClick}}
     >
       {{content}}
     </DenaliButton>
