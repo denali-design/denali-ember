@@ -5,26 +5,32 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, oneOf, string } from 'prop-types';
-
-const sizes = ['small', 'medium'];
-const states = ['active', 'error'];
+import { SIZES, STATES } from './denali-input-enums';
 
 export default class DenaliInputComponent extends Component {
-  @arg(oneOf(sizes)) size;
+  @arg(oneOf(SIZES))
+  size;
 
-  @arg(oneOf(states)) state;
+  @arg(oneOf(STATES))
+  state;
 
-  @arg(boolean) isInverse = false;
+  @arg(boolean)
+  isInverse = false;
 
-  @arg(string) iconFront;
+  @arg(string)
+  iconFront;
 
-  @arg(string) iconBack;
+  @arg(string)
+  iconBack;
 
-  @arg(string) iconFrontClass;
+  @arg(string)
+  iconFrontClass;
 
-  @arg(string) iconBackClass;
+  @arg(string)
+  iconBackClass;
 
-  @arg(string) errorMsg;
+  @arg(string)
+  errorMsg;
 
   get sizeClass() {
     return this.size ? `is-${this.size}` : undefined;

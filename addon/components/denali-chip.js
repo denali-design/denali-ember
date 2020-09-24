@@ -5,27 +5,22 @@
 import { arg } from 'ember-arg-types';
 import { oneOf } from 'prop-types';
 import Component from '@glimmer/component';
-
-const sizes = ['small'];
-
-const color = ['brand', 'grey', 'red', 'orange', 'yellow', 'lime', 'green', 'sky', 'blue', 'purple', 'violet', 'pink'];
-
-const shade = ['100', '200', '300', '400', '500', '600', '700', '800'];
+import { COLORS, SHADES, SIZES } from './denali-chip-enums';
 
 export default class DenaliChipComponent extends Component {
-  @arg(oneOf(sizes))
+  @arg(oneOf(SIZES))
   size;
 
-  @arg(oneOf(color))
+  @arg(oneOf(COLORS))
   backgroundColor;
 
-  @arg(oneOf(color))
+  @arg(oneOf(COLORS))
   textColor;
 
-  @arg(oneOf(shade))
+  @arg(oneOf(SHADES))
   backgroundShade = '500';
 
-  @arg(oneOf(shade))
+  @arg(oneOf(SHADES))
   textShade = '500';
 
   get sizeClass() {
