@@ -17,7 +17,7 @@ export const Default = () => ({
         Denali
       </Group.Chip>
       <Group.Chip 
-        @backgroundColor='purple'
+        @backgroundColor="purple"
         @backgroundShade="300"
       >
         Chip Group
@@ -35,7 +35,7 @@ export const Playground = () => ({
       {{#each items as |item index|}}
         <Group.Chip 
           @backgroundColor="purple" 
-          @backgroundShade={{if index '500' '300'}}
+          @backgroundShade={{if index "500" "300"}}
         >
           {{item}} 
         </Group.Chip>
