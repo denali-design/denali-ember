@@ -13,7 +13,6 @@ Router.map(function () {
   this.route('denali-radio');
   this.route('denali-toggle');
   this.route('denali-radio-toggle');
-  this.route('denali-input');
   this.route('denali-menu');
   this.route('denali-link');
   this.route('denali-modal');
