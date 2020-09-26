@@ -8,7 +8,6 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('four-oh-four');
-  this.route('denali-loader');
   this.route('denali-title');
   this.route('denali-radio');
   this.route('denali-toggle');
