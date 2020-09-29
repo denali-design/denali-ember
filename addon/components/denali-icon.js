@@ -5,14 +5,13 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { oneOf, string } from 'prop-types';
-
-const sizes = ['extrasmall', 'small', 'medium', 'large'];
+import { SIZES } from './denali-icon-enums';
 
 export default class DenaliIconComponent extends Component {
   @arg(string.isRequired)
   icon;
 
-  @arg(oneOf(sizes))
+  @arg(oneOf(SIZES))
   size;
 
   get iconClass() {
