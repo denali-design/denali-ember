@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, findAll, click, fillIn, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { set } from '@ember/object';
 
 module('Integration | Component | denali-multi-select', function (hooks) {
   setupRenderingTest(hooks);
@@ -12,7 +13,7 @@ module('Integration | Component | denali-multi-select', function (hooks) {
     setupOnerror(function ({ message }) {
       assert.equal(
         message,
-        'Failed prop type: The prop `options` is marked as required in `DenaliMultiSelectComponent`, but its value is `undefined`.',
+        'Failed prop type: The prop `selectedOptions` is marked as required in `DenaliMultiSelectComponent`, but its value is `undefined`.',
         'If @args() contains a PropType validator, an error will be thrown if the value is incorrect'
       );
     });
@@ -23,17 +24,35 @@ module('Integration | Component | denali-multi-select', function (hooks) {
     assert.expect(2);
 
     await render(hbs`
-      <DenaliMultiSelect @options={{array "Item 1"}} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect @options={{array "Item 1"}} @selectedOptions={{array }} @onChange={{this.onChange}} as |option|>
         {{option}}
       </DenaliMultiSelect>
     `);
 
-    assert.dom('ul.selections.has-arrow').exists('DenaliMultiSelect renders an wrapper ul');
+    assert.dom('ul.multi-select__selections.has-arrow').exists('DenaliMultiSelect renders an wrapper ul');
 
     assert.deepEqual(
-      findAll('.select').map((selection) => selection.textContent),
+      findAll('.multi-select__selections-item').map((selection) => selection.textContent),
       ['Select Items'],
       'DenaliMultiSelect renders placeholder element'
+    );
+  });
+
+  test('it renders custom placeholder string', async function (assert) {
+    assert.expect(2);
+
+    await render(hbs`
+      <DenaliMultiSelect @placeholder="Custom placeholder" @options={{array "Item 1"}} @selectedOptions={{array }} @onChange={{this.onChange}} as |option|>
+        {{option}}
+      </DenaliMultiSelect>
+    `);
+
+    assert.dom('ul.multi-select__selections.has-arrow').exists('DenaliMultiSelect renders an wrapper ul');
+
+    assert.deepEqual(
+      findAll('.multi-select__selections-item').map((selection) => selection.textContent),
+      ['Custom placeholder'],
+      'DenaliMultiSelect renders a custom placeholder element'
     );
   });
 
@@ -46,12 +65,12 @@ module('Integration | Component | denali-multi-select', function (hooks) {
       </DenaliMultiSelect>
     `);
 
-    await click('.selections');
+    await click('.multi-select__selections');
 
-    assert.dom('.pane').exists('Dropdown pane is rendered');
+    assert.dom('.multi-select__dropdown').exists('Dropdown pane is rendered');
 
     assert.deepEqual(
-      findAll('.option').map((option) => option.labels[0].textContent.trim()),
+      findAll('.multi-select__dropdown-option').map((option) => option.labels[0].textContent.trim()),
       ['Item 1'],
       'DenaliMultiSelect renders a string option element'
     );
@@ -60,18 +79,28 @@ module('Integration | Component | denali-multi-select', function (hooks) {
   test('it renders an option object', async function (assert) {
     assert.expect(2);
 
+    set(this, 'onChange', (option) => {
+      if (this.selected.includes(option)) {
+        const index = this.selected.indexOf(option);
+        this.selected.splice(index, 1);
+        this.selected = [...this.selected];
+      } else {
+        this.selected = [...this.selected, option];
+      }
+    });
+
     await render(hbs`
       <DenaliMultiSelect @options={{array (hash text="Item 1")}} @onChange={{this.onChange}} as |option|>
         {{option.text}}
       </DenaliMultiSelect>
     `);
 
-    await click('.selections');
+    await click('.multi-select__selections');
 
-    assert.dom('.pane').exists('Dropdown pane is rendered');
+    assert.dom('.multi-select__dropdown').exists('Dropdown pane is rendered');
 
     assert.deepEqual(
-      findAll('.option').map((option) => option.labels[0].textContent.trim()),
+      findAll('.multi-select__dropdown-option').map((option) => option.labels[0].textContent.trim()),
       ['Item 1'],
       'DenaliMultiSelect renders a object option element'
     );
@@ -80,20 +109,31 @@ module('Integration | Component | denali-multi-select', function (hooks) {
   test('it renders a selection', async function (assert) {
     assert.expect(2);
 
+    set(this, 'selected', []);
+    set(this, 'onChange', (option) => {
+      if (this.selected.includes(option)) {
+        const index = this.selected.indexOf(option);
+        this.selected.splice(index, 1);
+        set(this, 'selected', [...this.selected]);
+      } else {
+        set(this, 'selected', [...this.selected, option]);
+      }
+    });
+
     await render(hbs`
-      <DenaliMultiSelect @options={{array "Item 1"}} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect @options={{array "Item 1"}} @selectedOptions={{this.selected}} @onChange={{this.onChange}} as |option|>
         {{option}}
       </DenaliMultiSelect>
     `);
 
-    await click('.selections');
+    await click('.multi-select__selections');
 
-    assert.dom('.pane').exists('Dropdown pane is rendered');
+    assert.dom('.multi-select__dropdown').exists('Dropdown pane is rendered');
 
-    await click('.option');
+    await click('.multi-select__dropdown-option');
 
     assert.deepEqual(
-      findAll('.select').map((selection) => selection.textContent.trim()),
+      findAll('.multi-select__selections-item').map((selection) => selection.textContent.trim()),
       ['Item 1'],
       'DenaliMultiSelect renders selected element'
     );
@@ -134,26 +174,33 @@ module('Integration | Component | denali-multi-select', function (hooks) {
 
     this.set('options', [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }]);
     this.set('isSearchEnabled', true);
-    this.set('searchFunc', (val, target) => val.text.toLowerCase().includes(target.toLowerCase()));
+    this.set('onSearch', (value) => {
+      if (value?.length) {
+        const filtered = this.options.filter((option) => option.text.toLowerCase().includes(value.toLowerCase()));
+        set(this, 'options', filtered);
+      } else if (value === '') {
+        set(this, 'options', this.options);
+      }
+    });
     await render(hbs`
-      <DenaliMultiSelect @options={{this.options}} @isSearchEnabled={{this.isSearchEnabled}} @searchFunc={{this.searchFunc}} as |option|>
+      <DenaliMultiSelect @options={{this.options}} @selectedOptions={{array }} @onChange={{this.onChange}} @isSearchEnabled={{this.isSearchEnabled}} @onSearch={{this.onSearch}} as |option|>
         {{option.text}}
       </DenaliMultiSelect>
     `);
 
-    await click('.selections');
+    await click('.multi-select__selections');
 
     assert.deepEqual(
-      findAll('.option').map((option) => option.labels[0].textContent.trim()),
+      findAll('.multi-select__dropdown-option').map((option) => option.labels[0].textContent.trim()),
       ['Item 1', 'Item 2', 'Item 3'],
       'DenaliMultiSelect renders selected element'
     );
 
-    await fillIn('.search', 'item 2');
-    await triggerKeyEvent('.search', 'keyup', 13);
+    await fillIn('.multi-select__dropdown-search', 'item 2');
+    await triggerKeyEvent('.multi-select__dropdown-search', 'keyup', 13);
 
     assert.deepEqual(
-      findAll('.option').map((option) => option.labels[0].textContent.trim()),
+      findAll('.multi-select__dropdown-option').map((option) => option.labels[0].textContent.trim()),
       ['Item 2'],
       'DenaliMultiSelect renders a filtered option element'
     );

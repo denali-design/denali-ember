@@ -31,7 +31,7 @@ export default class DenaliMultiSelectComponent extends Component {
   @arg(func.isRequired)
   onChange;
 
-  @arg(any)
+  @arg(any.isRequired)
   selectedOptions;
 
   @arg(array)

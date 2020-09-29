@@ -3,56 +3,12 @@
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 
-.pane {
-  background: $alert-bg-color;
-  border-color: $color-grey-400;
-  box-shadow: $alert-shadow;
-  border-style: $alert-border-style;
-  border-width: 2px;
-  box-sizing: border-box;
-  color: $alert-text-color;
-  display: flex;
-  margin-top: 2px;
-  position: absolute;
-  width: inherit;
-  z-index: 999;
-}
-
-.selections {
-  display: inline;
-}
-
-.select {
-  display: inline;
-  margin: 4px 5px 4px 0px;
-}
-
 .multi-select {
   min-height: $fields-sizes-default-height;
   position: relative;
   width: $fields-sizes-default-width;
 
-  input.multi-select-search {
-    width: auto;
-  }
-
-  &-table {
-    table-layout: fixed;
-
-    td {
-      display: flex;
-    }
-  }
-
-  .input {
-    display: flex;
-
-    .d-search {
-      margin-top: 9px;
-    }
-  }
-
-  ul {
+  &__selections {
     align-content: center;
     appearance: none;
     background: $fields-default-bg;
@@ -105,6 +61,47 @@
       top: 50%;
       transform: translateY(-50%);
       width: 18px;
+    }
+
+    &-item {
+      display: inline;
+      margin: 4px 5px 4px 0px;
+    }
+  }
+
+  &__dropdown {
+    background: $alert-bg-color;
+    border-color: $color-grey-400;
+    box-shadow: $alert-shadow;
+    border-style: $alert-border-style;
+    border-width: 2px;
+    box-sizing: border-box;
+    color: $alert-text-color;
+    display: flex;
+    margin-top: 2px;
+    position: absolute;
+    width: inherit;
+    z-index: 999;
+
+    &-table {
+      table-layout: fixed;
+
+      td {
+        display: flex;
+      }
+    }
+  }
+
+  input.multi-select__dropdown-search {
+    width: auto;
+  }
+
+  // override input styles to correctly align search inside the dropdown
+  .input {
+    display: flex;
+
+    .d-search {
+      margin-top: 9px;
     }
   }
 

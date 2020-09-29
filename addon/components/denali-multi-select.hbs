@@ -1,29 +1,29 @@
 {{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
 <BasicDropdown @tagName="div" @matchTriggerWidth={{true}} @renderInPlace={{true}} class="multi-select {{this.isSmallClass}} {{this.isInverseClass}}" as |dd|>
-  <ul  {{on "click" dd.actions.toggle}} class="selections has-arrow {{if dd.isOpen "activate" ""}}" data-ebd-id="{{dd.uniqueId}}-trigger" ...attributes>
+  <ul  {{on "click" dd.actions.toggle}} class="multi-select__selections has-arrow {{if dd.isOpen "activate" ""}}" data-ebd-id="{{dd.uniqueId}}-trigger" ...attributes>
     {{#if (eq this.selectedOptions.length 0)}}
-      <li class="select">{{this.placeholder}}</li>
+      <li class="multi-select__selections-item">{{this.placeholder}}</li>
     {{/if}}
     {{#each this.selectedOptions as |selected|}}
-      <li class="select">
+      <li class="multi-select__selections-item">
         <DenaliChip>{{yield selected}}</DenaliChip>
       </li>
     {{/each}}
   </ul>
-  <dd.Content class="pane {{this.isInverseClass}}">
-    <table class="table is-striped multi-select-table">
+  <dd.Content class="multi-select__dropdown {{this.isInverseClass}}">
+    <table class="table is-striped multi-select__dropdown-table">
       <tbody>
         {{#if this.isSearchEnabled}}
           <tr>
             <td>
-              <DenaliInput class="search" value={{this.searchValue}} {{on "keyup" this.filterOptions}} type="text" placeholder="Search" @iconBack="search" class="multi-select-search" />
+              <DenaliInput value={{this.searchValue}} {{on "keyup" this.filterOptions}} type="text" placeholder="Search" @iconBack="search" class="multi-select__dropdown-search" />
             </td>
           </tr>
         {{/if}}
         {{#each this.options as |opt|}}
           <tr>
             <td>
-              <DenaliCheckbox {{on "click" (fn this.onSelect opt)}} class="option"
+              <DenaliCheckbox {{on "click" (fn this.onSelect opt)}} class="multi-select__dropdown-option"
                 disabled={{if (contains opt this.disabledOptions) true}}
                 checked={{if (contains opt this.selectedOptions) true}}>
                 {{yield opt}}
