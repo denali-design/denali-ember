@@ -10,7 +10,6 @@ Router.map(function () {
   this.route('four-oh-four');
   this.route('denali-title');
   this.route('denali-toggle');
-  this.route('denali-radio-toggle');
   this.route('denali-menu');
   this.route('denali-switch');
   this.route('denali-tabs');
