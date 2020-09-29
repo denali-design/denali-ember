@@ -13,7 +13,6 @@ Router.map(function () {
   this.route('denali-menu');
   this.route('denali-tabs');
   this.route('denali-tag');
-  this.route('denali-select');
   this.route('denali-input-group');
   this.route('denali-text-area');
 });
