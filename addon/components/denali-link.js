@@ -5,13 +5,11 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, oneOf, string } from 'prop-types';
-
-const states = ['active', 'disabled'];
-const sizes = ['small'];
+import { SIZES, STATES } from './denali-link-enums';
 
 export default class DenaliLinkComponent extends Component {
-  @arg(oneOf(states)) state;
-  @arg(oneOf(sizes)) size;
+  @arg(oneOf(STATES)) state;
+  @arg(oneOf(SIZES)) size;
   @arg(boolean) isSecondary;
   @arg(boolean) isSub;
   @arg(string) iconFront;

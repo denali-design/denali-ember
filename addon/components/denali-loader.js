@@ -5,11 +5,10 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, oneOf } from 'prop-types';
-
-const sizes = ['extrasmall', 'small', 'medium', 'large'];
+import { SIZES } from './denali-loader-enums';
 
 export default class DenaliLoaderComponent extends Component {
-  @arg(oneOf(sizes))
+  @arg(oneOf(SIZES))
   size;
 
   @arg(boolean)
