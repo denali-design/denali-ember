@@ -6,8 +6,8 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { arg } from 'ember-arg-types';
-import { any, func, boolean, array, string } from 'prop-types';
-import { action, set } from '@ember/object';
+import { func, boolean, array, string } from 'prop-types';
+import { action } from '@ember/object';
 
 export default class DenaliMultiSelectComponent extends Component {
   @arg(boolean)
@@ -23,7 +23,7 @@ export default class DenaliMultiSelectComponent extends Component {
   isSearchEnabled = false;
 
   @arg(func)
-  searchFunc = () => {};
+  searchFunc = (value, target) => value.toLowerCase().includes(target.toLowerCase);
 
   @arg(array.isRequired)
   options;
@@ -32,19 +32,13 @@ export default class DenaliMultiSelectComponent extends Component {
   onChange;
 
   @arg(array)
-  selectedOptions;
+  selectedOptions = [];
 
   @arg(array)
   disabledOptions = [];
 
   @tracked
   searchValue = '';
-
-  @tracked
-  _isFiltered = false;
-
-  @tracked
-  _filteredOptions = [];
 
   get _displayedOptions() {
     if (this.searchValue) {
