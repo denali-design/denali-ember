@@ -20,7 +20,7 @@
             </td>
           </tr>
         {{/if}}
-        {{#each this.options as |opt|}}
+        {{#each this._displayedOptions as |opt|}}
           <tr>
             <td>
               <DenaliCheckbox {{on "click" (fn this.onSelect opt)}} class="multi-select__dropdown-option"

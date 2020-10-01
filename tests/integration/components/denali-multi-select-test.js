@@ -2,7 +2,6 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, findAll, click, fillIn, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { set } from '@ember/object';
 
 module('Integration | Component | denali-multi-select', function (hooks) {
   setupRenderingTest(hooks);
@@ -79,18 +78,9 @@ module('Integration | Component | denali-multi-select', function (hooks) {
   test('it renders an option object', async function (assert) {
     assert.expect(2);
 
-    set(this, 'onChange', (option) => {
-      if (this.selected.includes(option)) {
-        const index = this.selected.indexOf(option);
-        this.selected.splice(index, 1);
-        this.selected = [...this.selected];
-      } else {
-        this.selected = [...this.selected, option];
-      }
-    });
-
+    this.set('selectedOptions', []);
     await render(hbs`
-      <DenaliMultiSelect @options={{array (hash text="Item 1")}} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect @options={{array (hash text="Item 1")}} @selectedOptions={{this.selectedOptions}} @onChange={{fn (mut this.selectedOptions)}} as |option|>
         {{option.text}}
       </DenaliMultiSelect>
     `);
@@ -109,19 +99,9 @@ module('Integration | Component | denali-multi-select', function (hooks) {
   test('it renders a selection', async function (assert) {
     assert.expect(2);
 
-    set(this, 'selected', []);
-    set(this, 'onChange', (option) => {
-      if (this.selected.includes(option)) {
-        const index = this.selected.indexOf(option);
-        this.selected.splice(index, 1);
-        set(this, 'selected', [...this.selected]);
-      } else {
-        set(this, 'selected', [...this.selected, option]);
-      }
-    });
-
+    this.set('selected', []);
     await render(hbs`
-      <DenaliMultiSelect @options={{array "Item 1"}} @selectedOptions={{this.selected}} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect @options={{array "Item 1"}} @selectedOptions={{this.selected}} @onChange={{fn (mut this.selected)}} as |option|>
         {{option}}
       </DenaliMultiSelect>
     `);
@@ -173,17 +153,10 @@ module('Integration | Component | denali-multi-select', function (hooks) {
     assert.expect(2);
 
     this.set('options', [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }]);
-    this.set('isSearchEnabled', true);
-    this.set('onSearch', (value) => {
-      if (value?.length) {
-        const filtered = this.options.filter((option) => option.text.toLowerCase().includes(value.toLowerCase()));
-        set(this, 'options', filtered);
-      } else if (value === '') {
-        set(this, 'options', this.options);
-      }
-    });
+    this.set('searchFunc', (value, target) => value.text.toLowerCase().includes(target.toLowerCase()));
+    this.set('selectedOptions', []);
     await render(hbs`
-      <DenaliMultiSelect @options={{this.options}} @selectedOptions={{array }} @onChange={{this.onChange}} @isSearchEnabled={{this.isSearchEnabled}} @onSearch={{this.onSearch}} as |option|>
+      <DenaliMultiSelect @options={{this.options}} @selectedOptions={{this.selectedOptions}} @onChange={{fn (mut this.selectedOptions)}} @isSearchEnabled={{true}} @searchFunc={{this.searchFunc}} as |option|>
         {{option.text}}
       </DenaliMultiSelect>
     `);

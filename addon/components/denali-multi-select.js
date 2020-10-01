@@ -7,7 +7,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { arg } from 'ember-arg-types';
 import { any, func, boolean, array, string } from 'prop-types';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 
 export default class DenaliMultiSelectComponent extends Component {
   @arg(boolean)
@@ -23,7 +23,7 @@ export default class DenaliMultiSelectComponent extends Component {
   isSearchEnabled = false;
 
   @arg(func)
-  onSearch = () => {};
+  searchFunc = () => {};
 
   @arg(array.isRequired)
   options;
@@ -40,15 +40,40 @@ export default class DenaliMultiSelectComponent extends Component {
   @tracked
   searchValue = '';
 
+  @tracked
+  _isFiltered = false;
+
+  @tracked
+  _filteredOptions = [];
+
+  get _displayedOptions() {
+    if (this._isFiltered) {
+      return this._filteredOptions;
+    } else {
+      return this.options;
+    }
+  }
+
   @action
   onSelect(el) {
-    this.onChange(el);
+    if (this.selectedOptions.includes(el)) {
+      const index = this.selectedOptions.indexOf(el);
+      this.selectedOptions.splice(index, 1);
+      this.onChange([...this.selectedOptions]);
+    } else {
+      this.onChange([...this.selectedOptions, el]);
+    }
   }
 
   @action
   filterOptions({ target: { value } }) {
     this.searchValue = value;
-    this.onSearch(value);
+    if (value?.length) {
+      this._isFiltered = true;
+      this._filteredOptions = this.options.filter((option) => this.searchFunc(option, value));
+    } else {
+      this._isFiltered = false;
+    }
   }
 
   get isSmallClass() {
