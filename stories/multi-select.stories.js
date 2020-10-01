@@ -16,7 +16,8 @@ export const Default = () => ({
       @options={{items}}
       @selectedOptions={{selectedItems}}
       @onChange={{queue onChange (fn (mut selectedItems))}}
-      as |item|>
+      as |item|
+    >
       {{item}}
     </DenaliMultiSelect>
   `,
@@ -39,7 +40,8 @@ export const Playground = () => ({
       @isSearchEnabled={{isSearchEnabled}}
       @searchFunc={{searchFunc}}
       class={{class}}
-      as |item|>
+      as |item|
+    >
       {{item}}
     </DenaliMultiSelect>
   `,
@@ -48,7 +50,7 @@ export const Playground = () => ({
     isInverse: boolean('isInverse', false, argument),
     class: text('class', '', attribute),
     items: array('items', ['Ember', 'Denali', 'Select'], ',', example),
-    selectedItems: array('selectedItems', ['Denali'], example),
+    selectedItems: array('selectedItems', ['Denali'], ',', example),
     disabledItems: array('disabledItems', ['Select'], ',', example),
     onChange: action('onChange'),
     isSearchEnabled: boolean('isSearchEnabled', false, argument),

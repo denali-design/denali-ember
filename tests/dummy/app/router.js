@@ -22,5 +22,4 @@ Router.map(function () {
   this.route('denali-select');
   this.route('denali-input-group');
   this.route('denali-text-area');
-  this.route('denali-multi-select');
 });

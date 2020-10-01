@@ -31,7 +31,7 @@ export default class DenaliMultiSelectComponent extends Component {
   @arg(func.isRequired)
   onChange;
 
-  @arg(any.isRequired)
+  @arg(array)
   selectedOptions;
 
   @arg(array)
@@ -47,8 +47,8 @@ export default class DenaliMultiSelectComponent extends Component {
   _filteredOptions = [];
 
   get _displayedOptions() {
-    if (this._isFiltered) {
-      return this._filteredOptions;
+    if (this.searchValue) {
+      return this.options.filter((option) => this.searchFunc(option, this.searchValue));
     } else {
       return this.options;
     }
@@ -68,12 +68,6 @@ export default class DenaliMultiSelectComponent extends Component {
   @action
   filterOptions({ target: { value } }) {
     this.searchValue = value;
-    if (value?.length) {
-      this._isFiltered = true;
-      this._filteredOptions = this.options.filter((option) => this.searchFunc(option, value));
-    } else {
-      this._isFiltered = false;
-    }
   }
 
   get isSmallClass() {

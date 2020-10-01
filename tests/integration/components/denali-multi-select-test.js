@@ -20,10 +20,13 @@ module('Integration | Component | denali-multi-select', function (hooks) {
   });
 
   test('it renders placeholder string', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`
-      <DenaliMultiSelect @options={{array "Item 1"}} @selectedOptions={{array }} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect 
+        @options={{array "Item 1"}} 
+        @selectedOptions={{array }} 
+        @onChange={{this.onChange}} 
+        as |option|
+      >
         {{option}}
       </DenaliMultiSelect>
     `);
@@ -41,7 +44,12 @@ module('Integration | Component | denali-multi-select', function (hooks) {
     assert.expect(2);
 
     await render(hbs`
-      <DenaliMultiSelect @placeholder="Custom placeholder" @options={{array "Item 1"}} @selectedOptions={{array }} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect 
+        @placeholder="Custom placeholder" 
+        @options={{array "Item 1"}} 
+        @selectedOptions={{array }} 
+        @onChange={{this.onChange}} as |option|
+      >
         {{option}}
       </DenaliMultiSelect>
     `);
@@ -55,11 +63,13 @@ module('Integration | Component | denali-multi-select', function (hooks) {
     );
   });
 
-  test('it renders an option string', async function (assert) {
-    assert.expect(2);
-
+  test('options as strings', async function (assert) {
     await render(hbs`
-      <DenaliMultiSelect @options={{array "Item 1"}} @onChange={{this.onChange}} as |option|>
+      <DenaliMultiSelect 
+        @options={{array "Item 1" "Item 2" "Item 3"}} 
+        @onChange={{this.onChange}} 
+        as |option|
+      >
         {{option}}
       </DenaliMultiSelect>
     `);
@@ -70,17 +80,19 @@ module('Integration | Component | denali-multi-select', function (hooks) {
 
     assert.deepEqual(
       findAll('.multi-select__dropdown-option').map((option) => option.labels[0].textContent.trim()),
-      ['Item 1'],
+      ['Item 1', 'Item 2', 'Item 3'],
       'DenaliMultiSelect renders a string option element'
     );
   });
 
-  test('it renders an option object', async function (assert) {
-    assert.expect(2);
-
+  test('options as objects', async function (assert) {
     this.set('selectedOptions', []);
     await render(hbs`
-      <DenaliMultiSelect @options={{array (hash text="Item 1")}} @selectedOptions={{this.selectedOptions}} @onChange={{fn (mut this.selectedOptions)}} as |option|>
+      <DenaliMultiSelect 
+        @options={{array (hash text="Item 1") (hash text="Item 2") (hash text="Item 3")}}
+        @selectedOptions={{this.selectedOptions}} 
+        @onChange={{fn (mut this.selectedOptions)}} as |option|
+      >
         {{option.text}}
       </DenaliMultiSelect>
     `);
@@ -91,7 +103,7 @@ module('Integration | Component | denali-multi-select', function (hooks) {
 
     assert.deepEqual(
       findAll('.multi-select__dropdown-option').map((option) => option.labels[0].textContent.trim()),
-      ['Item 1'],
+      ['Item 1', 'Item 2', 'Item 3'],
       'DenaliMultiSelect renders a object option element'
     );
   });
@@ -101,7 +113,12 @@ module('Integration | Component | denali-multi-select', function (hooks) {
 
     this.set('selected', []);
     await render(hbs`
-      <DenaliMultiSelect @options={{array "Item 1"}} @selectedOptions={{this.selected}} @onChange={{fn (mut this.selected)}} as |option|>
+      <DenaliMultiSelect 
+        @options={{array "Item 1" "Item 2" "Item 3"}}
+        @selectedOptions={{this.selected}} 
+        @onChange={{fn (mut this.selected)}} 
+        as |option|
+      >
         {{option}}
       </DenaliMultiSelect>
     `);
@@ -149,14 +166,18 @@ module('Integration | Component | denali-multi-select', function (hooks) {
       .hasClass('is-inverse', 'DenaliMultiSelect has inverse colors when `@isInverse` arg is set to true');
   });
 
-  test('it searches for an element', async function (assert) {
-    assert.expect(2);
-
+  test('it supports search', async function (assert) {
     this.set('options', [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }]);
     this.set('searchFunc', (value, target) => value.text.toLowerCase().includes(target.toLowerCase()));
     this.set('selectedOptions', []);
     await render(hbs`
-      <DenaliMultiSelect @options={{this.options}} @selectedOptions={{this.selectedOptions}} @onChange={{fn (mut this.selectedOptions)}} @isSearchEnabled={{true}} @searchFunc={{this.searchFunc}} as |option|>
+      <DenaliMultiSelect 
+        @options={{this.options}} 
+        @selectedOptions={{this.selectedOptions}} 
+        @onChange={{fn (mut this.selectedOptions)}} 
+        @isSearchEnabled={{true}} 
+        @searchFunc={{this.searchFunc}} as |option|
+      >
         {{option.text}}
       </DenaliMultiSelect>
     `);
