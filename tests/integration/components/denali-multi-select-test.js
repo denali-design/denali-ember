@@ -137,14 +137,20 @@ module('Integration | Component | denali-multi-select', function (hooks) {
   });
 
   test('it supports small size', async function (assert) {
-    assert.expect(1);
+    assert.expect(2);
 
-    this.set('isSmall', 'true');
+    this.set('isSmall', undefined);
     await render(hbs`
       <DenaliMultiSelect @options={{array "Item 1"}} @isSmall={{this.isSmall}} as |option|>
         {{option}}
       </DenaliMultiSelect>
     `);
+
+    assert
+      .dom('div.multi-select')
+      .doesNotHaveClass('is-small', 'DenaliMultiSelect has a small size when `@isSmall` arg is set to true');
+
+    this.set('isSmall', 'true');
 
     assert
       .dom('div.multi-select')
