@@ -18,6 +18,9 @@ export default class DenaliButtonComponent extends Component {
   size;
 
   @arg(boolean)
+  isFull = false;
+
+  @arg(boolean)
   isInverse = false;
 
   @arg(string)

@@ -4,5 +4,5 @@
  */
 
 export const STYLES = ['solid', 'outline', 'ghost', 'text', 'danger'];
-export const SIZES = ['default', 'small', 'medium', 'large', 'full'];
+export const SIZES = ['default', 'small', 'medium', 'large'];
 export const TYPES = ['button', 'submit', 'reset'];
