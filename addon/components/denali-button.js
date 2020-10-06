@@ -40,6 +40,10 @@ export default class DenaliButtonComponent extends Component {
     return this.isActive ? 'is-active' : undefined;
   }
 
+  get isFullClass() {
+    return this.isFull ? 'is-full' : undefined;
+  }
+
   get styleClass() {
     return `is-${this.style}`;
   }
