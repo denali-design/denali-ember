@@ -117,9 +117,34 @@ module('Integration | Component | denali-button', function (hooks) {
 
     this.set('size', 'large');
     assert.dom('.button').hasClass('is-large', 'DenaliButton has a large size when `@size` arg is set to large');
+  });
 
-    this.set('size', 'full');
-    assert.dom('.button').hasClass('is-full', 'DenaliButton has a full size when `@size` arg is set to full');
+  test('it supports isFull', async function (assert) {
+    await render(hbs`
+      <DenaliButton @size={{this.size}} @isFull={{this.isFull}}>
+        Inner Content
+      </DenaliButton>
+    `);
+
+    assert.dom('.button').exists('DenaliButton can render without a size set');
+    assert
+      .dom('.button')
+      .doesNotHaveClass('is-full', 'DenaliButton does not have a full size when `@isFull` arg is undefined');
+
+    this.set('isFull', true);
+    assert.dom('.button').hasClass('is-full', 'DenaliButton has a full size when `@isFull` arg is set to true');
+
+    this.set('size', 'small');
+    assert.dom('.button').hasClass('is-small', 'DenaliButton has a small size when `@size` arg is set to small');
+    assert
+      .dom('.button')
+      .hasClass('is-full', 'DenaliButton has a full size when `@isFull` arg is set to true and size is set to small');
+
+    this.set('isFull', false);
+    assert.dom('.button').hasClass('is-small', 'DenaliButton has a small size when `@size` arg is set to small');
+    assert
+      .dom('.button')
+      .doesNotHaveClass('is-full', 'DenaliButton does not have a full size when `@isFull` arg is set to false');
   });
 
   test('it supports icons', async function (assert) {

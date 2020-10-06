@@ -25,6 +25,7 @@ export const Playground = () => ({
       @isActive={{isActive}}
       @isInverse={{isInverse}}
       @size={{size}}
+      @isFull={{isFull}}
       @style={{style}}
       @type={{type}}
       disabled={{disabled}}
@@ -39,6 +40,7 @@ export const Playground = () => ({
     isInverse: boolean('isInverse', false, argument),
     onClick: action('onClick'),
     size: select('size', SIZES, SIZES[0], argument),
+    isFull: boolean('isFull', false, argument),
     style: select('style', STYLES, STYLES[0], argument),
     type: select('type', TYPES, TYPES[0], argument),
     class: text('class', '', attribute),

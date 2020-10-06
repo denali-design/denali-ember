@@ -18,6 +18,9 @@ export default class DenaliButtonComponent extends Component {
   size;
 
   @arg(boolean)
+  isFull = false;
+
+  @arg(boolean)
   isInverse = false;
 
   @arg(string)
@@ -35,6 +38,10 @@ export default class DenaliButtonComponent extends Component {
 
   get isActiveClass() {
     return this.isActive ? 'is-active' : undefined;
+  }
+
+  get isFullClass() {
+    return this.isFull ? 'is-full' : undefined;
   }
 
   get styleClass() {
