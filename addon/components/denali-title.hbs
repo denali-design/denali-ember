@@ -3,12 +3,14 @@
   <span class="bar {{this.hasWideBarClass}} {{this.backgroundStatusClass}}"></span>
   <div class="title-text">
     {{#if (has-block)}}
-      {{yield (hash h1=(component "denali-title/h1"))}}
-      {{yield (hash h2=(component "denali-title/h2"))}}
-      {{yield (hash h3=(component "denali-title/h3"))}}
-      {{yield (hash h4=(component "denali-title/h4"))}}
-      {{yield (hash h5=(component "denali-title/h5"))}}
-      {{yield (hash h6=(component "denali-title/h6"))}}
+      {{yield (hash
+        h1=(component "denali-title/h1")
+        h2=(component "denali-title/h2")
+        h3=(component "denali-title/h3")
+        h4=(component "denali-title/h4")
+        h5=(component "denali-title/h5")
+        h6=(component "denali-title/h6")
+      )}}
     {{else}}
       {{#if this.title}}
         <h3>{{this.title}}</h3>
