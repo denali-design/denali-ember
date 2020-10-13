@@ -26,26 +26,19 @@ module('Integration | Component | denali-tabs', function (hooks) {
     `);
     assert.dom('.tabs').hasClass('is-primary', 'DenaliTabs renders a primary style by default');
 
+    this.set('style', 'primaryVertical');
+    assert
+      .dom('.tabs')
+      .hasClass('is-primary', 'DenaliTabs renders a primary style by setting `@style` arg to primaryVertical');
+
+    assert
+      .dom('.tabs')
+      .hasClass('is-vertical', 'DenaliTabs renders a vertical style by setting `@style` arg to primaryVertical');
+
     this.set('style', 'secondary');
     assert
       .dom('.tabs')
       .hasClass('is-secondary', 'DenaliTabs renders a secondary style by setting `@style` arg to secondary');
-  });
-
-  test('it supports alignment', async function (assert) {
-    await render(hbs`
-      <DenaliTabs
-        @alignment={{this.alignment}}
-      >
-        Inner Content
-      </DenaliTabs>
-    `);
-    assert.dom('.tabs').hasClass('is-horizontal', 'DenaliTabs renders a horizontal alignment by default');
-
-    this.set('alignment', 'vertical');
-    assert
-      .dom('.tabs')
-      .hasClass('is-vertical', 'DenaliTabs renders a vertical alignment by setting `@alignment` arg to vertical');
   });
 
   test('it can yield a `Tab` sub component', async function (assert) {
