@@ -5,11 +5,10 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { oneOf } from 'prop-types';
-
-const alignment = ['left', 'right'];
+import { ALIGNMENTS } from './denali-menu-enums';
 
 export default class DenaliMenuComponent extends Component {
-  @arg(oneOf(alignment)) alignContent;
+  @arg(oneOf(ALIGNMENTS)) alignContent;
 
   get alignContentClass() {
     return this.alignContent ? `is-${this.alignContent}` : undefined;
