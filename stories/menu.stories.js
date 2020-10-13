@@ -27,16 +27,11 @@ export const Default = () => ({
   },
 });
 
-const alignments = Object.assign(
-  {
-    'undefined (Center)': null,
-  },
-  ...ALIGNMENTS.map((a) => ({ [`${a[0].toUpperCase()}${a.substring(1)}`]: a }))
-);
+const allAlignments = [undefined, ...ALIGNMENTS];
 
 export const Playground = () => ({
   template: hbs`
-  <DenaliMenu class={{class}} @alignContent={{alignment}} as |Menu|>
+  <DenaliMenu class={{class}} @alignContent={{alignContent}} as |Menu|>
     <Menu.Trigger>{{triggerContent}}</Menu.Trigger>
     <Menu.Content>
       <p class="is-bold">{{mainContent}}</p>
@@ -46,10 +41,10 @@ export const Playground = () => ({
   </DenaliMenu>
   `,
   context: {
-    alignment: select('alignment', alignments, undefined, argument),
-    class: text('class', '', attribute),
+    alignContent: select('alignContent', allAlignments, allAlignments[0], argument),
     triggerContent: text('triggerContent', 'Menu Trigger', content),
     mainContent: text('mainContent', 'Cool menu info', content),
     footerContent: text('footerContent', 'Additional footer info', content),
+    class: text('class', '', attribute),
   },
 });
