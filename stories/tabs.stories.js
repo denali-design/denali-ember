@@ -21,8 +21,8 @@ export const Default = () => ({
   context: {
     linkToTab: 'linkToTab',
     tabOne: 'Denali',
-    tabTwo: 'Tabs',
-    tabThree: 'Component',
+    tabTwo: 'Active Tab',
+    tabThree: 'Disabled Tab',
   },
 });
 

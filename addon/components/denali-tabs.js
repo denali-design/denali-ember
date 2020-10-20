@@ -12,10 +12,6 @@ export default class DenaliTabsComponent extends Component {
   style = STYLES[0];
 
   get styleClass() {
-    return this.style === 'secondary' ? 'is-secondary' : 'is-primary';
-  }
-
-  get alignmentClass() {
-    return this.style === 'primaryVertical' ? 'is-vertical' : 'is-horizontal';
+    return `is-${this.style}`;
   }
 }

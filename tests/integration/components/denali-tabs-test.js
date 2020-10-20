@@ -25,20 +25,15 @@ module('Integration | Component | denali-tabs', function (hooks) {
       </DenaliTabs>
     `);
     assert.dom('.tabs').hasClass('is-primary', 'DenaliTabs renders a primary style by default');
-
-    this.set('style', 'primaryVertical');
-    assert
-      .dom('.tabs')
-      .hasClass('is-primary', 'DenaliTabs renders a primary style by setting `@style` arg to primaryVertical');
-
-    assert
-      .dom('.tabs')
-      .hasClass('is-vertical', 'DenaliTabs renders a vertical style by setting `@style` arg to primaryVertical');
+    assert.dom('.tabs').hasClass('is-horizontal', 'DenaliTabs renders a horizontal style by default');
 
     this.set('style', 'secondary');
     assert
       .dom('.tabs')
       .hasClass('is-secondary', 'DenaliTabs renders a secondary style by setting `@style` arg to secondary');
+    assert
+      .dom('.tabs')
+      .hasClass('is-horizontal', 'DenaliTabs renders a horizontal style by setting `@style` arg to secondary');
   });
 
   test('it can yield a `Tab` sub component', async function (assert) {
