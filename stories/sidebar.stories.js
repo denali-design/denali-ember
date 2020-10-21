@@ -30,8 +30,9 @@ export const Playground = () => ({
     <DenaliSidebar class={{class}} as |Sidebar|>
       {{#each items as |item|}}
         <Sidebar.Tab 
-          @isActive={{contains item activeItems}}
-          @isDisabled={{contains item disabledItems}}
+          @isActive={{eq item activeItem}}
+          @isDisabled={{includes item disabledItems}}
+          {{on "click" (fn (mut activeItem) item)}}
         >
           {{item}}
         </Sidebar.Tab>
@@ -40,7 +41,7 @@ export const Playground = () => ({
   `,
   context: {
     items: array('items', ['Ember', 'Denali', 'Sidebar'], ',', example),
-    activeItems: array('activeItems', ['Denali'], ',', example),
+    activeItem: text('activeItem', 'Denali', example),
     disabledItems: array('disabledItems', ['Ember'], ',', example),
     class: text('class', '', attribute),
   },

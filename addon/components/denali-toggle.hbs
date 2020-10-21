@@ -2,7 +2,7 @@
 <div class="toggle {{this.isSmallClass}} {{this.isInverseClass}}" ...attributes>
   <ul>
     {{#each this.options as |option|}}
-      <li role="button" class="{{if (contains option this.disabledOptions) "is-disabled"}} {{if (eq this.activeOption option) "is-active"}}" {{on "click" (fn this.onClick option)}}>
+      <li role="button" class="{{if (includes option this.disabledOptions) "is-disabled"}} {{if (eq this.activeOption option) "is-active"}}" {{on "click" (fn this.onClick option)}}>
         {{yield option}}
       </li>
     {{/each}}

@@ -31,8 +31,8 @@ export const Playground = () => ({
     <DenaliTabs class={{class}} @style={{style}} as |Tabs|>
       {{#each items as |item|}}
         <Tabs.Tab 
-          @isActive={{contains item activeItems}}
-          @isDisabled={{contains item disabledItems}}
+          @isActive={{includes item activeItems}}
+          @isDisabled={{includes item disabledItems}}
         >
           {{item}}
         </Tabs.Tab>
