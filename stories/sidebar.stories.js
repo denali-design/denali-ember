@@ -28,20 +28,20 @@ export const Default = () => ({
 export const Playground = () => ({
   template: hbs`
     <DenaliSidebar class={{class}} as |Sidebar|>
-      {{#each tabs as |tab|}}
+      {{#each items as |item|}}
         <Sidebar.Tab 
-          @isActive={{eq activeTab tab}}
-          @isDisabled={{contains tab disabledTabs}}
+          @isActive={{contains item activeItems}}
+          @isDisabled={{contains item disabledItems}}
         >
-          {{tab}}
+          {{item}}
         </Sidebar.Tab>
       {{/each}}
     </DenaliSidebar>
   `,
   context: {
-    tabs: array('tabs', ['Ember', 'Denali', 'Sidebar'], ',', example),
-    activeTab: text('activeTab', 'Denali', example),
-    disabledTabs: array('disabledTabs', ['Ember'], ',', example),
+    items: array('items', ['Ember', 'Denali', 'Sidebar'], ',', example),
+    activeItems: array('activeItems', ['Denali'], ',', example),
+    disabledItems: array('disabledItems', ['Ember'], ',', example),
     class: text('class', '', attribute),
   },
 });
