@@ -3,7 +3,7 @@
   <select {{on "change" this.onSelect}} ...attributes>
     {{#each this.options as |opt|}}
       <option
-        disabled={{if (contains opt this.disabledOptions) "true"}}
+        disabled={{if (includes opt this.disabledOptions) "true"}}
         selected={{if (eq this.selectedOption opt) "true"}} >
         {{yield opt}}
       </option>

@@ -13,7 +13,7 @@ module.exports = {
 
   options: {
     'ember-composable-helpers': {
-      only: ['contains'],
+      only: ['includes'],
     },
   },
 
