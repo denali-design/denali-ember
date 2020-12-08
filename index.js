@@ -53,7 +53,8 @@ module.exports = {
   included(app) {
     this._super.included.apply(this, arguments);
 
-    this.hasSass = !!app.registry.availablePlugins['ember-cli-sass'];
+    this.hasSass =
+      !!app.registry.availablePlugins['ember-cli-sass'] || !!app.registry.availablePlugins['ember-cli-sass-less'];
 
     // CSS Files
     if (!this.hasSass) {
