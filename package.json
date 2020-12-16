@@ -17,7 +17,7 @@
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
-    "start": "ember serve",
+    "start": "npm run storybook",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
@@ -27,17 +27,17 @@
     "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
-    "@glimmer/component": "^1.0.1",
-    "@glimmer/tracking": "^1.0.1",
+    "@glimmer/component": "^1.0.2",
+    "@glimmer/tracking": "^1.0.2",
     "broccoli-funnel": "^3.0.1",
     "broccoli-merge-trees": "^4.1.0",
-    "denali-css": "^2.0.1",
-    "denali-icon-font": "^1.5.0",
-    "ember-arg-types": "^0.1.0",
+    "denali-css": "^2.2.0",
+    "denali-icon-font": "^1.7.0",
+    "ember-arg-types": "^0.2.1",
     "ember-cli-babel": "^7.22.1",
     "ember-cli-htmlbars": "^5.3.1",
-    "ember-composable-helpers": "^4.0.0",
-    "ember-truth-helpers": "^2.1.0"
+    "ember-composable-helpers": "^4.3.0",
+    "ember-truth-helpers": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
