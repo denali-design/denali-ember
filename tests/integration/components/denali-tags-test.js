@@ -3,14 +3,15 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | denali-tag', function (hooks) {
+module('Integration | Component | denali-tags', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`
-      <DenaliTag>
-        Inner Content
-      </DenaliTag>
+
+      <DenaliTags as |Tags|>
+        <Tags.Tag>Inner Content</Tags.Tag>
+      </DenaliTags>
     `);
 
     assert.dom('span.tag').hasText('Inner Content', 'DenaliTag exists and renders inner content');
@@ -18,9 +19,9 @@ module('Integration | Component | denali-tag', function (hooks) {
 
   test('states', async function (assert) {
     await render(hbs`
-      <DenaliTag @state={{this.state}}>
-        Inner Content
-      </DenaliTag>
+      <DenaliTags as |Tags|>
+        <Tags.Tag @state={{this.state}}>Inner Content</Tags.Tag>
+      </DenaliTags>
     `);
 
     assert.dom('span.tag').exists('DenaliTag can render without a state set');
@@ -29,16 +30,15 @@ module('Integration | Component | denali-tag', function (hooks) {
     assert
       .dom('span.tag')
       .hasClass('is-disabled', 'DenaliTag can be set disabled by setting the `@state` arg to `disabled`');
-
     this.set('state', 'active');
     assert.dom('span.tag').hasClass('is-active', 'DenaliTag can be set active by setting the `@state` arg to `active`');
   });
 
   test('outlined', async function (assert) {
     await render(hbs`
-      <DenaliTag @isOutlined={{this.outlined}}>
-        Inner Content
-      </DenaliTag>
+      <DenaliTags as |Tags|>
+        <Tags.Tag @isOutlined={{this.outlined}}>Inner Content</Tags.Tag>
+      </DenaliTags>
     `);
 
     assert.dom('span.tag').doesNotHaveClass('outlined', 'DenaliTag is not outlined by default');
@@ -49,9 +49,9 @@ module('Integration | Component | denali-tag', function (hooks) {
 
   test('small', async function (assert) {
     await render(hbs`
-      <DenaliTag @isSmall={{this.isSmall}}>
-        Inner Content
-      </DenaliTag>
+      <DenaliTags as |Tags|>
+        <Tags.Tag @isSmall={{this.isSmall}}>Inner Content</Tags.Tag>
+      </DenaliTags>
     `);
 
     assert.dom('span.tag').doesNotHaveClass('is-small', 'DenaliTag is not small by default');
@@ -62,10 +62,14 @@ module('Integration | Component | denali-tag', function (hooks) {
 
   test('icons', async function (assert) {
     await render(hbs`
-      <DenaliTag
-        @iconFront={{this.iconFront}}
-        @iconBack={{this.iconBack}}
-      >Tag Content</DenaliTag>
+      <DenaliTags as |Tags|>
+        <Tags.Tag
+          @iconFront={{this.iconFront}}
+          @iconBack={{this.iconBack}}
+        >
+          Inner Content
+        </Tags.Tag>
+      </DenaliTags>
     `);
 
     assert

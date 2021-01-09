@@ -5,11 +5,10 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { oneOf, boolean, string } from 'prop-types';
+import { STATES } from './tag-enums';
 
-const states = ['disabled', 'active'];
-
-export default class DenaliTagComponent extends Component {
-  @arg(oneOf(states))
+export default class DenaliTagsComponent extends Component {
+  @arg(oneOf(STATES))
   state;
 
   @arg(boolean)
