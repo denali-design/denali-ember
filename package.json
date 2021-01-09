@@ -41,6 +41,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/prompt-cli": "^11.0.0",
     "@ember/optional-features": "^2.0.0",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-knobs": "^6.0.21",
@@ -80,14 +83,18 @@
     "pretty-quick": "^2.0.1",
     "qunit-dom": "^1.4.0",
     "sass": "^1.25.0",
-    "semantic-release": "^17.0.7",
-    "validate-commit": "^3.4.0"
+    "semantic-release": "^17.3.1"
   },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
-      "commit-msg": "validate-commit-msg"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "release": {
     "repositoryUrl": "git@github.com:denali-design/denali-ember.git",
