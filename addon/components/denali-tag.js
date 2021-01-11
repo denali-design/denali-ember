@@ -1,15 +1,14 @@
 /**
- * Copyright 2020, Verizon Media
+ * Copyright 2021, Verizon Media
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { oneOf, boolean, string } from 'prop-types';
-
-const states = ['disabled', 'active'];
+import { STATES } from './denali-tag-enums';
 
 export default class DenaliTagComponent extends Component {
-  @arg(oneOf(states))
+  @arg(oneOf(STATES))
   state;
 
   @arg(boolean)
