@@ -10,5 +10,4 @@ Router.map(function () {
   this.route('four-oh-four');
   this.route('denali-title');
   this.route('denali-input-group');
-  this.route('denali-text-area');
 });
