@@ -1,0 +1,105 @@
+/**
+ * Copyright 2020, Verizon Media
+ * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
+ */
+.ember-power-select-trigger {
+  align-items: center;
+  background: $fields-default-bg;
+  border-radius: $fields-corner-radius;
+  box-shadow: $fields-default-border;
+  color: $fields-default-text-color;
+  display: flex;
+  min-height: $fields-sizes-default-height;
+  outline: none;
+  padding: 2px 25px 2px 10px;
+  position: relative;
+  &:before {
+    content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path style="fill:#{$fields-dropdown-arrow-color}" d="M24,27.17,13.4,16.59a2,2,0,0,0-3.05.25,2.07,2.07,0,0,0,.3,2.65L22.59,31.41a2,2,0,0,0,2.83,0L37.35,19.49a2.07,2.07,0,0,0,.3-2.65,2,2,0,0,0-3-.25Z"/></svg>');
+    height: 18px;
+    pointer-events: none;
+    opacity: 0.4;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    width: 18px;
+  }
+  &--active {
+    box-shadow: $fields-focus-border;
+  }
+}
+
+.ember-power-select-multiple-options {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: $fields-sizes-default-height;
+}
+
+.ember-power-select-multiple-option {
+  @extend .tag;
+  justify-content: unset;
+  margin: 4px 4px 4px 0;
+  overflow: hidden;
+}
+
+.ember-power-select-trigger-multiple-input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.ember-power-select-option {
+  cursor: pointer;
+  padding: 8px;
+  &[aria-current='true'] {
+    background: $fields-default-bg;
+  }
+  &[aria-selected='true'] {
+    font-weight: bold;
+    background: $tags-bg-color;
+  }
+  &[aria-disabled='true'] {
+    color: $tags-disabled-text-color;
+    cursor: not-allowed;
+  }
+}
+
+.ember-power-select-multiple-remove-btn {
+  cursor: pointer;
+  opacity: 0.5;
+  padding: 0 2px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.ember-power-select-dropdown {
+  background: $menu-bg-color;
+  border-color: $menu-border-color;
+  border-style: $menu-border-style;
+  border-radius: $menu-corner-radius;
+  border-width: $menu-border-width;
+  box-shadow: $menu-shadow;
+  margin-top: 2px;
+  -webkit-transition: all 0.3s 0.1s;
+  -moz-transition: all 0.3s 0.1s;
+  -o-transition: all 0.3s 0.1s;
+  transition: all 0.3s 0.1s;
+  z-index: 100;
+}
+
+.ember-power-select-placeholder {
+  color: $fields-placeholder-text-color;
+}
+
+.ember-power-select-search {
+  @extend .input;
+  width: 100%;
+  padding: 8px;
+  .ember-power-select-search-input {
+    &:active,
+    &:focus {
+      box-shadow: unset;
+    }
+  }
+}
