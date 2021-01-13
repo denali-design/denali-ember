@@ -56,6 +56,7 @@
   }
   &[aria-selected='true'] {
     font-weight: bold;
+    background: $tags-bg-color;
   }
   &[aria-disabled='true'] {
     color: $tags-disabled-text-color;
@@ -85,4 +86,20 @@
   -o-transition: all 0.3s 0.1s;
   transition: all 0.3s 0.1s;
   z-index: 100;
+}
+
+.ember-power-select-placeholder {
+  color: $fields-placeholder-text-color;
+}
+
+.ember-power-select-search {
+  @extend .input;
+  width: 100%;
+  padding: 8px;
+  .ember-power-select-search-input {
+    &:active,
+    &:focus {
+      box-shadow: unset;
+    }
+  }
 }
