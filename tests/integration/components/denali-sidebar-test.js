@@ -33,7 +33,7 @@ module('Integration | Component | denali-sidebar', function (hooks) {
     await render(hbs`
       <DenaliSidebar as |Sidebar|>
         <Sidebar.LinkToTab
-          @route="/"
+          @route="index"
         >
           The Greatest Tab
         </Sidebar.LinkToTab>

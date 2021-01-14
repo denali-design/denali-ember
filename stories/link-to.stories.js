@@ -18,7 +18,7 @@ export const Default = () => ({
 export const Playground = () => ({
   template: hbs`
     <DenaliLinkTo
-      @route="/"
+      @route="index"
       @iconFront={{iconFront}}
       @iconBack={{iconBack}}
       class={{class}}
