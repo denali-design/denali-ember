@@ -10,10 +10,9 @@ export default {
 
 export const Default = () => ({
   template: hbs`
-    <DenaliInputGroup @label="Input Label">
+    <DenaliInputGroup @label="Input Label" class="m-b-30">
       <DenaliInput placeholder="Input" />
     </DenaliInputGroup>
-    <br>
     <DenaliInputGroup @label="Switch Label">
       <DenaliSwitch @onLabel="On" @offLabel="Off" />
     </DenaliInputGroup>
@@ -28,25 +27,20 @@ export const Playground = () => ({
       @isStacked={{isStacked}}
       @isResponsive={{isResponsive}}
       @hasAutoWidth={{hasAutoWidth}}
+      class="m-b-30"
     >
       <DenaliInput placeholder="Input" />
     </DenaliInputGroup>
-    <br>
+
     <DenaliInputGroup 
       @label={{label}}
       @isStacked={{isStacked}}
       @isResponsive={{isResponsive}}
       @hasAutoWidth={{hasAutoWidth}}
+      class="m-b-30"
     >
       <DenaliSwitch @onLabel="On" @offLabel="Off" />
     </DenaliInputGroup>
-    <br>
-    <DenaliInputGroup 
-      @label={{label}}
-      @isStacked={{isStacked}}
-      @isResponsive={{isResponsive}}
-      @hasAutoWidth={{hasAutoWidth}}
-    >
   `,
   context: {
     label: text('label', 'Label', argument),
