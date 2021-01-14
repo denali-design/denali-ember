@@ -5,8 +5,7 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { string, boolean, oneOf } from 'prop-types';
-
-const statuses = ['danger', 'warning', 'success', 'info'];
+import { STATUSES } from './denali-title-enums';
 
 export default class DenaliTitleComponent extends Component {
   @arg(string)
@@ -18,7 +17,7 @@ export default class DenaliTitleComponent extends Component {
   @arg(boolean)
   hasWideBar = false;
 
-  @arg(oneOf(statuses))
+  @arg(oneOf(STATUSES))
   backgroundStatus;
 
   get hasWideBarClass() {

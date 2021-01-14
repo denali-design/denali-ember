@@ -5,8 +5,7 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, oneOf } from 'prop-types';
-
-const statuses = ['danger', 'warning', 'success', 'info'];
+import { STATUSES } from '../denali-title-enums';
 
 export default class DenaliTitleBaseHeadingComponent extends Component {
   @arg(boolean)
@@ -15,7 +14,7 @@ export default class DenaliTitleBaseHeadingComponent extends Component {
   @arg(boolean)
   isUpperCase = false;
 
-  @arg(oneOf(statuses))
+  @arg(oneOf(STATUSES))
   status;
 
   get isRegularClass() {
