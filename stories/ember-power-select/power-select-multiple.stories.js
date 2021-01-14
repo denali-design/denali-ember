@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, array } from '@storybook/addon-knobs';
+import { withKnobs, array, select } from '@storybook/addon-knobs';
 import { example } from '../knob-categories';
 
 export default {
@@ -41,6 +41,7 @@ export const Playground = () => ({
       @placeholder="Select Some Items..."
       @onChange={{queue onChange (fn (mut selectedItems))}}
       @renderInPlace={{true}}
+      class={{sizeClass}}
       as |name|
     >
       {{name}}
@@ -49,6 +50,7 @@ export const Playground = () => ({
   context: {
     items: array('items', ['Denali', 'Styled', 'Power', 'Select', 'Multiple'], ',', example),
     selectedItems: array('selectedItems', ['Denali'], ',', example),
+    sizeClass: select('sizeClass', [undefined, 'is-small', 'is-medium', 'is-large'], undefined, example),
     onChange: action('onChange'),
   },
 });
