@@ -52,7 +52,7 @@ module('Integration | Component | denali-tabs', function (hooks) {
     await render(hbs`
       <DenaliTabs as |Tabs|>
         <Tabs.LinkToTab
-          @route="/"
+          @route="index"
         >
           The Greatest Tab
         </Tabs.LinkToTab>
