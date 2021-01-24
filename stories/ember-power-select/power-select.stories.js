@@ -33,26 +33,53 @@ export const Default = () => ({
   },
 });
 
-export const Playground = () => ({
+export const Groups = () => ({
   template: hbs`
     <PowerSelect
-      @searchEnabled={{enableSearch}}
-      @searchPlaceholder="Search"
+      @searchEnabled={{searchEnabled}}
       @options={{items}}
       @selected={{selectedItem}}
+      @searchPlaceholder="Search"
       @placeholder="Select An Item..."
       @onChange={{queue onChange (fn (mut selectedItem))}}
       @renderInPlace={{true}}
-      class={{sizeClass}}
+      as |item|
+    >
+      {{item}}
+    </PowerSelect>
+  `,
+  context: {
+    items: [
+      { groupName: 'Denali', options: ['Themable', 'Design', 'System'] },
+      { groupName: 'Ember', options: ['Ambitious', 'Web', 'Framework'] },
+    ],
+    onChange: action('onChange'),
+    searchEnabled: boolean('searchEnabled', true, example),
+  },
+});
+
+export const Playground = () => ({
+  template: hbs`
+    <PowerSelect
+      @options={{items}}
+      @selected={{selectedItem}}
+      @searchEnabled={{searchEnabled}}
+      @searchPlaceholder="Search"
+      @placeholder="Select An Item..."
+      @disabled={{disabled}}
+      @onChange={{queue onChange (fn (mut selectedItem))}}
+      @renderInPlace={{true}}
+      @triggerClass={{sizeClass}}
       as |name|
     >
       {{name}}
     </PowerSelect>
   `,
   context: {
-    enableSearch: boolean('enableSearch', true, example),
     items: array('items', ['Denali', 'Styled', 'Power', 'Select', 'Multiple'], ',', example),
     selectedItem: text('selectedItem', 'Denali', example),
+    searchEnabled: boolean('searchEnabled', true, example),
+    disabled: boolean('disabled', false, example),
     sizeClass: select('sizeClass', [undefined, 'is-small', 'is-medium', 'is-large'], undefined, example),
     onChange: action('onChange'),
   },
