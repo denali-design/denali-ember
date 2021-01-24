@@ -27,6 +27,7 @@ export const Playground = () => ({
       @iconFrontClass={{iconFrontClass}}
       @iconBackClass={{iconBackClass}}
       @errorMsg={{errorMsg}}
+      @wrapperClass={{wrapperClass}}
       value={{value}}
       placeholder={{placeholder}}
       disabled={{disabled}}
@@ -44,6 +45,7 @@ export const Playground = () => ({
     iconFrontClass: text('iconFrontClass', '', argument),
     iconBackClass: text('iconBackClass', 'is-brand-300', argument),
     errorMsg: text('errMsg', '', argument),
+    wrapperClass: text('wrapperClass', '', argument),
     value: text('value', '', attribute),
     placeholder: text('placeholder', 'Search', attribute),
     disabled: boolean('disabled', false, attribute),

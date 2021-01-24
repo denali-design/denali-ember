@@ -32,6 +32,9 @@ export default class DenaliInputComponent extends Component {
   @arg(string)
   errorMsg;
 
+  @arg(string)
+  wrapperClass;
+
   get sizeClass() {
     return this.size ? `is-${this.size}` : undefined;
   }
