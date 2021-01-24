@@ -9,12 +9,12 @@
   ...attributes
 >
   {{#if this.iconFront}}
-    <i class="d-icon d-{{this.iconFront}}" />
+    <i class="d-icon d-{{this.iconFront}} {{this.iconFrontClass}}" {{on "click" this.onIconFrontClick}}/>
   {{/if}}
 
   {{yield}}
 
   {{#if this.iconBack}}
-    <i class="d-icon d-{{this.iconBack}}" />
+    <i class="d-icon d-{{this.iconBack}} {{this.iconBackClass}}" {{on "click" this.onIconBackClick}} />
   {{/if}}
 </span>

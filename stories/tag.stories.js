@@ -1,4 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
+import { action } from '@storybook/addon-actions';
 import { withKnobs, array, boolean, select, text } from '@storybook/addon-knobs';
 import { argument, attribute, example } from './knob-categories';
 import { STATES } from '../addon/components/denali-tag-enums';
@@ -26,7 +27,11 @@ export const Playground = () => ({
         @isSmall={{isSmall}}
         @isOutlined={{isOutlined}}
         @iconFront={{iconFront}}
+        @iconFrontClass={{iconFrontClass}}
+        @onIconFrontClick={{onIconFrontClick}}
         @iconBack={{iconBack}}
+        @iconBackClass={{iconBackClass}}
+        @onIconBackClick={{onIconBackClick}}
         class={{class}}
       >
         {{item}}
@@ -38,7 +43,11 @@ export const Playground = () => ({
     isSmall: boolean('isSmall', false, argument),
     isOutlined: boolean('isOutlined', false, argument),
     iconFront: text('iconFront', '', argument),
+    iconFrontClass: text('iconFrontClass', '', argument),
+    onIconFrontClick: action('onIconFrontClick'),
     iconBack: text('iconBack', 'close', argument),
+    iconBackClass: text('iconBackClass', '', argument),
+    onIconBackClick: action('onIconBackClick'),
     items: array('items', ['Ember', 'Denali', 'Tags'], ',', example),
     class: text('class', '', attribute),
   },

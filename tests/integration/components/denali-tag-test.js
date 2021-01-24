@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | denali-tag', function (hooks) {
@@ -61,10 +61,16 @@ module('Integration | Component | denali-tag', function (hooks) {
   });
 
   test('icons', async function (assert) {
+    assert.expect(12);
+
     await render(hbs`
       <DenaliTag
         @iconFront={{this.iconFront}}
+        @iconFrontClass={{this.iconFrontClass}}
+        @onIconFrontClick={{this.onIconFrontClick}}
         @iconBack={{this.iconBack}}
+        @iconBackClass={{this.iconBackClass}}
+        @onIconBackClick={{this.onIconBackClick}}
       >Tag Content</DenaliTag>
     `);
 
@@ -81,12 +87,34 @@ module('Integration | Component | denali-tag', function (hooks) {
       .hasClass('has-icon-front', 'DenaliTag has the `has-icon-front` class when iconFront is specified');
     assert.dom('span.tag .d-icon').hasClass('d-check', 'DenaliTag has the specified icon in the front');
 
+    const iconFrontClass = 'iconFrontClass';
+    assert
+      .dom('span.tag .d-icon')
+      .doesNotHaveClass(iconFrontClass, 'DenaliTag does not have `iconFrontClass` class by default');
+    this.set('iconFrontClass', iconFrontClass);
+    assert.dom('span.tag .d-check').hasClass(iconFrontClass, 'DenaliTag has the specified `iconFrontClass`');
+
+    this.set('onIconFrontClick', () => assert.ok(true, '`onIconFrontClick` fires on click'));
+    await click('.d-check');
+
     // unset the front icon to check the back icon
     this.set('iconFront', undefined);
+    this.set('onIconFrontClick', undefined);
+
     this.set('iconBack', 'close');
     assert
       .dom('span.tag')
       .hasClass('has-icon-back', 'DenaliTag has the `has-icon-back` class when iconBack is specified');
-    assert.dom('span.tag .d-icon').hasClass('d-close', 'test');
+    assert.dom('span.tag .d-icon').hasClass('d-close', 'DenaliTag has the specified icon in the back');
+
+    const iconBackClass = 'iconBackClass';
+    assert
+      .dom('span.tag .d-close')
+      .doesNotHaveClass(iconBackClass, 'DenaliTag does not have `iconBackClass` class by default');
+    this.set('iconBackClass', iconBackClass);
+    assert.dom('span.tag .d-icon').hasClass(iconBackClass, 'DenaliTag has the specified `iconBackClass`');
+
+    this.set('onIconBackClick', () => assert.ok(true, '`onIconBackClick` fires on click'));
+    await click('.d-close');
   });
 });
