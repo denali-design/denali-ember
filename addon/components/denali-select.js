@@ -4,12 +4,13 @@
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { func, boolean, array, any } from 'prop-types';
+import { func, boolean, array, any, oneOf } from 'prop-types';
 import { action } from '@ember/object';
+import { SIZES } from './denali-select-enums';
 
 export default class DenaliSelectComponent extends Component {
-  @arg(boolean)
-  isSmall = false;
+  @arg(oneOf(SIZES))
+  size;
 
   @arg(boolean)
   isInverse = false;
@@ -31,8 +32,8 @@ export default class DenaliSelectComponent extends Component {
     this.onChange(this.options[e.target.selectedIndex]);
   }
 
-  get isSmallClass() {
-    return this.isSmall ? 'is-small' : undefined;
+  get sizeClass() {
+    return this.size ? `is-${this.size}` : undefined;
   }
 
   get isInverseClass() {

@@ -89,20 +89,30 @@ module('Integration | Component | denali-select', function (hooks) {
     );
   });
 
-  test('it supports small size', async function (assert) {
-    assert.expect(2);
-
+  test('it supports sizes', async function (assert) {
+    this.set('options', opts);
     await render(hbs`
-      <DenaliSelect @options={{this.options}} @isSmall={{this.isSmall}} as |option|>
+      <DenaliSelect 
+        @options={{this.options}} 
+        @size={{this.size}}
+        as |option|
+      >
         {{option.text}}
       </DenaliSelect>
     `);
 
-    this.set('options', opts);
-    assert.dom('div.input').doesNotHaveClass('is-small', 'DenaliSelect does not have small styling by default');
+    assert
+      .dom('.input')
+      .doesNotHaveClass(/is-small|is-medium|is-large/, 'DenaliSelect wrapper does not have a size class by default');
 
-    this.set('isSmall', 'true');
-    assert.dom('div.input').hasClass('is-small', 'DenaliSelect has a small size when `@isSmall` arg is set to true');
+    this.set('size', 'small');
+    assert.dom('.input').hasClass('is-small', 'DenaliSelect wrapper has the appropriate class for small');
+
+    this.set('size', 'medium');
+    assert.dom('.input').hasClass('is-medium', 'DenaliSelect wrapper has the appropriate class for medium');
+
+    this.set('size', 'large');
+    assert.dom('.input').hasClass('is-large', 'DenaliSelect wrapper has the appropriate class for large');
   });
 
   test('it supports inverse colors', async function (assert) {
