@@ -7,8 +7,6 @@ module('Integration | Component | denali-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(3);
-
     await render(hbs`<DenaliInput value="My Input" />`);
 
     assert.dom('.input input').exists('An input is rendered within a wrapper div with class `.input`');
@@ -17,8 +15,6 @@ module('Integration | Component | denali-input', function (hooks) {
   });
 
   test('input types', async function (assert) {
-    assert.expect(4);
-
     await render(hbs`<DenaliInput type={{this.type}}/>`);
 
     this.set('type', 'text');
@@ -35,8 +31,6 @@ module('Integration | Component | denali-input', function (hooks) {
   });
 
   test('input size', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`<DenaliInput @size={{this.size}} />`);
     this.set('size', 'small');
     assert.dom('.input').hasClass('is-small', 'The input wrapper has the appropriate class for small');
@@ -46,8 +40,6 @@ module('Integration | Component | denali-input', function (hooks) {
   });
 
   test('states', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`<DenaliInput @state={{this.state}} />`);
 
     this.set('state', 'active');
@@ -58,22 +50,16 @@ module('Integration | Component | denali-input', function (hooks) {
   });
 
   test('disabled', async function (assert) {
-    assert.expect(1);
-
     await render(hbs`<DenaliInput disabled={{true}}/>`);
     assert.dom('.input input').isDisabled('The input is disabled when specified');
   });
 
   test('placeholder', async function (assert) {
-    assert.expect(1);
-
     await render(hbs`<DenaliInput type="email" placeholder="Email field"/>`);
     assert.dom('.input input').hasAttribute('placeholder', 'Email field', 'The input is has the specified placeholder');
   });
 
   test('is inverse', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`<DenaliInput @isInverse={{this.isInverse}} />`);
     assert.dom('.input').doesNotHaveClass('is-inverse', 'The input wrapper by default does not have the inverse class');
 
@@ -82,8 +68,6 @@ module('Integration | Component | denali-input', function (hooks) {
   });
 
   test('error message', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`<DenaliInput @state="error" @errorMsg={{this.errorMsg}} />`);
     assert.dom('.input.is-error .message').doesNotExist();
 
@@ -92,14 +76,14 @@ module('Integration | Component | denali-input', function (hooks) {
   });
 
   test('icons', async function (assert) {
-    assert.expect(6);
-
-    await render(hbs`<DenaliInput
-      @iconFront={{this.iconFront}}
-      @iconFrontClass="front-icon"
-      @iconBack={{this.iconBack}}
-      @iconBackClass="back-icon"
-    />`);
+    await render(hbs`
+      <DenaliInput
+        @iconFront={{this.iconFront}}
+        @iconFrontClass="front-icon"
+        @iconBack={{this.iconBack}}
+        @iconBackClass="back-icon"
+      />
+    `);
 
     assert
       .dom('.input.has-icon-front')
@@ -123,6 +107,21 @@ module('Integration | Component | denali-input', function (hooks) {
     assert
       .dom('.input.has-icon-back .back-icon')
       .hasClass('d-close-circle-solid', 'The correct denali icon is rendered as the back icon');
+  });
+
+  test('wrapperClass', async function (assert) {
+    await render(hbs`
+      <DenaliInput
+        @wrapperClass={{this.wrapperClass}}
+      />
+    `);
+
+    const wrapperClass = 'wrapperClass';
+    assert.dom('.input').doesNotHaveClass(wrapperClass, '`DenaliInput` does not have custom wrapper class by default');
+
+    this.set('wrapperClass', wrapperClass);
+
+    assert.dom('.input').hasClass(wrapperClass, '`DenaliInput` has custom specified wrapper class');
   });
 
   test('actions', async function (assert) {
