@@ -1,7 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, array, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, array, boolean, select, text } from '@storybook/addon-knobs';
 import { argument, attribute, example } from './knob-categories';
+import { SIZES } from '../addon/components/denali-select-enums';
 
 export default {
   title: 'DenaliSelect',
@@ -26,13 +27,15 @@ export const Default = () => ({
   },
 });
 
+const allSizes = [undefined, ...SIZES];
+
 export const Playground = () => ({
   template: hbs`
     <DenaliSelect
       @options={{items}}
       @selectedOption={{selectedItem}}
       @disabledOptions={{disabledItems}}
-      @isSmall={{isSmall}}
+      @size={{size}}
       @isInverse={{isInverse}}
       @onChange={{queue onChange (fn (mut selectedItem))}}
       class={{class}}
@@ -41,7 +44,7 @@ export const Playground = () => ({
     </DenaliSelect>
   `,
   context: {
-    isSmall: boolean('isSmall', false, argument),
+    size: select('size', allSizes, allSizes[0], argument),
     isInverse: boolean('isInverse', false, argument),
     class: text('class', '', attribute),
     items: array('items', ['Ember', 'Denali', 'Select'], ',', example),
