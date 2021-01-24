@@ -3,36 +3,6 @@
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 
-.ember-basic-dropdown {
-  &.is-large {
-    .ember-power-select-trigger {
-      min-height: $fields-sizes-lg-height;
-    }
-  }
-  &.is-medium {
-    .ember-power-select-trigger {
-      min-height: $fields-sizes-md-height;
-    }
-    .ember-power-select-multiple-option {
-      font-size: $tags-small-text-size;
-      height: $tags-small-height;
-      margin: 3px 3px 3px 0;
-      padding: $tags-small-padding;
-    }
-  }
-  &.is-small {
-    .ember-power-select-trigger {
-      min-height: $fields-sizes-sm-height;
-    }
-    .ember-power-select-multiple-option {
-      font-size: $tags-small-text-size;
-      height: 18px;
-      margin: 2px 3px 2px 0;
-      padding: $tags-small-padding;
-    }
-  }
-}
-
 .ember-power-select-trigger {
   align-items: center;
   background: $fields-default-bg;
@@ -42,8 +12,7 @@
   display: flex;
   min-height: $fields-sizes-default-height;
   outline: none;
-  padding-left: 10px;
-  padding-right: 25px;
+  padding: 2px 25px 2px 10px;
   position: relative;
   &:before {
     content: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path style="fill:#{$fields-dropdown-arrow-color}" d="M24,27.17,13.4,16.59a2,2,0,0,0-3.05.25,2.07,2.07,0,0,0,.3,2.65L22.59,31.41a2,2,0,0,0,2.83,0L37.35,19.49a2.07,2.07,0,0,0,.3-2.65,2,2,0,0,0-3-.25Z"/></svg>');
@@ -56,14 +25,50 @@
     right: 10px;
     width: 18px;
   }
+
   &--active {
     box-shadow: $fields-focus-border;
+  }
+
+  &[aria-disabled='true'] {
+    background: $fields-disabled-bg;
+  }
+
+  &.is-large {
+    min-height: $fields-sizes-lg-height;
+  }
+
+  &.is-medium {
+    min-height: $fields-sizes-md-height;
+
+    .ember-power-select-multiple-option {
+      font-size: $tags-small-text-size;
+      height: $tags-small-height;
+      margin: 3px 3px 3px 0;
+      padding: $tags-small-padding;
+    }
+  }
+
+  &.is-small {
+    min-height: $fields-sizes-sm-height;
+
+    .ember-power-select-multiple-option {
+      font-size: $tags-small-text-size;
+      height: 18px;
+      margin: 2px 3px 2px 0;
+      padding: $tags-small-padding;
+    }
   }
 }
 
 .ember-power-select-multiple-options {
   display: flex;
   flex-wrap: wrap;
+}
+
+.ember-power-select-options {
+  max-height: 12em;
+  overflow-x: auto;
 }
 
 .ember-power-select-multiple-option {
@@ -77,6 +82,23 @@
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.ember-power-select-group {
+  .ember-power-select-option {
+    padding: 8px 16px;
+  }
+}
+
+.ember-power-select-group-name {
+  display: block;
+  padding: 8px;
+}
+
+.ember-power-select-group-name {
+  text-transform: uppercase;
+  color: $color-grey-700;
+  font-size: 12px;
 }
 
 .ember-power-select-option {
