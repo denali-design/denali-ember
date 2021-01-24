@@ -4,7 +4,7 @@
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { oneOf, boolean, string } from 'prop-types';
+import { oneOf, boolean, string, func } from 'prop-types';
 import { STATES } from './denali-tag-enums';
 
 export default class DenaliTagComponent extends Component {
@@ -22,6 +22,18 @@ export default class DenaliTagComponent extends Component {
 
   @arg(string)
   iconBack;
+
+  @arg(string)
+  iconFrontClass;
+
+  @arg(string)
+  iconBackClass;
+
+  @arg(func)
+  onIconFrontClick = () => null;
+
+  @arg(func)
+  onIconBackClick = () => null;
 
   get isActiveClass() {
     return this.state === 'active' ? 'is-active' : undefined;
