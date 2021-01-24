@@ -27,6 +27,8 @@ export const Playground = () => ({
       @size={{size}}
       @isFull={{isFull}}
       @style={{style}}
+      @icon={{icon}}
+      @iconOnly={{iconOnly}}
       @type={{type}}
       disabled={{disabled}}
       class={{class}}
@@ -42,6 +44,8 @@ export const Playground = () => ({
     size: select('size', SIZES, SIZES[0], argument),
     isFull: boolean('isFull', false, argument),
     style: select('style', STYLES, STYLES[0], argument),
+    icon: text('icon', '', argument),
+    iconOnly: boolean('iconOnly', false, argument),
     type: select('type', TYPES, TYPES[0], argument),
     class: text('class', '', attribute),
     disabled: boolean('disabled', false, attribute),
