@@ -36,6 +36,7 @@ export const Playground = () => ({
       @selectedOption={{selectedItem}}
       @disabledOptions={{disabledItems}}
       @size={{size}}
+      @wrapperClass={{wrapperClass}}
       @isInverse={{isInverse}}
       @onChange={{queue onChange (fn (mut selectedItem))}}
       class={{class}}
@@ -47,6 +48,7 @@ export const Playground = () => ({
     size: select('size', allSizes, allSizes[0], argument),
     isInverse: boolean('isInverse', false, argument),
     class: text('class', '', attribute),
+    wrapperClass: text('wrapperClass', '', attribute),
     items: array('items', ['Ember', 'Denali', 'Select'], ',', example),
     selectedItem: text('selectedItem', 'Denali', example),
     disabledItems: array('disabledItems', ['Select'], ',', example),

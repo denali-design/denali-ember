@@ -1,5 +1,5 @@
 {{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
-<div class="input has-arrow {{this.sizeClass}} {{this.isInverseClass}}">
+<div class="input has-arrow {{this.sizeClass}} {{this.isInverseClass}} {{this.wrapperClass}}">
   <select {{on "change" this.onSelect}} ...attributes>
     {{#each this.options as |opt|}}
       <option
