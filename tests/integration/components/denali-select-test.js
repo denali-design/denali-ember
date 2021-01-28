@@ -105,7 +105,7 @@ module('Integration | Component | denali-select', function (hooks) {
     assert.dom('.input').doesNotHaveClass(wrapperClass, 'DenaliSelect wrapper does not have a size class by default');
 
     this.set('wrapperClass', wrapperClass);
-    assert.dom('.input').hasClass(wrapperClass, 'DenaliSelect wrapper has the appropriate class for small');
+    assert.dom('.input').hasClass(wrapperClass, 'DenaliSelect wrapper has the provided wrapper class');
   });
 
   test('it supports sizes', async function (assert) {
