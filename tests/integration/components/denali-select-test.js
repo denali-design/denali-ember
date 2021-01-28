@@ -89,11 +89,30 @@ module('Integration | Component | denali-select', function (hooks) {
     );
   });
 
+  test('it supports wrapperClass', async function (assert) {
+    this.set('options', opts);
+    await render(hbs`
+      <DenaliSelect
+        @options={{this.options}}
+        @wrapperClass={{this.wrapperClass}}
+        as |option|
+      >
+        {{option.text}}
+      </DenaliSelect>
+    `);
+
+    const wrapperClass = 'wrapperClass';
+    assert.dom('.input').doesNotHaveClass(wrapperClass, 'DenaliSelect wrapper does not have a size class by default');
+
+    this.set('wrapperClass', wrapperClass);
+    assert.dom('.input').hasClass(wrapperClass, 'DenaliSelect wrapper has the provided wrapper class');
+  });
+
   test('it supports sizes', async function (assert) {
     this.set('options', opts);
     await render(hbs`
-      <DenaliSelect 
-        @options={{this.options}} 
+      <DenaliSelect
+        @options={{this.options}}
         @size={{this.size}}
         as |option|
       >
