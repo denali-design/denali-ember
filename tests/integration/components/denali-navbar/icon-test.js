@@ -20,10 +20,9 @@ module('Integration | Component | denali-navbar/icon', function (hooks) {
   });
 
   test('name renders', async function (assert) {
-    this.set('icon', 'code');
     await render(hbs`
       <DenaliNavbar::Icon
-        @icon={{this.icon}}
+        @icon="code"
         @name={{this.name}}
       />
     `);
