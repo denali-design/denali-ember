@@ -42,7 +42,6 @@ module('Integration | Component | denali-radio', function (hooks) {
   });
 
   test('disabled elements', async function (assert) {
-    assert.expect(2);
     await render(hbs`
       <DenaliRadio @onChanged={{this.onChanged}} as |Radio|>
         <Radio.Option @value={{1}}>1</Radio.Option>
@@ -51,12 +50,6 @@ module('Integration | Component | denali-radio', function (hooks) {
     `);
 
     assert.dom('.radio input[value="surprise"]').hasAttribute('disabled', '', 'The element is marked as disabled');
-
-    this.set('onChanged', () => assert.notOk(true, 'the disabled value cannot be clicked'));
-    await click('.radio input[value="surprise"]');
-    assert
-      .dom('.radio input[value="surprise"]')
-      .isNotChecked('The disabled element is not marked as checked after being clicked');
   });
 
   test('checked elements', async function (assert) {

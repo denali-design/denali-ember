@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | denali-alert-inline', function(hooks) {
+module('Integration | Component | denali-alert-inline', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders in block form', async function(assert) {
+  test('it renders in block form', async function (assert) {
     assert.expect(1);
 
     await render(hbs`
@@ -17,7 +17,7 @@ module('Integration | Component | denali-alert-inline', function(hooks) {
     assert.dom('div.alert.is-inline').exists('Inline alert renders in block form correctly');
   });
 
-  test('it renders in non-block form', async function(assert) {
+  test('it renders in non-block form', async function (assert) {
     assert.expect(1);
 
     await render(hbs`
@@ -60,7 +60,12 @@ module('Integration | Component | denali-alert-inline', function(hooks) {
     `);
 
     assert.dom('.alert span.is-bold').hasText('Test Title:', 'Only the title is bold');
-    assert.dom('.alert p').hasText('Test Title: Alert Context Details', 'DenaliAlertInline renders both the title and context inside the p element');
+    assert
+      .dom('.alert p')
+      .hasText(
+        'Test Title: Alert Context Details',
+        'DenaliAlertInline renders both the title and context inside the p element'
+      );
   });
 
   test('it can render a context block in non-block form', async function (assert) {
@@ -71,7 +76,12 @@ module('Integration | Component | denali-alert-inline', function(hooks) {
     `);
 
     assert.dom('.alert span.is-bold').hasText('Test Title:', 'Only the title is bold');
-    assert.dom('.alert p').hasText('Test Title: Alert Context Details', 'DenaliAlertInline renders both the title and context inside the p element');
+    assert
+      .dom('.alert p')
+      .hasText(
+        'Test Title: Alert Context Details',
+        'DenaliAlertInline renders both the title and context inside the p element'
+      );
   });
 
   test('it can render different alert types', async function (assert) {
@@ -82,17 +92,25 @@ module('Integration | Component | denali-alert-inline', function(hooks) {
     `);
 
     assert.dom('.alert.is-inline').hasNoClass('No class is added when type is not set');
-    
-    this.set('type', 'info')
-    assert.dom('.alert.is-inline').hasClass('has-bg-status-info', 'DenaliAlertInline has info styles when `@type` arg is set to info');
-    
-    this.set('type', 'warning')
-    assert.dom('.alert.is-inline').hasClass('has-bg-status-warning', 'DenaliAlertInline has warning styles when `@type` arg is set to warning');
-    
-    this.set('type', 'success')
-    assert.dom('.alert.is-inline').hasClass('has-bg-status-success', 'DenaliAlertInline has success styles when `@type` arg is set to success');
-    
-    this.set('type', 'danger')
-    assert.dom('.alert.is-inline').hasClass('has-bg-status-danger', 'DenaliAlertInline has danger styles when `@type` arg is set to danger');
+
+    this.set('type', 'info');
+    assert
+      .dom('.alert.is-inline')
+      .hasClass('has-bg-status-info', 'DenaliAlertInline has info styles when `@type` arg is set to info');
+
+    this.set('type', 'warning');
+    assert
+      .dom('.alert.is-inline')
+      .hasClass('has-bg-status-warning', 'DenaliAlertInline has warning styles when `@type` arg is set to warning');
+
+    this.set('type', 'success');
+    assert
+      .dom('.alert.is-inline')
+      .hasClass('has-bg-status-success', 'DenaliAlertInline has success styles when `@type` arg is set to success');
+
+    this.set('type', 'danger');
+    assert
+      .dom('.alert.is-inline')
+      .hasClass('has-bg-status-danger', 'DenaliAlertInline has danger styles when `@type` arg is set to danger');
   });
 });

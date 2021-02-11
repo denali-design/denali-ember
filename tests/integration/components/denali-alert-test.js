@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | denali-alert', function(hooks) {
+module('Integration | Component | denali-alert', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders in block form', async function (assert) {
@@ -59,7 +59,6 @@ module('Integration | Component | denali-alert', function(hooks) {
   });
 
   test('it supports block styles', async function (assert) {
-
     await render(hbs`
         <DenaliAlert @title="Alert Title!!1" @isBlock={{this.isBlock}}/>
     `);
@@ -71,32 +70,41 @@ module('Integration | Component | denali-alert', function(hooks) {
   });
 
   test('it can render different alert types', async function (assert) {
-
     await render(hbs`
         <DenaliAlert @title="Alert Title!!1" @type={{this.type}}/>
     `);
 
     assert.dom('.alert .d-icon').hasClass('d-notification', 'DenaliAlert renders the notification icon by default');
 
-    this.set('type', 'info')
+    this.set('type', 'info');
     assert.dom('.alert').hasClass('is-info', 'DenaliAlert has info styles when `@type` arg is set to info');
-    assert.dom('.alert .d-icon').hasClass('d-information-circle', 'DenaliAlert renders the information-circle icon when `@type` arg is set to info');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass(
+        'd-information-circle',
+        'DenaliAlert renders the information-circle icon when `@type` arg is set to info'
+      );
 
-    this.set('type', 'warning')
+    this.set('type', 'warning');
     assert.dom('.alert').hasClass('is-warning', 'DenaliAlert has warning styles when `@type` arg is set to warning');
-    assert.dom('.alert .d-icon').hasClass('d-warning', 'DenaliAlert renders the warning icon when `@type` arg is set to warning');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass('d-warning', 'DenaliAlert renders the warning icon when `@type` arg is set to warning');
 
-    this.set('type', 'success')
+    this.set('type', 'success');
     assert.dom('.alert').hasClass('is-success', 'DenaliAlert has success styles when `@type` arg is set to success');
-    assert.dom('.alert .d-icon').hasClass('d-success', 'DenaliAlert renders the success icon when `@type` arg is set to success');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass('d-success', 'DenaliAlert renders the success icon when `@type` arg is set to success');
 
-    this.set('type', 'danger')
+    this.set('type', 'danger');
     assert.dom('.alert').hasClass('is-danger', 'DenaliAlert has danger styles when `@type` arg is set to danger');
-    assert.dom('.alert .d-icon').hasClass('d-stop-warning', 'DenaliAlert renders the danger icon when `@type` arg is set to danger');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass('d-stop-warning', 'DenaliAlert renders the danger icon when `@type` arg is set to danger');
   });
 
   test('it renders solid icons when `@isBlock` arg is true', async function (assert) {
-
     await render(hbs`
       <DenaliAlert
         @title="Alert Title!!1"
@@ -105,19 +113,44 @@ module('Integration | Component | denali-alert', function(hooks) {
       />
     `);
 
-    assert.dom('.alert .d-icon').hasClass('d-notification-solid', 'DenaliAlert renders the solid notification icon by default when `@isBlock` is set to true');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass(
+        'd-notification-solid',
+        'DenaliAlert renders the solid notification icon by default when `@isBlock` is set to true'
+      );
 
-    this.set('type', 'info')
-    assert.dom('.alert .d-icon').hasClass('d-information-circle-solid', 'DenaliAlert renders the solid information-circle icon when `@type` arg is set to info and `@isBlock` arg is set to true');
+    this.set('type', 'info');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass(
+        'd-information-circle-solid',
+        'DenaliAlert renders the solid information-circle icon when `@type` arg is set to info and `@isBlock` arg is set to true'
+      );
 
-    this.set('type', 'warning')
-    assert.dom('.alert .d-icon').hasClass('d-warning-solid', 'DenaliAlert renders the solid warning icon when `@type` arg is set to warning and `@isBlock` arg is set to true');
+    this.set('type', 'warning');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass(
+        'd-warning-solid',
+        'DenaliAlert renders the solid warning icon when `@type` arg is set to warning and `@isBlock` arg is set to true'
+      );
 
-    this.set('type', 'success')
-    assert.dom('.alert .d-icon').hasClass('d-success-solid', 'DenaliAlert renders the solid success icon when `@type` arg is set to success and `@isBlock` arg is set to true');
+    this.set('type', 'success');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass(
+        'd-success-solid',
+        'DenaliAlert renders the solid success icon when `@type` arg is set to success and `@isBlock` arg is set to true'
+      );
 
-    this.set('type', 'danger')
-    assert.dom('.alert .d-icon').hasClass('d-stop-warning-solid', 'DenaliAlert renders the solid danger icon when `@type` arg is set to danger and `@isBlock` arg is set to true');
+    this.set('type', 'danger');
+    assert
+      .dom('.alert .d-icon')
+      .hasClass(
+        'd-stop-warning-solid',
+        'DenaliAlert renders the solid danger icon when `@type` arg is set to danger and `@isBlock` arg is set to true'
+      );
   });
 
   test('it can render a close button', async function (assert) {

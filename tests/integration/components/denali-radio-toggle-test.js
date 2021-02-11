@@ -41,7 +41,6 @@ module('Integration | Component | denali-radio-toggle', function (hooks) {
   });
 
   test('it handles disabled elements for radio options', async function (assert) {
-    assert.expect(2);
     await render(hbs`
       <DenaliRadioToggle @onChanged={{this.onChanged}} as |Toggle|>
         <Toggle.Option @value={{1}}>1</Toggle.Option>
@@ -50,12 +49,6 @@ module('Integration | Component | denali-radio-toggle', function (hooks) {
     `);
 
     assert.dom('.toggle input[value="surprise"]').hasAttribute('disabled', '', 'The element is marked as disabled');
-
-    this.set('onChanged', () => assert.notOk(true, 'the disabled value cannot be clicked'));
-    await click('.toggle input[value="surprise"]');
-    assert
-      .dom('.toggle input[value="surprise"]')
-      .isNotChecked('The disabled element is not marked as checked after being clicked');
   });
 
   test('it handles checked elements for radio options', async function (assert) {
