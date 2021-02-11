@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
-import { TYPES } from '../addon/components/denali-alert-enums';
+import { STYLES } from '../addon/components/denali-alert-enums';
 import { argument, attribute } from './knob-categories';
 
 export default {
@@ -37,14 +37,14 @@ export const Playground = () => ({
     <DenaliAlertInline
       @title={{title}}
       @context={{context}}
-      @type={{type}}
+      @style={{style}}
       class={{class}}
     />
   `,
   context: {
     title: text('title', 'Denali Inline Alert', argument),
     context: text('context', 'Optional alert details', argument),
-    type: select('type', TYPES, TYPES[0], argument),
+    style: select('style', STYLES, STYLES[0], argument),
     class: text('class', '', attribute),
   },
 });

@@ -84,33 +84,33 @@ module('Integration | Component | denali-alert-inline', function (hooks) {
       );
   });
 
-  test('it can render different alert types', async function (assert) {
+  test('it can render different alert styles', async function (assert) {
     assert.expect(5);
 
     await render(hbs`
-      <DenaliAlertInline @title="Alert Title:" @context="Hello World!" @type={{this.type}}/>
+      <DenaliAlertInline @title="Alert Title:" @context="Hello World!" @style={{this.style}}/>
     `);
 
-    assert.dom('.alert.is-inline').hasNoClass('No class is added when type is not set');
+    assert.dom('.alert.is-inline').hasNoClass('No class is added when style is not set');
 
-    this.set('type', 'info');
+    this.set('style', 'info');
     assert
       .dom('.alert.is-inline')
-      .hasClass('has-bg-status-info', 'DenaliAlertInline has info styles when `@type` arg is set to info');
+      .hasClass('has-bg-status-info', 'DenaliAlertInline has info styles when `@style` arg is set to info');
 
-    this.set('type', 'warning');
+    this.set('style', 'warning');
     assert
       .dom('.alert.is-inline')
-      .hasClass('has-bg-status-warning', 'DenaliAlertInline has warning styles when `@type` arg is set to warning');
+      .hasClass('has-bg-status-warning', 'DenaliAlertInline has warning styles when `@style` arg is set to warning');
 
-    this.set('type', 'success');
+    this.set('style', 'success');
     assert
       .dom('.alert.is-inline')
-      .hasClass('has-bg-status-success', 'DenaliAlertInline has success styles when `@type` arg is set to success');
+      .hasClass('has-bg-status-success', 'DenaliAlertInline has success styles when `@style` arg is set to success');
 
-    this.set('type', 'danger');
+    this.set('style', 'danger');
     assert
       .dom('.alert.is-inline')
-      .hasClass('has-bg-status-danger', 'DenaliAlertInline has danger styles when `@type` arg is set to danger');
+      .hasClass('has-bg-status-danger', 'DenaliAlertInline has danger styles when `@style` arg is set to danger');
   });
 });

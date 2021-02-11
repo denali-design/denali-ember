@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
-import { TYPES } from '../addon/components/denali-alert-enums';
+import { STYLES } from '../addon/components/denali-alert-enums';
 import { argument, attribute } from './knob-categories';
 
 export default {
@@ -38,7 +38,7 @@ export const Playground = () => ({
     <DenaliAlert
       @title={{title}}
       @context={{context}}
-      @type={{type}}
+      @style={{style}}
       @icon={{icon}}
       @isBlock={{isBlock}}
       @onClose={{onClose}}
@@ -48,7 +48,7 @@ export const Playground = () => ({
   context: {
     title: text('title', 'Denali Alert', argument),
     context: text('context', 'Optional alert details', argument),
-    type: select('type', TYPES, TYPES[0], argument),
+    style: select('style', STYLES, STYLES[0], argument),
     icon: text('icon', 'stop-urgent', argument),
     isBlock: boolean('isBlock', false, argument),
     onClose: action('onClose'),
