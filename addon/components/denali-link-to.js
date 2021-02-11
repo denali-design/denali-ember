@@ -2,6 +2,8 @@
  * Copyright 2020, Verizon Media
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
+
+/* eslint-disable ember/no-computed-properties-in-native-classes */
 import LinkComponent from '@ember/routing/link-component';
 import { computed } from '@ember/object';
 

@@ -20,5 +20,5 @@
 /bower.json.ember-try
 /package.json.ember-try
 
-# storybookjs
-/.storybook/
+# prettier
+/storybook/preview-head.html
