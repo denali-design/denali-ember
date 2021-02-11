@@ -74,34 +74,31 @@ module('Integration | Component | denali-alert', function (hooks) {
         <DenaliAlert @title="Alert Title!!1" @type={{this.type}}/>
     `);
 
-    assert.dom('.alert .d-icon').hasClass('d-notification', 'DenaliAlert renders the notification icon by default');
-
     this.set('type', 'info');
     assert.dom('.alert').hasClass('is-info', 'DenaliAlert has info styles when `@type` arg is set to info');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass(
-        'd-information-circle',
-        'DenaliAlert renders the information-circle icon when `@type` arg is set to info'
-      );
 
     this.set('type', 'warning');
     assert.dom('.alert').hasClass('is-warning', 'DenaliAlert has warning styles when `@type` arg is set to warning');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass('d-warning', 'DenaliAlert renders the warning icon when `@type` arg is set to warning');
 
     this.set('type', 'success');
     assert.dom('.alert').hasClass('is-success', 'DenaliAlert has success styles when `@type` arg is set to success');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass('d-success', 'DenaliAlert renders the success icon when `@type` arg is set to success');
 
     this.set('type', 'danger');
     assert.dom('.alert').hasClass('is-danger', 'DenaliAlert has danger styles when `@type` arg is set to danger');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass('d-stop-warning', 'DenaliAlert renders the danger icon when `@type` arg is set to danger');
+  });
+
+  test('it icons when provided with `icon` arg', async function (assert) {
+    await render(hbs`
+      <DenaliAlert
+        @title="Alert Title!!1"
+        @icon={{this.icon}}
+      />
+    `);
+
+    assert.dom('.alert .d-icon').doesNotHaveClass('d-check-circle', 'DenaliAlert does not render an icon by default');
+
+    this.set('icon', 'check-circle');
+    assert.dom('.alert .d-icon').hasClass('d-check-circle', 'DenaliAlert renders the specified `@icon` arg');
   });
 
   test('it renders solid icons when `@isBlock` arg is true', async function (assert) {
@@ -110,46 +107,15 @@ module('Integration | Component | denali-alert', function (hooks) {
         @title="Alert Title!!1"
         @type={{this.type}}
         @isBlock={{true}}
+        @icon="check-circle"
       />
     `);
 
     assert
       .dom('.alert .d-icon')
       .hasClass(
-        'd-notification-solid',
+        'd-check-circle-solid',
         'DenaliAlert renders the solid notification icon by default when `@isBlock` is set to true'
-      );
-
-    this.set('type', 'info');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass(
-        'd-information-circle-solid',
-        'DenaliAlert renders the solid information-circle icon when `@type` arg is set to info and `@isBlock` arg is set to true'
-      );
-
-    this.set('type', 'warning');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass(
-        'd-warning-solid',
-        'DenaliAlert renders the solid warning icon when `@type` arg is set to warning and `@isBlock` arg is set to true'
-      );
-
-    this.set('type', 'success');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass(
-        'd-success-solid',
-        'DenaliAlert renders the solid success icon when `@type` arg is set to success and `@isBlock` arg is set to true'
-      );
-
-    this.set('type', 'danger');
-    assert
-      .dom('.alert .d-icon')
-      .hasClass(
-        'd-stop-warning-solid',
-        'DenaliAlert renders the solid danger icon when `@type` arg is set to danger and `@isBlock` arg is set to true'
       );
   });
 

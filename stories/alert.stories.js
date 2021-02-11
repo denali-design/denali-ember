@@ -35,10 +35,11 @@ export const BlockForm = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliAlert 
+    <DenaliAlert
       @title={{title}}
       @context={{context}}
       @type={{type}}
+      @icon={{icon}}
       @isBlock={{isBlock}}
       @onClose={{onClose}}
       class={{class}}
@@ -48,6 +49,7 @@ export const Playground = () => ({
     title: text('title', 'Denali Alert', argument),
     context: text('context', 'Optional alert details', argument),
     type: select('type', TYPES, TYPES[0], argument),
+    icon: text('icon', 'stop-urgent', argument),
     isBlock: boolean('isBlock', false, argument),
     onClose: action('onClose'),
     class: text('class', '', attribute),
