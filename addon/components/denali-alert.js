@@ -5,7 +5,7 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, func, oneOf, string } from 'prop-types';
-import { TYPES, TYPE_ICONS } from './denali-alert-enums';
+import { TYPES } from './denali-alert-enums';
 
 export default class DenaliAlertComponent extends Component {
   @arg(oneOf(TYPES))
@@ -20,6 +20,9 @@ export default class DenaliAlertComponent extends Component {
   @arg(string)
   context;
 
+  @arg(string)
+  icon;
+
   @arg(func)
   onClose;
 
@@ -28,8 +31,8 @@ export default class DenaliAlertComponent extends Component {
   }
 
   get iconClass() {
-    const { type, isBlock } = this;
-    return `d-${TYPE_ICONS[type]}${isBlock ? '-solid' : ''}`;
+    const { icon, isBlock } = this;
+    return icon ? `d-${icon}${isBlock ? '-solid' : ''}` : undefined;
   }
 
   get typeClass() {

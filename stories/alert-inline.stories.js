@@ -34,7 +34,7 @@ export const BlockForm = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliAlertInline 
+    <DenaliAlertInline
       @title={{title}}
       @context={{context}}
       @type={{type}}
