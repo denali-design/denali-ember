@@ -21,4 +21,4 @@
 /package.json.ember-try
 
 # prettier
-/storybook/preview-head.html
+/.storybook/preview-head.html
