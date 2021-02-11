@@ -69,22 +69,22 @@ module('Integration | Component | denali-alert', function (hooks) {
     assert.dom('.alert').hasClass('is-block', 'DenaliAlert has block styles when `@isBlock` arg is set to true');
   });
 
-  test('it can render different alert types', async function (assert) {
+  test('it can render different alert styles', async function (assert) {
     await render(hbs`
-        <DenaliAlert @title="Alert Title!!1" @type={{this.type}}/>
+        <DenaliAlert @title="Alert Title!!1" @style={{this.style}}/>
     `);
 
-    this.set('type', 'info');
-    assert.dom('.alert').hasClass('is-info', 'DenaliAlert has info styles when `@type` arg is set to info');
+    this.set('style', 'info');
+    assert.dom('.alert').hasClass('is-info', 'DenaliAlert has info styles when `@style` arg is set to info');
 
-    this.set('type', 'warning');
-    assert.dom('.alert').hasClass('is-warning', 'DenaliAlert has warning styles when `@type` arg is set to warning');
+    this.set('style', 'warning');
+    assert.dom('.alert').hasClass('is-warning', 'DenaliAlert has warning styles when `@style` arg is set to warning');
 
-    this.set('type', 'success');
-    assert.dom('.alert').hasClass('is-success', 'DenaliAlert has success styles when `@type` arg is set to success');
+    this.set('style', 'success');
+    assert.dom('.alert').hasClass('is-success', 'DenaliAlert has success styles when `@style` arg is set to success');
 
-    this.set('type', 'danger');
-    assert.dom('.alert').hasClass('is-danger', 'DenaliAlert has danger styles when `@type` arg is set to danger');
+    this.set('style', 'danger');
+    assert.dom('.alert').hasClass('is-danger', 'DenaliAlert has danger styles when `@style` arg is set to danger');
   });
 
   test('it icons when provided with `icon` arg', async function (assert) {
@@ -105,7 +105,7 @@ module('Integration | Component | denali-alert', function (hooks) {
     await render(hbs`
       <DenaliAlert
         @title="Alert Title!!1"
-        @type={{this.type}}
+        @style={{this.style}}
         @isBlock={{true}}
         @icon="check-circle"
       />
