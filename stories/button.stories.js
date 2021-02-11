@@ -31,6 +31,7 @@ export const Playground = () => ({
       @iconOnly={{iconOnly}}
       @type={{type}}
       disabled={{disabled}}
+      @isLoading={{isLoading}}
       class={{class}}
       {{on "click" onClick}}
     >
@@ -43,6 +44,7 @@ export const Playground = () => ({
     onClick: action('onClick'),
     size: select('size', SIZES, SIZES[0], argument),
     isFull: boolean('isFull', false, argument),
+    isLoading: boolean('isLoading', false, argument),
     style: select('style', STYLES, STYLES[0], argument),
     icon: text('icon', '', argument),
     iconOnly: boolean('iconOnly', false, argument),

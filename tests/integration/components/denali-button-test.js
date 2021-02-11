@@ -186,5 +186,8 @@ module('Integration | Component | denali-button', function (hooks) {
     assert.dom('.button').hasNoText('DenaliButton does not render inner text when `@isLoading` arg is true');
     assert.dom('.button .d-icon').doesNotExist('DenaliButton does not render an icon when `@isLoading` arg is true');
     assert.dom('.button div.loader').exists('DenaliButton renders a loader when `@isLoading` arg is true');
+    assert
+      .dom('.button div')
+      .hasClass('loader--button', 'DenaliButton has `loader--button` class when `@isLoading` arg is true');
   });
 });
