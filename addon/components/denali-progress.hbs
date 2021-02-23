@@ -1,13 +1,13 @@
 {{! Copyright 2021, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 {{#if this.isLoading}}
-    <div class="d-progress d-progress__loading {{this.sizeCLass}}"></div>
+    <div class="d-progress d-progress__loading {{this.sizeClass}}"></div>
 {{else}}
-    <div class="d-progress {{this.sizeCLass}}" ...attributes>
-        {{#each this.renderablePercentages as |n|}}
-            {{#if n.color}}
-                 <div class="d-progress--bar" role="progressbar" style="width: {{n.value}}%;background-color: {{n.color}};" aria-valuenow={{n.value}} aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="d-progress {{this.sizeClass}}" ...attributes>
+        {{#each this.renderablePercentages as |percentPart|}}
+            {{#if percentPart.color}}
+                 <div class="d-progress--bar" role="progressbar" style={{percentPart.style}} aria-valuenow={{percentPart.value}} aria-valuemin="0" aria-valuemax="100"></div>
             {{else}}
-                <div class="d-progress--bar" role="progressbar" style="width: {{n.value}}%;" aria-valuenow={{n.value}} aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="d-progress--bar" role="progressbar" style="width: {{percentPart.value}}%;" aria-valuenow={{percentPart.value}} aria-valuemin="0" aria-valuemax="100"></div>
             {{/if}}
         {{/each}}
     </div>

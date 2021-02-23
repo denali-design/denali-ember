@@ -6,10 +6,11 @@ import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { array, boolean, oneOf } from 'prop-types';
 import { SIZES } from './denali-progress-enums';
+import { htmlSafe } from '@ember/template';
 
 export default class DenaliProgressComponent extends Component {
   @arg(array)
-  percent = [0];
+  percents = [0];
 
   @arg(array)
   colors = [];
@@ -22,16 +23,20 @@ export default class DenaliProgressComponent extends Component {
 
   get renderablePercentages() {
     let renderablePercentages = [];
-    const maxLimit = Math.max(this.percent.length, this.colors.length);
+    const maxLimit = Math.max(this.percents.length, this.colors.length);
     let remainingPercent = 100;
     for (let i = 0; i < maxLimit; i++) {
-      let renderValue = Math.min(this.percent[i], remainingPercent);
-      let obj = {
+      let renderValue = Math.min(this.percents[i], remainingPercent);
+      let colorVal = this.colors[i] || '';
+      const obj = {
         value: renderValue,
-        color: this.colors[i] || '',
+        color: colorVal,
+        style: colorVal
+          ? htmlSafe(`width: ${renderValue}%;background-color: ${colorVal}`)
+          : htmlSafe(`width: ${renderValue}%;`),
       };
       renderablePercentages.push(obj);
-      remainingPercent -= this.percent[i];
+      remainingPercent -= this.percents[i];
       if (remainingPercent <= 0) {
         break;
       }
@@ -39,7 +44,7 @@ export default class DenaliProgressComponent extends Component {
     return renderablePercentages;
   }
 
-  get sizeCLass() {
+  get sizeClass() {
     if (this.size === SIZES[1]) {
       return 'd-progress__sm';
     } else if (this.size === SIZES[2]) {

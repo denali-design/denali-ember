@@ -1,8 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, array, text, boolean, select, number } from '@storybook/addon-knobs';
-import { STYLES, SIZES, TYPES } from '../addon/components/denali-button-enums';
-import { attribute, argument, content } from './knob-categories';
+import { withKnobs, array, boolean, select } from '@storybook/addon-knobs';
+import { SIZES } from '../addon/components/denali-button-enums';
+import { argument } from './knob-categories';
 
 export default {
   title: 'DenaliProgress',
@@ -12,26 +11,26 @@ export default {
 
 export const Default = () => ({
   template: hbs`
-    <DenaliProgress @percent={{percent}}/>
+    <DenaliProgress @percents={{percents}}/>
   `,
   context: {
-    percent: array('percent', [50]),
+    percents: array('percents', [50]),
   },
 });
 
 export const Playground = () => ({
   template: hbs`
     <DenaliProgress
-    @percent={{percent}}
+    @percents={{percents}}
     @size={{size}}
     @isLoading={{isLoading}}
     @colors={{colors}}
     />
   `,
   context: {
-    percent: array('percent', [50]),
+    percents: array('percents', [50], ',', argument),
+    colors: array('colors', ['purple'], ',', argument),
     size: select('size', SIZES, SIZES[0], argument),
     isLoading: boolean('isLoading', false, argument),
-    colors: array('colors', []),
   },
 });

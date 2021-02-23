@@ -19,7 +19,7 @@ module('Integration | Component | denali-progress', function (hooks) {
 
   test('it supports percent', async function (assert) {
     await render(hbs`
-      <DenaliProgress @percent={{this.percent}}/>
+      <DenaliProgress @percents={{this.percents}}/>
     `);
 
     assert.dom('.d-progress div').exists('A div is rendered within a wrapper div with class `.d-progress`');
@@ -30,26 +30,24 @@ module('Integration | Component | denali-progress', function (hooks) {
       .dom('.d-progress div')
       .hasAttribute('aria-valuenow', '0', 'DenaliProgress percent default value should be `0`');
 
-    this.set('percent', [30]);
+    this.set('percents', [30]);
     assert.dom('.d-progress div').hasAttribute('aria-valuenow', '30', 'DenaliProgress percent should be updated to 30');
 
-    this.set('percent', [100]);
+    this.set('percents', [100]);
     assert
       .dom('.d-progress div')
       .hasAttribute('aria-valuenow', '100', 'DenaliProgress percent should be updated to 100');
 
-    this.set('percent', [0]);
+    this.set('percents', [0]);
     assert.dom('.d-progress div').hasAttribute('aria-valuenow', '0', 'DenaliProgress percent should be updated to 0');
   });
 
   test('it supports colors', async function (assert) {
     await render(hbs`
-      <DenaliProgress @percent={{this.percent}} @colors={{this.colors}} />
+      <DenaliProgress @percents={{this.percents}} @colors={{this.colors}} />
     `);
 
-    const redBgStyle = 'width: 30%;background-color: red;';
-    const greenBgStyle = 'width: 30%;background-color: green;';
-    this.set('percent', [30]);
+    this.set('percents', [30]);
     assert
       .dom('.d-progress div')
       .hasAttribute('aria-valuenow', '30', 'DenaliProgress with default color should be displayed');
@@ -57,12 +55,16 @@ module('Integration | Component | denali-progress', function (hooks) {
     this.set('colors', ['red']);
     assert
       .dom('.d-progress div')
-      .hasAttribute('style', redBgStyle, 'DenaliProgress with red color should be displayed');
+      .hasAttribute('style', 'width: 30%;background-color: red', 'DenaliProgress with red color should be displayed');
 
     this.set('colors', ['green']);
     assert
       .dom('.d-progress div')
-      .hasAttribute('style', greenBgStyle, 'DenaliProgress with green color should be displayed');
+      .hasAttribute(
+        'style',
+        'width: 30%;background-color: green',
+        'DenaliProgress with green color should be displayed'
+      );
   });
 
   test('it supports isLoading', async function (assert) {
@@ -107,23 +109,26 @@ module('Integration | Component | denali-progress', function (hooks) {
 
   test('it supports multi level progress with colors', async function (assert) {
     await render(hbs`
-      <DenaliProgress @percent={{this.percent}} @colors={{this.colors}} />
+      <DenaliProgress @percents={{this.percents}} @colors={{this.colors}} />
     `);
 
-    this.set('percent', [30, 40]);
+    this.set('percents', [30, 40]);
     this.set('colors', ['orange', 'yellow']);
 
     const nestedEle = findAll('.d-progress div');
-    console.log(nestedEle, nestedEle[0].style.width, nestedEle[0].style.backgroundColor);
 
-    assert.equal(nestedEle[0].ariaValueNow, 30, 'DenaliProgress with 1st bar with value 30 should be displayed');
+    assert.dom(
+      nestedEle[0].hasAttribute('ariaValueNow', '30', 'DenaliProgress with 1st bar with value 30 should be displayed')
+    );
     assert.equal(
       nestedEle[0].style.backgroundColor,
       'orange',
       'DenaliProgress with 1st bar in orange color should be displayed'
     );
 
-    assert.equal(nestedEle[1].ariaValueNow, 40, 'DenaliProgress with 2nd bar with value 40 should be displayed');
+    assert.dom(
+      nestedEle[1].hasAttribute('ariaValueNow', '40', 'DenaliProgress with 2nd bar with value 40 should be displayed')
+    );
     assert.equal(
       nestedEle[1].style.backgroundColor,
       'yellow',
