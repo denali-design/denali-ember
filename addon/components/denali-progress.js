@@ -4,42 +4,26 @@
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { array, boolean, oneOf } from 'prop-types';
-import { SIZES } from './denali-progress-enums';
+import { boolean, oneOf } from 'prop-types';
+import { SIZES, SHADES, COLORS } from './denali-progress-enums';
 
 export default class DenaliProgressComponent extends Component {
-  @arg(array)
-  percent = [0];
-
-  @arg(array)
-  colors = [];
+  @arg
+  value = 0;
 
   @arg(oneOf(SIZES))
   size = SIZES[0];
 
+  @arg(oneOf(SHADES))
+  shade = '500';
+
+  @arg(oneOf(COLORS))
+  color;
+
   @arg(boolean)
   isLoading = false;
 
-  get renderablePercentages() {
-    let renderablePercentages = [];
-    const maxLimit = Math.max(this.percent.length, this.colors.length);
-    let remainingPercent = 100;
-    for (let i = 0; i < maxLimit; i++) {
-      let renderValue = Math.min(this.percent[i], remainingPercent);
-      let obj = {
-        value: renderValue,
-        color: this.colors[i] || '',
-      };
-      renderablePercentages.push(obj);
-      remainingPercent -= this.percent[i];
-      if (remainingPercent <= 0) {
-        break;
-      }
-    }
-    return renderablePercentages;
-  }
-
-  get sizeCLass() {
+  get sizeClass() {
     if (this.size === SIZES[1]) {
       return 'd-progress__sm';
     } else if (this.size === SIZES[2]) {
@@ -53,5 +37,12 @@ export default class DenaliProgressComponent extends Component {
 
   get hasLoaderClass() {
     return this.isLoading ? 'd-progress__loading' : undefined;
+  }
+
+  get backgroundColorClass() {
+    if (this.color) {
+      return `has-bg-${this.color}-${this.shade}`;
+    }
+    return undefined;
   }
 }
