@@ -25,6 +25,7 @@ export const Playground = () => ({
       @state={{state}}
       @size={{size}}
       @isSecondary={{isSecondary}}
+      @isSub={{isSub}}
       href={{href}}
       class={{class}}
     >
@@ -38,6 +39,7 @@ export const Playground = () => ({
     size: select('size', SIZES, SIZES[0], argument),
     state: select('state', STATES, STATES[0], argument),
     isSecondary: boolean('isSecondary', false, argument),
+    isSub: boolean('isSub', false, argument),
     href: text('href', 'https://denali.design', attribute),
     class: text('class', '', attribute),
     content: text('content', 'Denali Design', content),
