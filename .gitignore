@@ -31,3 +31,4 @@ jsconfig.json
 
 # storybookjs
 /storybook-static
+.storybook/preview-head.html
