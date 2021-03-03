@@ -5,20 +5,11 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, oneOf } from 'prop-types';
-import { SIZES, SHADES, COLORS } from './denali-progress-enums';
+import { SIZES } from './denali-progress-enums';
 
 export default class DenaliProgressComponent extends Component {
-  @arg
-  value = 0;
-
   @arg(oneOf(SIZES))
   size = SIZES[0];
-
-  @arg(oneOf(SHADES))
-  shade = '500';
-
-  @arg(oneOf(COLORS))
-  color;
 
   @arg(boolean)
   isLoading = false;
@@ -37,12 +28,5 @@ export default class DenaliProgressComponent extends Component {
 
   get hasLoaderClass() {
     return this.isLoading ? 'd-progress__loading' : undefined;
-  }
-
-  get backgroundColorClass() {
-    if (this.color) {
-      return `has-bg-${this.color}-${this.shade}`;
-    }
-    return undefined;
   }
 }

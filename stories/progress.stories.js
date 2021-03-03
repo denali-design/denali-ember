@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, select, text, number } from '@storybook/addon-knobs';
 import { SIZES, SHADES, COLORS } from '../addon/components/denali-progress-enums';
-import { argument } from './knob-categories';
+import { argument, attribute } from './knob-categories';
 
 export default {
   title: 'DenaliProgress',
@@ -11,7 +11,7 @@ export default {
 
 export const Default = () => ({
   template: hbs`
-    <DenaliProgress @value={{"50"}}/>
+    <DenaliProgress @value={{50}}/>
   `,
 });
 
@@ -20,6 +20,7 @@ export const BlockFormPlayground = () => ({
     <DenaliProgress
       @size={{size}}
       @isLoading={{isLoading}}
+      class={{class}}
       as |Progress|
     >
       <Progress.Bar @color={{color1}} @value={{value1}} @shade={{shade1}} />
@@ -28,9 +29,9 @@ export const BlockFormPlayground = () => ({
     </DenaliProgress>
   `,
   context: {
-    value1: text('value1', '10', argument),
-    value2: text('value2', '20', argument),
-    value3: text('value3', '30', argument),
+    value1: number('value1', 10),
+    value2: number('value2', 20),
+    value3: number('value3', 30),
     color1: select('color1', COLORS, COLORS[0], argument),
     color2: select('color2', COLORS, COLORS[3], argument),
     color3: select('color3', COLORS, COLORS[5], argument),
@@ -39,6 +40,7 @@ export const BlockFormPlayground = () => ({
     shade3: select('shade3', SHADES, '300', argument),
     size: select('size', SIZES, SIZES[0], argument),
     isLoading: boolean('isLoading', false, argument),
+    class: text('class', '', attribute),
   },
 });
 
@@ -50,13 +52,15 @@ export const Playground = () => ({
       @color={{color}}
       @shade={{shade}}
       @value={{value}}
+      class={{class}}
     />
   `,
   context: {
-    value: text('value', '33', argument),
+    value: number('value', 33),
     color: select('color', COLORS, COLORS[0], argument),
     shade: select('shade', SHADES, '500', argument),
     size: select('size', SIZES, SIZES[0], argument),
     isLoading: boolean('isLoading', false, argument),
+    class: text('class', '', attribute),
   },
 });

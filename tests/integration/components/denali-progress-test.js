@@ -125,10 +125,9 @@ module('Integration | Component | denali-progress', function (hooks) {
       @isLoading={{isLoading}}
       as |Progress|
       >
-      {{log values.[0]}}
-      <Progress.Bar @color={{'red'}} @value={{'10'}} @shade={{'100'}} />
-      <Progress.Bar @color={{'green'}} @value={{'20'}} @shade={{'200'}} />
-      <Progress.Bar @color={{'blue'}} @value={{'30'}} @shade={{'300'}} />
+      <Progress.Bar @color="red" @value={{10}} @shade="100" />
+      <Progress.Bar @color="green" @value={{20}} @shade="200" />
+      <Progress.Bar @color="blue" @value={{30}} @shade="300" />
     </DenaliProgress>
     `);
 
@@ -141,7 +140,7 @@ module('Integration | Component | denali-progress', function (hooks) {
       .dom(nestedEle[0])
       .hasClass(
         'has-bg-red-100',
-        'DenaliProgress displayed with red color when `@color` arg is set to red and `@shade` arg is ste to 100'
+        'DenaliProgress displayed with red color when `@color` arg is set to red and `@shade` arg is set to 100'
       );
 
     assert
@@ -151,7 +150,7 @@ module('Integration | Component | denali-progress', function (hooks) {
       .dom(nestedEle[1])
       .hasClass(
         'has-bg-green-200',
-        'DenaliProgress displayed with green color when `@color` arg is set to green and `@shade` arg is ste to 200'
+        'DenaliProgress displayed with green color when `@color` arg is set to green and `@shade` arg is set to 200'
       );
 
     assert
@@ -161,7 +160,7 @@ module('Integration | Component | denali-progress', function (hooks) {
       .dom(nestedEle[2])
       .hasClass(
         'has-bg-blue-300',
-        'DenaliProgress displayed with blue color when `@color` arg is set to blue and `@shade` arg is ste to 300'
+        'DenaliProgress displayed with blue color when `@color` arg is set to blue and `@shade` arg is set to 300'
       );
   });
 });

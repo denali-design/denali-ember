@@ -1,14 +1,14 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { SHADES, COLORS } from './denali-progress-enums';
-import { oneOf } from 'prop-types';
+import { SHADES, COLORS } from '../denali-progress-enums';
+import { oneOf, number } from 'prop-types';
 
 export default class DenaliProgressBarComponent extends Component {
-  @arg
+  @arg(number)
   value = 0;
 
   @arg(oneOf(COLORS))
-  color;
+  color = COLORS[0];
 
   @arg(oneOf(SHADES))
   shade = '500';

@@ -2,9 +2,9 @@
 <div class="d-progress {{this.hasLoaderClass}} {{this.sizeClass}}"  ...attributes>
     {{#unless this.hasLoaderClass}}
         {{#if (has-block)}}
-            {{yield (hash Bar=(component "denali-progress-bar"))}}
+            {{yield (hash Bar=(component "denali-progress/bar" color=@color shade=@shade))}}
         {{else}}
-            <div class="d-progress--bar {{this.backgroundColorClass}}" role="progressbar" style="width: {{this.value}}%;" aria-valuenow="{{this.value}}" aria-valuemin="0" aria-valuemax="100"></div>
+            {{denali-progress/bar value=@value color=@color shade=@shade }}
         {{/if}}
     {{/unless}}
 </div>
