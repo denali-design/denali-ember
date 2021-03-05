@@ -176,5 +176,6 @@ export const Playground = () => ({
   context: {
     isResponsive: boolean('isResponsive', true, argument),
     isMenuActive: boolean('isMenuActive', true, argument),
+    class: text('class', '', attribute),
   },
 });
