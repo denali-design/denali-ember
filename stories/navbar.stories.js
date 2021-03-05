@@ -150,6 +150,7 @@ export const Playground = () => ({
   <DenaliNavbar
     @isResponsive={{isResponsive}}
     @isMenuActive={{isMenuActive}}
+    class={{class}}
     as |Nav|
   >
     <Nav.Left as |Section|>
