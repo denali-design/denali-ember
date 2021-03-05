@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { argument } from './knob-categories';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { argument, attribute } from './knob-categories';
 
 export default {
   title: 'DenaliNavbar',
