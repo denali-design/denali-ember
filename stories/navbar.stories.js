@@ -11,8 +11,8 @@ export default {
 export const Default = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
+        @isResponsive={{true}}
+        @isMenuActive={{true}}
         as |Nav| >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
@@ -46,9 +46,10 @@ export const Default = () => ({
 export const Items = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
-        as |Nav| >
+    @isResponsive={{true}}
+    @isMenuActive={{true}}
+    as |Nav|
+  >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
     </Nav.Left>
@@ -70,9 +71,10 @@ export const Items = () => ({
 export const Icons = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
-        as |Nav| >
+    @isResponsive={{true}}
+    @isMenuActive={{true}}
+    as |Nav|
+  >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
     </Nav.Left>
@@ -94,9 +96,10 @@ export const Icons = () => ({
 export const Left = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
-        as |Nav| >
+    @isResponsive={{true}}
+    @isMenuActive={{true}}
+    as |Nav|
+  >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
     </Nav.Left>
@@ -107,9 +110,10 @@ export const Left = () => ({
 export const Center = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
-        as |Nav| >
+    @isResponsive={{true}}
+    @isMenuActive={{true}}
+    as |Nav|
+  >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
     </Nav.Left>
@@ -125,9 +129,10 @@ export const Center = () => ({
 export const Right = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
-        as |Nav| >
+    @isResponsive={{true}}
+    @isMenuActive={{true}}
+    as |Nav|
+  >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
     </Nav.Left>
@@ -143,9 +148,10 @@ export const Right = () => ({
 export const Playground = () => ({
   template: hbs`
   <DenaliNavbar
-        @isResponsive={{isResponsive}}
-        @isMenuActive={{isMenuActive}}
-        as |Nav| >
+    @isResponsive={{isResponsive}}
+    @isMenuActive={{isMenuActive}}
+    as |Nav|
+  >
     <Nav.Left as |Section|>
       <Section.Logo src="https://denali-design.github.io/denali-css/denali-logo.svg"/>
     </Nav.Left>
