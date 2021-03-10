@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, boolean, select, text, number } from '@storybook/addon-knobs';
-import { SIZES, SHADES, COLORS } from '../addon/components/denali-progress-enums';
+import { COLORS, SHADES } from '../addon/components/color-enums';
+import { SIZES } from '../addon/components/denali-progress-enums';
 import { argument, attribute } from './knob-categories';
 
 export default {

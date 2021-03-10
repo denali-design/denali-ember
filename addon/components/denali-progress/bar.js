@@ -1,6 +1,7 @@
+import { htmlSafe } from '@ember/string';
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { SHADES, COLORS } from '../denali-progress-enums';
+import { SHADES, COLORS } from '../color-enums';
 import { oneOf, number } from 'prop-types';
 
 export default class DenaliProgressBarComponent extends Component {
@@ -18,5 +19,9 @@ export default class DenaliProgressBarComponent extends Component {
       return `has-bg-${this.color}-${this.shade}`;
     }
     return undefined;
+  }
+
+  get widthCss() {
+    return htmlSafe('width: ' + this.value + '%');
   }
 }

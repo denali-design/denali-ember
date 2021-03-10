@@ -4,19 +4,3 @@
  */
 
 export const SIZES = ['default', 'small', 'medium', 'large'];
-export const COLORS = [
-  'default',
-  'brand',
-  'grey',
-  'red',
-  'orange',
-  'yellow',
-  'lime',
-  'green',
-  'sky',
-  'blue',
-  'purple',
-  'violet',
-  'pink',
-];
-export const SHADES = ['100', '200', '300', '400', '500', '600', '700', '800'];

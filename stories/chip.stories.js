@@ -1,7 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 import { argument, attribute, content } from './knob-categories';
-import { COLORS, SIZES, SHADES } from '../addon/components/denali-chip-enums';
+import { COLORS, SHADES } from '../addon/components/color-enums';
+import { SIZES } from '../addon/components/denali-chip-enums';
 
 export default {
   title: 'DenaliChip',

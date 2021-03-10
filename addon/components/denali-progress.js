@@ -4,10 +4,13 @@
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { boolean, oneOf } from 'prop-types';
+import { boolean, number, oneOf } from 'prop-types';
 import { SIZES } from './denali-progress-enums';
 
 export default class DenaliProgressComponent extends Component {
+  @arg(number)
+  value = 0;
+
   @arg(oneOf(SIZES))
   size = SIZES[0];
 

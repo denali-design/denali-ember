@@ -5,7 +5,8 @@
 import { arg } from 'ember-arg-types';
 import { oneOf } from 'prop-types';
 import Component from '@glimmer/component';
-import { COLORS, SHADES, SIZES } from './denali-chip-enums';
+import { COLORS, SHADES } from './color-enums';
+import { SIZES } from './denali-chip-enums';
 
 export default class DenaliChipComponent extends Component {
   @arg(oneOf(SIZES))
