@@ -22,6 +22,6 @@ export default class DenaliProgressBarComponent extends Component {
   }
 
   get widthCss() {
-    return htmlSafe('width: ' + this.value + '%');
+    return htmlSafe(`width: ${this.value}%`);
   }
 }
