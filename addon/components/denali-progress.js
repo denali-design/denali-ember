@@ -5,11 +5,18 @@
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, number, oneOf } from 'prop-types';
+import { COLORS, SHADES } from './color-enums';
 import { SIZES } from './denali-progress-enums';
 
 export default class DenaliProgressComponent extends Component {
   @arg(number)
   value = 0;
+
+  @arg(oneOf(COLORS))
+  color = COLORS[0];
+
+  @arg(oneOf(SHADES))
+  shade = '500';
 
   @arg(oneOf(SIZES))
   size = SIZES[0];
