@@ -7,7 +7,7 @@ module('Integration | Component | denali-progress/bar', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders denali progress bar', async function (assert) {
-    await render(hbs`<DenaliProgress::Bar  @value={{50}} @color="green" @shade="500"/>`);
+    await render(hbs`<DenaliProgress::Bar @value={{50}} @color="green" @shade="500"/>`);
 
     assert
       .dom('.d-progress--bar')

@@ -163,4 +163,78 @@ module('Integration | Component | denali-progress', function (hooks) {
         'DenaliProgress displayed with blue color when `@color` arg is set to blue and `@shade` arg is set to 300'
       );
   });
+
+  test('it supports multi level progress with top level values as defaults', async function (assert) {
+    await render(hbs`
+    <DenaliProgress
+      @size={{size}}
+      @isLoading={{isLoading}}
+      @color="red" 
+      @shade="100"
+      as |Progress|
+      >
+      <Progress.Bar @value={{10}} />
+    </DenaliProgress>
+    `);
+
+    const nestedEle = findAll('.d-progress div');
+
+    assert
+      .dom(nestedEle[0])
+      .hasAttribute('aria-valuenow', '10', 'DenaliProgress with 1st bar with value 10 should be displayed');
+    assert
+      .dom(nestedEle[0])
+      .hasClass(
+        'has-bg-red-100',
+        'DenaliProgress displayed with red color when `@color` arg is set to red and `@shade` arg is set to 100 at top level'
+      );
+  });
+
+  test('it supports multi level progress with top level values as defaults', async function (assert) {
+    await render(hbs`
+    <DenaliProgress
+      @size={{size}}
+      @isLoading={{isLoading}}
+      @color="red" 
+      @shade="100"
+      as |Progress|
+      >
+      <Progress.Bar @value={{10}} />
+      <Progress.Bar @value={{20}} />
+      <Progress.Bar @color="blue" @value={{30}} @shade="300" />
+    </DenaliProgress>
+    `);
+
+    const nestedEle = findAll('.d-progress div');
+
+    assert
+      .dom(nestedEle[0])
+      .hasAttribute('aria-valuenow', '10', 'DenaliProgress with 1st bar with value 10 should be displayed');
+    assert
+      .dom(nestedEle[0])
+      .hasClass(
+        'has-bg-red-100',
+        'DenaliProgress 1st bar displayed with red color when `@color` arg is set to red and `@shade` arg is set to 100 at top level'
+      );
+
+    assert
+      .dom(nestedEle[1])
+      .hasAttribute('aria-valuenow', '20', 'DenaliProgress with 2nd bar with value 20 should be displayed');
+    assert
+      .dom(nestedEle[1])
+      .hasClass(
+        'has-bg-red-100',
+        'DenaliProgress 2nd bar displayed with red color when `@color` arg is set to red and `@shade` arg is set to 100 at top level'
+      );
+
+    assert
+      .dom(nestedEle[2])
+      .hasAttribute('aria-valuenow', '30', 'DenaliProgress with 3rd bar with value 30 should be displayed');
+    assert
+      .dom(nestedEle[2])
+      .hasClass(
+        'has-bg-blue-300',
+        'DenaliProgress 3rd bar displayed with blue color when `@color` arg is set to blue and `@shade` arg is set to 300'
+      );
+  });
 });
