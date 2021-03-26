@@ -14,6 +14,9 @@ export default class DenaliTextAreaComponent extends Component {
   @arg(string)
   errorMsg;
 
+  @arg(string)
+  wrapperClass;
+
   get activeClass() {
     return this.state === 'active' ? 'is-active' : undefined;
   }

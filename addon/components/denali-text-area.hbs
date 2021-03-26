@@ -1,7 +1,8 @@
-{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+{{! Copyright 2021, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <div class="input
   {{this.activeClass}}
-  {{this.errorClass}}"
+  {{this.errorClass}}
+  {{this.wrapperClass}}"
 >
   <textarea ...attributes>{{yield}}</textarea>
   {{#if this.errorMsg}}
