@@ -7,8 +7,6 @@ module('Integration | Component | denali-text-area', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(3);
-
     await render(hbs`<DenaliTextArea>My Input</ DenaliTextArea>`);
 
     assert.dom('.input textarea').exists('An textarea is rendered within a wrapper div with class `.input`');
@@ -17,8 +15,6 @@ module('Integration | Component | denali-text-area', function (hooks) {
   });
 
   test('states', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`<DenaliTextArea @state={{this.state}} @errorMsg="error"/>`);
 
     this.set('state', 'active');
@@ -29,15 +25,11 @@ module('Integration | Component | denali-text-area', function (hooks) {
   });
 
   test('disabled', async function (assert) {
-    assert.expect(1);
-
     await render(hbs`<DenaliTextArea disabled={{true}}/>`);
     assert.dom('.input textarea').isDisabled('The textarea is disabled when specified');
   });
 
   test('placeholder', async function (assert) {
-    assert.expect(1);
-
     await render(hbs`<DenaliTextArea placeholder="Text field"/>`);
     assert
       .dom('.input textarea')
@@ -45,8 +37,6 @@ module('Integration | Component | denali-text-area', function (hooks) {
   });
 
   test('error message', async function (assert) {
-    assert.expect(2);
-
     await render(hbs`<DenaliTextArea @state="error" @errorMsg={{this.errorMsg}} />`);
     assert.dom('.input').hasClass('is-error', 'The input wrapper has the appropriate class.');
 
@@ -70,5 +60,22 @@ module('Integration | Component | denali-text-area', function (hooks) {
 
     this.element.querySelector('.input textarea').value = 'More Random Text';
     this.element.querySelector('.input textarea').dispatchEvent(new Event('input'));
+  });
+
+  test('wrapperClass', async function (assert) {
+    await render(hbs`
+      <DenaliTextArea
+        @wrapperClass={{this.wrapperClass}}
+      />
+    `);
+
+    const wrapperClass = 'wrapperClass';
+    assert
+      .dom('.input')
+      .doesNotHaveClass(wrapperClass, '`DenaliTextArea` does not have custom wrapper class by default');
+
+    this.set('wrapperClass', wrapperClass);
+
+    assert.dom('.input').hasClass(wrapperClass, '`DenaliTextArea` has custom specified wrapper class');
   });
 });

@@ -19,9 +19,10 @@ export const Default = () => ({
 const allStates = [undefined, ...STATES];
 export const Playground = () => ({
   template: hbs`
-    <DenaliTextArea 
+    <DenaliTextArea
       @state={{state}}
       @errorMsg={{errorMsg}}
+      @wrapperClass={{wrapperClass}}
       placeholder={{placeholder}}
       disabled={{disabled}}
       class={{class}}
@@ -31,6 +32,7 @@ export const Playground = () => ({
   context: {
     state: select('state', allStates, allStates[0], argument),
     errorMsg: text('errorMsg', '', argument),
+    wrapperClass: text('wrapperClass', '', argument),
     placeholder: text('placeholder', 'Denali Text Area', attribute),
     disabled: boolean('disabled', false, attribute),
     class: text('class', '', attribute),
