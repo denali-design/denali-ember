@@ -97,7 +97,7 @@
 
 .ember-power-select-group-name {
   text-transform: uppercase;
-  color: $color-grey-700;
+  color: map-get($denali-grey-colors, '700');
   font-size: 12px;
 }
 
