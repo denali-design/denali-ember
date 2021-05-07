@@ -10,9 +10,8 @@ First, thanks for taking the time to contribute to our project! There are many w
 
 ## Linting
 
-- `npm run lint:hbs`
-- `npm run lint:js`
-- `npm run lint:js -- --fix`
+- `npm run lint`
+- `npm run lint:fix`
 
 ## Running tests
 
