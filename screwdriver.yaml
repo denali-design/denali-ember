@@ -11,8 +11,11 @@ jobs:
       screwdriver.cd/cpu: TURBO
     steps:
       - install-chrome: ./build-scripts/setup-chrome.sh
-      - install: npm ci
-      - test: npm test
+      - install: yarn install --frozen-lockfile
+      - test: yarn test
+      - docs: |
+          yarn build-storybook
+          sd-step exec core/zip "zip -r $SD_ARTIFACTS_DIR/storybook.zip storybook-static"
     requires:
       - ~pr
       - ~commit
