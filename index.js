@@ -28,11 +28,13 @@ module.exports = {
       trees.push(denali);
     }
 
-    const icons = new Funnel(denaliIconPath, {
-      srcDir: 'dist',
-      files: iconFiles.map((ext) => `denali-icon-font.${ext}`),
-    });
-    trees.push(icons);
+    if (this.includeIcons) {
+      const icons = new Funnel(denaliIconPath, {
+        srcDir: 'dist',
+        files: iconFiles.map((ext) => `denali-icon-font.${ext}`),
+      });
+      trees.push(icons);
+    }
 
     return mergeTrees(trees);
   },
@@ -53,6 +55,11 @@ module.exports = {
   included(app) {
     this._super.included.apply(this, arguments);
 
+    const options = typeof app.options === 'object' ? app.options : {};
+    const addonConfig = options['@denali-design/ember'] || {};
+
+    this.includeIcons = addonConfig.includeIcons !== false;
+
     this.hasSass =
       !!app.registry.availablePlugins['ember-cli-sass'] || !!app.registry.availablePlugins['ember-cli-sass-less'];
 
@@ -62,10 +69,12 @@ module.exports = {
     }
 
     // Icon Files
-    iconFiles.forEach((ext) => {
-      app.import(`vendor/denali-icon-font.${ext}`, {
-        destDir: 'assets',
+    if (this.includeIcons) {
+      iconFiles.forEach((ext) => {
+        app.import(`vendor/denali-icon-font.${ext}`, {
+          destDir: 'assets',
+        });
       });
-    });
+    }
   },
 };
