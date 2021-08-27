@@ -1,5 +1,12 @@
-{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
-<div class="menu {{this.alignContentClass}}" ...attributes>
-  {{yield (hash Trigger=(component "denali-menu/trigger"))}}
-  {{yield (hash Content=(component "denali-menu/content"))}}
+{{! Copyright 2021, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div
+  class='menu foo {{this.alignContentClass}} {{this.isActiveClass}}'
+  ...attributes
+  {{on 'mouseenter' this.toggleIsActive}}
+  {{on 'mouseleave' this.toggleIsActive}}
+>
+  {{yield (hash Trigger=(component 'denali-menu/trigger'))}}
+  {{#if this.isActive}}
+    {{yield (hash Content=(component 'denali-menu/content'))}}
+  {{/if}}
 </div>

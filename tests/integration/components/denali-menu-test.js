@@ -1,14 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, triggerEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | denali-menu', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    assert.expect(4);
-
     await render(hbs`
       <DenaliMenu class="test-menu" as |Menu|>
         <Menu.Trigger>Hover</Menu.Trigger>
@@ -26,13 +24,21 @@ module('Integration | Component | denali-menu', function (hooks) {
 
     assert.dom('.test-menu .menu-trigger').hasText('Hover', 'The trigger has the appropriate text');
 
+    assert.dom('.test-menu .menu-content').doesNotExist('menu content is not rendered when menu is not active');
+
+    await triggerEvent('.test-menu', 'mouseenter');
+
     assert
       .dom('.test-menu .menu-content li')
       .exists({ count: 3 }, 'Three li elements are rendered in the menu content');
 
     assert
       .dom('.test-menu .menu-content')
-      .hasStyle({ visibility: 'hidden' }, 'The menu content is not visible by default');
+      .hasStyle({ visibility: 'visible' }, 'The menu content is visible when menu is active');
+
+    await triggerEvent('.test-menu', 'mouseleave');
+
+    assert.dom('.test-menu .menu-content').doesNotExist('menu content is not rendered when menu is not active');
   });
 
   test('alignment', async function (assert) {

@@ -15,6 +15,6 @@ module('Integration | Component | denali-menu/trigger', function (hooks) {
       </DenaliMenu::Trigger>
     `);
 
-    assert.dom('a.menu-trigger').hasText('Trigger', 'The trigger renders the text within an anchor tag');
+    assert.dom('span.menu-trigger').hasText('Trigger', 'The trigger renders the text within an anchor tag');
   });
 });
