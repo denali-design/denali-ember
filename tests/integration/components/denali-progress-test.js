@@ -121,8 +121,8 @@ module('Integration | Component | denali-progress', function (hooks) {
   test('it supports multi level progress with colors', async function (assert) {
     await render(hbs`
     <DenaliProgress
-      @size={{size}}
-      @isLoading={{isLoading}}
+      @size={{this.size}}
+      @isLoading={{this.isLoading}}
       as |Progress|
       >
       <Progress.Bar @color="red" @value={{10}} @shade="100" />
@@ -167,13 +167,13 @@ module('Integration | Component | denali-progress', function (hooks) {
   test('it supports multi level progress with top level values as defaults', async function (assert) {
     await render(hbs`
     <DenaliProgress
-      @size={{size}}
-      @isLoading={{isLoading}}
-      @color="red" 
+      @size={{this.size}}
+      @isLoading={{this.isLoading}}
+      @color="red"
       @shade="100"
       as |Progress|
       >
-      <Progress.Bar @value={{10}} />
+        <Progress.Bar @value={{10}} />
     </DenaliProgress>
     `);
 
@@ -190,18 +190,18 @@ module('Integration | Component | denali-progress', function (hooks) {
       );
   });
 
-  test('it supports multi level progress with top level values as defaults', async function (assert) {
+  test('it supports multi level progress with top level defaults and overrides', async function (assert) {
     await render(hbs`
     <DenaliProgress
-      @size={{size}}
-      @isLoading={{isLoading}}
-      @color="red" 
+      @size={{this.size}}
+      @isLoading={{this.isLoading}}
+      @color="red"
       @shade="100"
       as |Progress|
       >
-      <Progress.Bar @value={{10}} />
-      <Progress.Bar @value={{20}} />
-      <Progress.Bar @color="blue" @value={{30}} @shade="300" />
+        <Progress.Bar @value={{10}} />
+        <Progress.Bar @value={{20}} />
+        <Progress.Bar @color="blue" @value={{30}} @shade="300" />
     </DenaliProgress>
     `);
 
