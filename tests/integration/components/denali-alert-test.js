@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { htmlSafe } from '@ember/string';
 
 module('Integration | Component | denali-alert', function (hooks) {
   setupRenderingTest(hooks);
@@ -56,6 +57,19 @@ module('Integration | Component | denali-alert', function (hooks) {
     `);
 
     assert.dom('.alert p').hasText('Alert Context Details', 'DenaliAlert renders a context block');
+  });
+
+  test('it can render safestrings', async function (assert) {
+    this.title = htmlSafe('<span>title</span>');
+    this.context = htmlSafe('<a href="#">context</a>');
+    await render(hbs`
+      <DenaliAlert @title={{this.title}} @context={{this.context}} />
+    `);
+
+    assert.dom('.alert h5').hasText('title', 'DenaliAlert renders a title block');
+    assert.dom('.alert h5 span').exists('DenaliAlert title renders the html');
+    assert.dom('.alert p').hasText('context', 'DenaliAlert renders a context block');
+    assert.dom('.alert p a').exists('DenaliAlert context renders the html');
   });
 
   test('it supports block styles', async function (assert) {
