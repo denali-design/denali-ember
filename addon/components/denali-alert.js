@@ -1,11 +1,14 @@
 /**
- * Copyright 2020, Verizon Media
+ * Copyright 2021, Yahoo! Inc
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { boolean, func, oneOf, string } from 'prop-types';
+import { boolean, func, oneOf, oneOfType, instanceOf, string } from 'prop-types';
 import { STYLES } from './denali-alert-enums';
+import { htmlSafe } from '@ember/template';
+
+const SafeString = htmlSafe().constructor;
 
 export default class DenaliAlertComponent extends Component {
   @arg(oneOf(STYLES))
@@ -14,10 +17,10 @@ export default class DenaliAlertComponent extends Component {
   @arg(boolean)
   isBlock = false;
 
-  @arg(string)
+  @arg(oneOfType([string, instanceOf(SafeString)]))
   title;
 
-  @arg(string)
+  @arg(oneOfType([string, instanceOf(SafeString)]))
   context;
 
   @arg(string)
