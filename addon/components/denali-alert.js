@@ -1,12 +1,12 @@
 /**
- * Copyright 2021, Verizon Media
+ * Copyright 2021, Yahoo! Inc
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
 import { boolean, func, oneOf, oneOfType, instanceOf, string } from 'prop-types';
 import { STYLES } from './denali-alert-enums';
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
 
 const SafeString = htmlSafe().constructor;
 
