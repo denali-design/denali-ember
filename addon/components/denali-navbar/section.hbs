@@ -1,11 +1,14 @@
 {{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <div class={{@class}} ...attributes>
-  {{yield (hash
-    Logo=(component "denali-navbar/logo")
-    Item=(component "denali-navbar/item")
-    Icon=(component "denali-navbar/icon")
-    Control=(component "denali-navbar/control")
-    LinkTo=(component "denali-link-to" classNames="nav-item")
-    Link=(component "denali-link" class="nav-item")
-  )}}
+  {{yield
+    (hash
+      Logo=(component 'denali-navbar/logo')
+      Item=(component 'denali-navbar/item')
+      Icon=(component 'denali-navbar/icon')
+      Control=(component 'denali-navbar/control')
+      LinkTo=(component 'denali-link-to' classNames='nav-item')
+      Link=(component 'denali-link' class='nav-item')
+      Menu=(component 'denali-navbar/menu')
+    )
+  }}
 </div>
