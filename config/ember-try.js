@@ -39,6 +39,7 @@ module.exports = async function () {
           },
         },
       },
+      /*
       {
         name: 'ember-canary',
         npm: {
@@ -47,6 +48,7 @@ module.exports = async function () {
           },
         },
       },
+      */
       {
         name: 'ember-default-with-jquery',
         env: {
