@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, triggerEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import setupRouting from '../../helpers/setup-router';
 
@@ -91,6 +91,17 @@ module('Integration | Component | denali-navbar', function (hooks) {
           </Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
+          <Section.Item>
+            <Section.Menu as |Menu|>
+              <Menu.Trigger>
+                Test Trigger
+              </Menu.Trigger>
+              <Menu.Content >
+                <DenaliLink href="http://denali.design">Link1</DenaliLink>
+                <DenaliLink href="http://denali.design">Link2</DenaliLink>
+              </Menu.Content>
+            </Section.Menu>
+          </Section.Item>
         </Nav.Left>
       </DenaliNavbar>
     `);
@@ -105,6 +116,14 @@ module('Integration | Component | denali-navbar', function (hooks) {
     assert
       .dom('.test-nav .nav-left a.ember-view.nav-item')
       .hasAttribute('href', '/four-oh-four', 'Left can yield a nav link-to component');
+    assert
+      .dom('.test-nav .nav-left .nav-item .menu .menu-trigger')
+      .hasText('Test Trigger', 'Left can yield a nav menu component');
+    await triggerEvent('.test-nav .nav-left .nav-item .menu .menu-trigger', 'mouseenter');
+
+    assert
+      .dom('.test-nav .nav-left .nav-item .menu-content a')
+      .exists({ count: 2 }, 'Two a elements are rendered in the menu content');
   });
 
   test('left can yield sub components when `@isResponsive` is true', async function (assert) {
