@@ -4,13 +4,15 @@
  */
 import Component from '@glimmer/component';
 import { arg } from 'ember-arg-types';
-import { oneOf } from 'prop-types';
+import { oneOf, string } from 'prop-types';
 import { tracked } from '@glimmer/tracking';
 import { ALIGNMENTS } from './denali-menu-enums';
 import { action } from '@ember/object';
 
 export default class DenaliMenuComponent extends Component {
   @tracked isActive = false;
+
+  @arg(string) triggerClass = '';
 
   @arg(oneOf(ALIGNMENTS)) alignContent;
 
