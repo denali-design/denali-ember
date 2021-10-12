@@ -7577,14 +7577,14 @@ delegates@^1.0.0:
   resolved "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
-denali-css@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/denali-css/-/denali-css-2.3.2.tgz#9b6bc54c97a3e981b567afd6fd2fb5aaf7d797c8"
-  integrity sha512-0srMROsMkKvxDkHAWPTg86xve1xqDEq138L1ZACrHEH6r0B8IcAV8W0N/3cvm6vvTbh1/ByclAk8jZWJ7RsmvQ==
+denali-css@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/denali-css/-/denali-css-2.4.2.tgz#33ac3c1a94b7b00347c780759e6bbc2323685a10"
+  integrity sha512-BfhQUFm8Xio21PWPl8zRbDDAiKnC1aSIJBygRn96AFbKbPAhohKlxzATN4bD4HWVLKdujBAB5KOdn6MtX+R6nQ==
 
-denali-icon-font@^1.7.0:
+denali-icon-font@^1.8.0:
   version "1.8.0"
-  resolved "https://registry.npmjs.org/denali-icon-font/-/denali-icon-font-1.8.0.tgz#a24a1d3cc77c8c7dc4f359b37b312b7821e0ea28"
+  resolved "https://registry.yarnpkg.com/denali-icon-font/-/denali-icon-font-1.8.0.tgz#a24a1d3cc77c8c7dc4f359b37b312b7821e0ea28"
   integrity sha512-Ps5LcCM+jg/VnBQXKXR9ZP+PztgURrQ+zq8t5Y7UqBHPC9s1sqOKw4O2JfQm41lsNt/kQdRB+zzcU2FsfZyPQQ==
 
 depd@^1.1.2, depd@~1.1.2:
