@@ -1,11 +1,23 @@
 <DenaliNavbar @isResponsive={{true}} as |Nav|>
   <Nav.Left as |Left|>
-    <Left.Logo @src='https://denali.design/assets/images/denali-logo.png' />
+    <Left.Logo @src="https://denali.design/images/denali-logo-white-solid.png" />
   </Nav.Left>
   <Nav.Right as |Right|>
-    <a href='https://github.com/denali-design/denali-ember'>
-      <Right.Icon @icon='github' @name='GitHub' />
-    </a>
+    <Right.Menu as |Menu|>
+      <Menu.Trigger>
+        Menu
+        <DenaliIcon @size="small" @icon="arrowhead-down" />
+      </Menu.Trigger>
+
+      <Menu.Content>
+        <DenaliLink href="https://denali-design.github.io/denali-ember/">Denali Ember Storybook</DenaliLink>
+        <DenaliLink href="https://denali-design.github.io/denali-css/">Denali CSS Storybook</DenaliLink>
+      </Menu.Content>
+    </Right.Menu>
+
+    <DenaliLink href="https://github.com/denali-design/denali-ember">
+      <Right.Icon @icon="github" @name="GitHub" />
+    </DenaliLink>
   </Nav.Right>
 </DenaliNavbar>
 {{outlet}}

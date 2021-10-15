@@ -8,7 +8,13 @@ module('Integration | Component | denali-menu', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(hbs`
-      <DenaliMenu class="test-menu" as |Menu|>
+      <DenaliMenu
+        @class="class-arg"
+        @triggerClass="trigger-class-arg"
+        @contentClass="content-class-arg"
+        class="test-menu"
+        as |Menu|
+      >
         <Menu.Trigger>Hover</Menu.Trigger>
         <Menu.Content>
           <ul>
@@ -21,13 +27,16 @@ module('Integration | Component | denali-menu', function (hooks) {
     `);
 
     assert.dom('.test-menu').exists('The test menu is rendered');
+    assert.dom('.test-menu').hasClass('class-arg', 'The menu class is present');
 
+    assert.dom('.test-menu .menu-trigger').hasClass('trigger-class-arg', 'The menu trigger class is present');
     assert.dom('.test-menu .menu-trigger').hasText('Hover', 'The trigger has the appropriate text');
 
     assert.dom('.test-menu .menu-content').doesNotExist('menu content is not rendered when menu is not active');
 
     await triggerEvent('.test-menu', 'mouseenter');
 
+    assert.dom('.test-menu .menu-content').hasClass('content-class-arg', 'The menu content class is present');
     assert
       .dom('.test-menu .menu-content li')
       .exists({ count: 3 }, 'Three li elements are rendered in the menu content');

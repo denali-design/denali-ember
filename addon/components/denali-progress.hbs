@@ -1,8 +1,8 @@
 {{! Copyright 2021, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
-<div class='d-progress {{this.hasLoaderClass}} {{this.sizeClass}}' ...attributes>
+<div class="d-progress {{this.hasLoaderClass}} {{this.sizeClass}}" ...attributes>
   {{#unless this.hasLoaderClass}}
     {{#if (has-block)}}
-      {{yield (hash Bar=(component 'denali-progress/bar' value=@value color=@color shade=@shade))}}
+      {{yield (hash Bar=(component "denali-progress/bar" value=@value color=@color shade=@shade))}}
     {{else}}
       <DenaliProgress::Bar @value={{@value}} @color={{@color}} @shade={{@shade}} />
     {{/if}}

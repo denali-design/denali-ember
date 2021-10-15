@@ -1,20 +1,20 @@
 {{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <span
-  class='tag
+  class="tag
     {{this.isActiveClass}}
     {{this.isDisabledClass}}
     {{this.isOutlinedClass}}
     {{this.isSmallClass}}
     {{this.hasIconFront}}
-    {{this.hasIconBack}}'
+    {{this.hasIconBack}}"
   ...attributes
 >
   {{#if this.iconFront}}
     {{! template-lint-disable no-invalid-interactive }}
     <i
-      class='d-icon d-{{this.iconFront}} {{this.iconFrontClass}}'
-      role={{if @onIconFrontClick 'button'}}
-      {{on 'click' this.onIconFrontClick}}
+      class="d-icon d-{{this.iconFront}} {{this.iconFrontClass}}"
+      role={{if @onIconFrontClick "button"}}
+      {{on "click" this.onIconFrontClick}}
     ></i>
   {{/if}}
 
@@ -22,9 +22,9 @@
 
   {{#if this.iconBack}}
     <i
-      class='d-icon d-{{this.iconBack}} {{this.iconBackClass}}'
-      role={{if @onIconBackClick 'button'}}
-      {{on 'click' this.onIconBackClick}}
+      class="d-icon d-{{this.iconBack}} {{this.iconBackClass}}"
+      role={{if @onIconBackClick "button"}}
+      {{on "click" this.onIconBackClick}}
     ></i>
   {{/if}}
 </span>
