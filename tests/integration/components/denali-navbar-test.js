@@ -85,23 +85,21 @@ module('Integration | Component | denali-navbar', function (hooks) {
           <Section.Item>
             Nav Item
           </Section.Item>
-          <Section.Icon @icon="code" />
+          <Section.Icon class="nav-icon" @icon="code" />
           <Section.Control>
             Nav Control
           </Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
-          <Section.Item>
-            <Section.Menu as |Menu|>
-              <Menu.Trigger>
-                Test Trigger
-              </Menu.Trigger>
-              <Menu.Content >
-                <DenaliLink href="http://denali.design">Link1</DenaliLink>
-                <DenaliLink href="http://denali.design">Link2</DenaliLink>
-              </Menu.Content>
-            </Section.Menu>
-          </Section.Item>
+          <Section.Menu as |Menu|>
+            <Menu.Trigger>
+              Test Trigger
+            </Menu.Trigger>
+            <Menu.Content >
+              <DenaliLink href="http://denali.design">Link1</DenaliLink>
+              <DenaliLink href="http://denali.design">Link2</DenaliLink>
+            </Menu.Content>
+          </Section.Menu>
         </Nav.Left>
       </DenaliNavbar>
     `);
@@ -116,14 +114,14 @@ module('Integration | Component | denali-navbar', function (hooks) {
     assert
       .dom('.test-nav .nav-left a.ember-view.nav-item')
       .hasAttribute('href', '/four-oh-four', 'Left can yield a nav link-to component');
+    assert.dom('.test-nav .nav-left .menu').hasClass('menu--nav', 'Left menu has correct class');
+    assert.dom('.test-nav .nav-left .menu .menu-trigger').hasClass('nav-item', 'Left menu trigger has correct class');
     assert
-      .dom('.test-nav .nav-left .nav-item .menu .menu-trigger')
-      .hasText('Test Trigger', 'Left can yield a nav menu component');
-    await triggerEvent('.test-nav .nav-left .nav-item .menu .menu-trigger', 'mouseenter');
+      .dom('.test-nav .nav-left .menu .menu-trigger')
+      .hasText('Test Trigger', 'Left menu can yield a trigger component');
+    await triggerEvent('.test-nav .nav-left .menu .menu-trigger', 'mouseenter');
 
-    assert
-      .dom('.test-nav .nav-left .nav-item .menu-content a')
-      .exists({ count: 2 }, 'Two a elements are rendered in the menu content');
+    assert.dom('.test-nav .nav-left .menu-content a').exists({ count: 2 }, 'Left menu content renders correctly');
   });
 
   test('left can yield sub components when `@isResponsive` is true', async function (assert) {
@@ -138,12 +136,21 @@ module('Integration | Component | denali-navbar', function (hooks) {
           <Section.Item>
             Nav Item
           </Section.Item>
-          <Section.Icon @icon="code" />
+          <Section.Icon class="nav-icon" @icon="code" />
           <Section.Control>
             Nav Control
           </Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
+          <Section.Menu as |Menu|>
+            <Menu.Trigger>
+              Test Trigger
+            </Menu.Trigger>
+            <Menu.Content >
+              <DenaliLink href="http://denali.design">Link1</DenaliLink>
+              <DenaliLink href="http://denali.design">Link2</DenaliLink>
+            </Menu.Content>
+          </Section.Menu>
         </Nav.Left>
       </DenaliNavbar>
     `);
@@ -158,6 +165,15 @@ module('Integration | Component | denali-navbar', function (hooks) {
     assert
       .dom('.test-nav .nav-left a.ember-view.nav-item')
       .hasAttribute('href', '/four-oh-four', 'Left can yield a nav link-to component');
+
+    assert.dom('.test-nav .nav-left .menu').hasClass('menu--nav', 'Left menu has correct class');
+    assert.dom('.test-nav .nav-left .menu .menu-trigger').hasClass('nav-item', 'Left menu trigger has correct class');
+    assert
+      .dom('.test-nav .nav-left .menu .menu-trigger')
+      .hasText('Test Trigger', 'Left menu can yield a trigger component');
+    await triggerEvent('.test-nav .nav-left .menu .menu-trigger', 'mouseenter');
+
+    assert.dom('.test-nav .nav-left .menu-content a').exists({ count: 2 }, 'Left menu content renders correctly');
   });
 
   test('center can yield sub components', async function (assert) {
@@ -171,12 +187,21 @@ module('Integration | Component | denali-navbar', function (hooks) {
           <Section.Item>
             Nav Item
           </Section.Item>
-          <Section.Icon @icon="code" />
+          <Section.Icon class="nav-icon" @icon="code" />
           <Section.Control>
             Nav Control
           </Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
+          <Section.Menu as |Menu|>
+            <Menu.Trigger>
+              Test Trigger
+            </Menu.Trigger>
+            <Menu.Content >
+              <DenaliLink href="http://denali.design">Link1</DenaliLink>
+              <DenaliLink href="http://denali.design">Link2</DenaliLink>
+            </Menu.Content>
+          </Section.Menu>
         </Nav.Center>
       </DenaliNavbar>
     `);
@@ -193,6 +218,17 @@ module('Integration | Component | denali-navbar', function (hooks) {
     assert
       .dom('.test-nav .nav-center a.ember-view.nav-item')
       .hasAttribute('href', '/four-oh-four', 'Center can yield a nav link-to component');
+
+    assert.dom('.test-nav .nav-center .menu').hasClass('menu--nav', 'Center menu has correct class');
+    assert
+      .dom('.test-nav .nav-center .menu .menu-trigger')
+      .hasClass('nav-item', 'Center menu trigger has correct class');
+    assert
+      .dom('.test-nav .nav-center .menu .menu-trigger')
+      .hasText('Test Trigger', 'Center menu can yield a trigger component');
+    await triggerEvent('.test-nav .nav-center .menu .menu-trigger', 'mouseenter');
+
+    assert.dom('.test-nav .nav-center .menu-content a').exists({ count: 2 }, 'Center menu content renders correctly');
   });
 
   test('right can yield sub components', async function (assert) {
@@ -206,12 +242,21 @@ module('Integration | Component | denali-navbar', function (hooks) {
           <Section.Item>
             Nav Item
           </Section.Item>
-          <Section.Icon @icon="code" />
+          <Section.Icon class="nav-icon" @icon="code" />
           <Section.Control>
             Nav Control
           </Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
+          <Section.Menu as |Menu|>
+            <Menu.Trigger>
+              Test Trigger
+            </Menu.Trigger>
+            <Menu.Content >
+              <DenaliLink href="http://denali.design">Link1</DenaliLink>
+              <DenaliLink href="http://denali.design">Link2</DenaliLink>
+            </Menu.Content>
+          </Section.Menu>
         </Nav.Right>
       </DenaliNavbar>
     `);
@@ -228,5 +273,14 @@ module('Integration | Component | denali-navbar', function (hooks) {
     assert
       .dom('.test-nav .nav-right a.ember-view.nav-item')
       .hasAttribute('href', '/four-oh-four', 'Right can yield a nav link-to component');
+
+    assert.dom('.test-nav .nav-right .menu').hasClass('menu--nav', 'Right menu has correct class');
+    assert.dom('.test-nav .nav-right .menu .menu-trigger').hasClass('nav-item', 'Right menu trigger has correct class');
+    assert
+      .dom('.test-nav .nav-right .menu .menu-trigger')
+      .hasText('Test Trigger', 'Right menu can yield a trigger component');
+    await triggerEvent('.test-nav .nav-right .menu .menu-trigger', 'mouseenter');
+
+    assert.dom('.test-nav .nav-right .menu-content a').exists({ count: 2 }, 'Right menu content renders correctly');
   });
 });

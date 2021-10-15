@@ -13,10 +13,10 @@ module('Integration | Component | denali-navbar/icon', function (hooks) {
         @icon={{this.icon}}
       />
     `);
-    assert.dom('.nav-icon .d-icon.d-code').exists('DenaliNavbar::Icon exists and has the correct icon class');
+    assert.dom('.nav-item .d-icon.d-code').exists('DenaliNavbar::Icon exists and has the correct icon class');
 
     this.set('icon', 'bug');
-    assert.dom('.nav-icon .d-icon.d-bug').exists('DenaliNavbar::Icon exists and has the correct icon class');
+    assert.dom('.nav-item .d-icon.d-bug').exists('DenaliNavbar::Icon exists and has the correct icon class');
   });
 
   test('name renders', async function (assert) {
@@ -26,7 +26,7 @@ module('Integration | Component | denali-navbar/icon', function (hooks) {
         @name={{this.name}}
       />
     `);
-    assert.dom('.nav-icon .d-icon.d-code').exists('DenaliNavbar::Icon exists and has the correct icon class');
+    assert.dom('.nav-item .d-icon.d-code').exists('DenaliNavbar::Icon exists and has the correct icon class');
     assert.dom('.icon-name').doesNotExist('DenaliNavbar::Icon exists and does not have a name.');
 
     this.set('name', 'My Icon');

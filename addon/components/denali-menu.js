@@ -12,7 +12,9 @@ import { action } from '@ember/object';
 export default class DenaliMenuComponent extends Component {
   @tracked isActive = false;
 
+  @arg(string) class = '';
   @arg(string) triggerClass = '';
+  @arg(string) contentClass = '';
 
   @arg(oneOf(ALIGNMENTS)) alignContent;
 
