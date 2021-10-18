@@ -96,9 +96,6 @@
     "sass": "^1.25.0",
     "semantic-release": "^17.4.2"
   },
-  "resolutions": {
-    "socket.io": "2.4.1"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
