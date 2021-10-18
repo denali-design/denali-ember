@@ -20,6 +20,8 @@ jobs:
     requires:
       - ~pr
       - ~commit
+    environment:
+      JOBS: 4
 
   publish:
     requires: main
@@ -45,3 +47,5 @@ jobs:
           yarn deploy-storybook
     secrets:
       - GIT_KEY_BASE64
+    environment:
+      JOBS: 4
