@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
-import { argument, attribute } from './knob-categories';
+import { argument, attribute, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliSwitch',
+  title: `${rootName}/DenaliSwitch`,
   component: 'DenaliSwitch',
   decorators: [withKnobs],
 };

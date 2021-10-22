@@ -1,11 +1,11 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
-import { argument, attribute } from './knob-categories';
+import { argument, attribute, rootName } from './knob-categories';
 import { action } from '@storybook/addon-actions';
 import { SIZES, STATES } from '../addon/components/denali-input-enums';
 
 export default {
-  title: 'DenaliInput',
+  title: `${rootName}/DenaliInput`,
   component: 'DenaliInput',
   decorators: [withKnobs],
 };
@@ -18,7 +18,7 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliInput 
+    <DenaliInput
       @size={{size}}
       @state={{state}}
       @isInverse={{isInverse}}

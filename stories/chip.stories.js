@@ -1,11 +1,11 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
-import { argument, attribute, content } from './knob-categories';
+import { argument, attribute, content, rootName } from './knob-categories';
 import { COLORS, SHADES } from '../addon/components/color-enums';
 import { SIZES } from '../addon/components/denali-chip-enums';
 
 export default {
-  title: 'DenaliChip',
+  title: `${rootName}/DenaliChip`,
   component: 'DenaliChip',
   decorators: [withKnobs],
 };
@@ -21,7 +21,7 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliChip 
+    <DenaliChip
       @size={{size}}
       @backgroundColor={{backgroundColor}}
       @backgroundShade={{backgroundShade}}

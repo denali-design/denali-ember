@@ -2,10 +2,10 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 import { STYLES } from '../addon/components/denali-alert-enums';
-import { argument, attribute } from './knob-categories';
+import { rootName, argument, attribute } from './knob-categories';
 
 export default {
-  title: 'DenaliAlert',
+  title: `${rootName}/DenaliAlert`,
   component: 'DenaliAlert',
   decorators: [withKnobs],
 };

@@ -1,8 +1,9 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import { argument, content, attribute } from './knob-categories';
+import { argument, content, attribute, rootName } from './knob-categories';
+
 export default {
-  title: 'DenaliLinkTo',
+  title: `${rootName}/DenaliLinkTo`,
   component: 'DenaliLinkTo',
   decorators: [withKnobs],
 };

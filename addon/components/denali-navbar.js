@@ -12,11 +12,18 @@ export default class DenaliNavbarComponent extends Component {
   @arg(bool)
   isResponsive = false;
 
+  @arg(bool)
+  isFixedTop = false;
+
   @tracked
   isMenuActive = false;
 
   get isMenuActiveClass() {
     return this.isMenuActive ? 'is-active' : undefined;
+  }
+
+  get isFixedTopClass() {
+    return this.isFixedTop ? 'is-fixed-top' : undefined;
   }
 
   @action

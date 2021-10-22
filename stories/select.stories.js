@@ -1,11 +1,11 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, array, boolean, select, text } from '@storybook/addon-knobs';
-import { argument, attribute, example } from './knob-categories';
+import { argument, attribute, example, rootName } from './knob-categories';
 import { SIZES } from '../addon/components/denali-select-enums';
 
 export default {
-  title: 'DenaliSelect',
+  title: `${rootName}/DenaliSelect`,
   component: 'DenaliSelect',
   decorators: [withKnobs],
 };

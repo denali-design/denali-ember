@@ -1,9 +1,9 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
-import { argument, attribute } from './knob-categories';
+import { argument, attribute, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliInputGroup',
+  title: `${rootName}/DenaliInputGroup`,
   component: 'DenaliInputGroup',
   decorators: [withKnobs],
 };
@@ -22,7 +22,7 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliInputGroup 
+    <DenaliInputGroup
       @label={{label}}
       @isStacked={{isStacked}}
       @isResponsive={{isResponsive}}
@@ -32,7 +32,7 @@ export const Playground = () => ({
       <DenaliInput placeholder="Input" />
     </DenaliInputGroup>
 
-    <DenaliInputGroup 
+    <DenaliInputGroup
       @label={{label}}
       @isStacked={{isStacked}}
       @isResponsive={{isResponsive}}

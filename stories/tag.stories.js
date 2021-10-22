@@ -1,11 +1,11 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, array, boolean, select, text } from '@storybook/addon-knobs';
-import { argument, attribute, example } from './knob-categories';
+import { argument, attribute, example, rootName } from './knob-categories';
 import { STATES } from '../addon/components/denali-tag-enums';
 
 export default {
-  title: 'DenaliTag',
+  title: `${rootName}/DenaliTag`,
   component: 'DenaliTag',
   decorators: [withKnobs],
 };

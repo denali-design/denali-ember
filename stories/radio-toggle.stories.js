@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, array, boolean, text } from '@storybook/addon-knobs';
-import { argument, attribute, example } from './knob-categories';
+import { argument, attribute, example, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliRadioToggle',
+  title: `${rootName}/DenaliRadioToggle`,
   component: 'DenaliRadioToggle',
   decorators: [withKnobs],
 };
@@ -16,10 +16,7 @@ export const Default = () => ({
       as |Radio|
     >
       {{#each items as |item|}}
-        <Radio.Option
-          @value={{item}}
-          @checked={{eq item selectedItem}}
-        >
+        <Radio.Option @value={{item}} @checked={{eq item selectedItem}}>
           {{item}}
         </Radio.Option>
       {{/each}}
@@ -42,11 +39,7 @@ export const Playground = () => ({
       as |Radio|
     >
       {{#each items as |item|}}
-        <Radio.Option
-          @value={{item}}
-          @checked={{eq item selectedItem}}
-          @disabled={{eq item disabledItem}}
-        >
+        <Radio.Option @value={{item}} @checked={{eq item selectedItem}} @disabled={{eq item disabledItem}}>
           {{item}}
         </Radio.Option>
       {{/each}}

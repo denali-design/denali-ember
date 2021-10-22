@@ -1,9 +1,9 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, array, text } from '@storybook/addon-knobs';
-import { attribute, example } from './knob-categories';
+import { attribute, example, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliSidebar',
+  title: `${rootName}/DenaliSidebar`,
   component: 'DenaliSidebar',
   decorators: [withKnobs],
 };
@@ -29,7 +29,7 @@ export const Playground = () => ({
   template: hbs`
     <DenaliSidebar class={{class}} as |Sidebar|>
       {{#each items as |item|}}
-        <Sidebar.Tab 
+        <Sidebar.Tab
           @isActive={{eq item activeItem}}
           @isDisabled={{includes item disabledItems}}
           {{on "click" (fn (mut activeItem) item)}}

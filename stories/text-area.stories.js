@@ -1,11 +1,11 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
-import { argument, attribute, example } from './knob-categories';
+import { argument, attribute, example, rootName } from './knob-categories';
 import { action } from '@storybook/addon-actions';
 import { STATES } from '../addon/components/denali-text-area-enums';
 
 export default {
-  title: 'DenaliTextArea',
+  title: `${rootName}/DenaliTextArea`,
   component: 'DenaliTextArea',
   decorators: [withKnobs],
 };
@@ -27,7 +27,9 @@ export const Playground = () => ({
       disabled={{disabled}}
       class={{class}}
       {{on "input" (queue onInput (fn (mut text)))}}
-    >{{text}}</DenaliTextArea>
+    >
+      {{text}}
+    </DenaliTextArea>
   `,
   context: {
     state: select('state', allStates, allStates[0], argument),
