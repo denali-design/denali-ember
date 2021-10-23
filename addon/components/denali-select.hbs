@@ -1,10 +1,11 @@
-{{!-- Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. --}}
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <div class="input has-arrow {{this.sizeClass}} {{this.isInverseClass}} {{this.wrapperClass}}">
   <select {{on "change" this.onSelect}} ...attributes>
     {{#each this.options as |opt|}}
       <option
         disabled={{if (includes opt this.disabledOptions) "true"}}
-        selected={{if (eq this.selectedOption opt) "true"}} >
+        selected={{if (eq this.selectedOption opt) "true"}}
+      >
         {{yield opt}}
       </option>
     {{/each}}

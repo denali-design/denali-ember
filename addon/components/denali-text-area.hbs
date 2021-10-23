@@ -1,9 +1,5 @@
-{{! Copyright 2021, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
-<div class="input
-  {{this.activeClass}}
-  {{this.errorClass}}
-  {{this.wrapperClass}}"
->
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<div class="input {{this.activeClass}} {{this.errorClass}} {{this.wrapperClass}}">
   <textarea ...attributes>{{yield}}</textarea>
   {{#if this.errorMsg}}
     <p class="message">{{this.errorMsg}}</p>

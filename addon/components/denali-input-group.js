@@ -1,7 +1,8 @@
 import Component from '@glimmer/component';
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { string, boolean } from 'prop-types';
 
+@forbidExtraArgs
 export default class DenaliInputGroupComponent extends Component {
   @arg(string)
   label;

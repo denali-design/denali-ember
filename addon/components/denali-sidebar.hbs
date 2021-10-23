@@ -1,9 +1,6 @@
-{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <div class="tabs is-vertical is-primary" ...attributes>
   <ul>
-    {{yield (hash
-      Tab=(component "denali-tabs/tab")
-      LinkToTab=(component "denali-tabs/link-to-tab")
-    )}}
+    {{yield (hash Tab=(component "denali-tabs/tab") LinkToTab=(component "denali-tabs/link-to-tab"))}}
   </ul>
 </div>

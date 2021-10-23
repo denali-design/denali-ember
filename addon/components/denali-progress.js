@@ -1,13 +1,14 @@
 /**
- * Copyright 2021, Verizon Media
+ * Copyright Yahoo 2021
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { boolean, number, oneOf } from 'prop-types';
 import { COLORS, SHADES } from './color-enums';
 import { SIZES } from './denali-progress-enums';
 
+@forbidExtraArgs
 export default class DenaliProgressComponent extends Component {
   @arg(number)
   value = 0;

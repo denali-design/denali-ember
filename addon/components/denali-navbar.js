@@ -1,13 +1,14 @@
 /**
- * Copyright 2020, Verizon Media
+ * Copyright Yahoo 2021
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { bool } from 'prop-types';
 
+@forbidExtraArgs
 export default class DenaliNavbarComponent extends Component {
   @arg(bool)
   isResponsive = false;

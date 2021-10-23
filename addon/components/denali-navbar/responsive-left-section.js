@@ -4,9 +4,10 @@
  */
 import Component from '@glimmer/component';
 import { arg, forbidExtraArgs } from 'ember-arg-types';
-import { string } from 'prop-types';
+import { func } from 'prop-types';
 
 @forbidExtraArgs
-export default class DenaliMenuContentComponent extends Component {
-  @arg(string) class = '';
+export default class DenaliNavbarResponsiveLeftSectionComponent extends Component {
+  @arg(func)
+  onMenuClick;
 }

@@ -1,11 +1,11 @@
-  {{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
-  <input
-    type="radio"
-    id={{this.componentId}}
-    name={{this.group}}
-    value={{this.value}}
-    checked={{this.checked}}
-    disabled={{this.disabled}}
-    {{on "change" this.onChanged}}
-  >
-  <label for={{this.componentId}}>{{yield}}</label>
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<input
+  type="radio"
+  id={{this.componentId}}
+  name={{this.group}}
+  value={{this.value}}
+  checked={{this.checked}}
+  disabled={{this.disabled}}
+  {{on "change" this.onChanged}}
+/>
+<label for={{this.componentId}}>{{yield}}</label>

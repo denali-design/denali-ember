@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 const opts = [{ text: 'Item 1' }, { text: 'Item 2' }, { text: 'Item 3' }, { text: 'Item 4' }];
 
+@forbidExtraArgs
 export default class DenaliInputGroupController extends Controller {
   toggleOptions = opts;
 
