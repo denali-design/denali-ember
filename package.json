@@ -34,7 +34,7 @@
     "@glimmer/tracking": "^1.0.4",
     "broccoli-funnel": "^3.0.1",
     "broccoli-merge-trees": "^4.1.0",
-    "denali-css": "^2.4.2",
+    "denali-css": "^2.4.3",
     "denali-icon-font": "^1.8.0",
     "ember-arg-types": "^0.3.0",
     "ember-auto-import": "^1.10.1",
