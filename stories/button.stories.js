@@ -2,10 +2,10 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { STYLES, SIZES, TYPES } from '../addon/components/denali-button-enums';
-import { attribute, argument, content } from './knob-categories';
+import { rootName, attribute, argument, content } from './knob-categories';
 
 export default {
-  title: 'DenaliButton',
+  title: `${rootName}/DenaliButton`,
   component: 'DenaliButton',
   decorators: [withKnobs],
 };

@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
-import { argument, attribute, example } from './knob-categories';
+import { argument, attribute, example, rootName } from './knob-categories';
 import { STATUSES } from '../addon/components/denali-title-enums';
 
 export default {
-  title: 'DenaliTitle',
+  title: `${rootName}/DenaliTitle`,
   component: 'DenaliTag',
   decorators: [withKnobs],
 };
@@ -30,18 +30,14 @@ const allStatuses = [undefined, ...STATUSES];
 
 export const BlockFormPlayground = () => ({
   template: hbs`
-    <DenaliTitle 
+    <DenaliTitle
       @title={{title}}
       @backgroundStatus={{backgroundStatus}}
       @hasWideBar={{hasWideBar}}
       class={{class}}
       as |Title|
     >
-      <Title.h1
-        @status={{status}}
-        @isUpperCase={{isUpperCase}}
-        @isRegular={{isRegular}}
-      >
+      <Title.h1 @status={{status}} @isUpperCase={{isUpperCase}} @isRegular={{isRegular}}>
         {{title}}
       </Title.h1>
     </DenaliTitle>
@@ -59,7 +55,7 @@ export const BlockFormPlayground = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliTitle 
+    <DenaliTitle
       @title={{title}}
       @caption={{caption}}
       @backgroundStatus={{backgroundStatus}}

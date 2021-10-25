@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, array, select, text } from '@storybook/addon-knobs';
-import { argument, attribute, example } from './knob-categories';
+import { argument, attribute, example, rootName } from './knob-categories';
 import { STYLES } from '../addon/components/denali-tabs-enums';
 
 export default {
-  title: 'DenaliTabs',
+  title: `${rootName}/DenaliTabs`,
   component: 'DenaliTabs',
   decorators: [withKnobs],
 };
@@ -30,7 +30,7 @@ export const Playground = () => ({
   template: hbs`
     <DenaliTabs class={{class}} @style={{style}} as |Tabs|>
       {{#each items as |item|}}
-        <Tabs.Tab 
+        <Tabs.Tab
           @isActive={{includes item activeItems}}
           @isDisabled={{includes item disabledItems}}
         >

@@ -9,23 +9,18 @@ module('Integration | Component | denali-navbar', function (hooks) {
   setupRouting(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-      >
-      </DenaliNavbar>
-    `);
+    await render(hbs`<DenaliNavbar @isFixedTop={{this.isFixedTop}} class="test-nav" />`);
 
     assert.dom('nav.nav.test-nav').exists('DenaliNavbar exists and renders a nav element');
+    this.set('isFixedTop', true);
+    assert
+      .dom('nav.nav.test-nav')
+      .hasClass('is-fixed-top', 'DenaliNavbar has is-fixed-top class when `@isFixedTop` arg is true');
   });
 
   test('it can support responsive', async function (assert) {
     await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-        @isResponsive={{this.isResponsive}}
-        as |Nav|
-      >
+      <DenaliNavbar class="test-nav" @isResponsive={{this.isResponsive}} as |Nav|>
         <Nav.Left></Nav.Left>
       </DenaliNavbar>
     `);
@@ -59,10 +54,7 @@ module('Integration | Component | denali-navbar', function (hooks) {
 
   test('it can yield left, center, & right section components', async function (assert) {
     await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-        as |Nav|
-      >
+      <DenaliNavbar class="test-nav" as |Nav|>
         <Nav.Left></Nav.Left>
         <Nav.Center></Nav.Center>
         <Nav.Right></Nav.Right>
@@ -76,26 +68,17 @@ module('Integration | Component | denali-navbar', function (hooks) {
 
   test('left can yield sub components', async function (assert) {
     await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-        as |Nav|
-      >
+      <DenaliNavbar class="test-nav" as |Nav|>
         <Nav.Left as |Section|>
           <Section.Logo src="img.png"/>
-          <Section.Item>
-            Nav Item
-          </Section.Item>
+          <Section.Item>Nav Item</Section.Item>
           <Section.Icon class="nav-icon" @icon="code" />
-          <Section.Control>
-            Nav Control
-          </Section.Control>
+          <Section.Control>Nav Control</Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
           <Section.Menu as |Menu|>
-            <Menu.Trigger>
-              Test Trigger
-            </Menu.Trigger>
-            <Menu.Content >
+            <Menu.Trigger>Test Trigger</Menu.Trigger>
+            <Menu.Content>
               <DenaliLink href="http://denali.design">Link1</DenaliLink>
               <DenaliLink href="http://denali.design">Link2</DenaliLink>
             </Menu.Content>
@@ -126,27 +109,17 @@ module('Integration | Component | denali-navbar', function (hooks) {
 
   test('left can yield sub components when `@isResponsive` is true', async function (assert) {
     await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-        @isResponsive={{true}}
-        as |Nav|
-      >
+      <DenaliNavbar class="test-nav" @isResponsive={{true}} as |Nav|>
         <Nav.Left as |Section|>
           <Section.Logo src="img.png"/>
-          <Section.Item>
-            Nav Item
-          </Section.Item>
+          <Section.Item>Nav Item</Section.Item>
           <Section.Icon class="nav-icon" @icon="code" />
-          <Section.Control>
-            Nav Control
-          </Section.Control>
+          <Section.Control>Nav Control</Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
           <Section.Menu as |Menu|>
-            <Menu.Trigger>
-              Test Trigger
-            </Menu.Trigger>
-            <Menu.Content >
+            <Menu.Trigger>Test Trigger</Menu.Trigger>
+            <Menu.Content>
               <DenaliLink href="http://denali.design">Link1</DenaliLink>
               <DenaliLink href="http://denali.design">Link2</DenaliLink>
             </Menu.Content>
@@ -178,26 +151,17 @@ module('Integration | Component | denali-navbar', function (hooks) {
 
   test('center can yield sub components', async function (assert) {
     await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-        as |Nav|
-      >
+      <DenaliNavbar class="test-nav" as |Nav|>
         <Nav.Center as |Section|>
           <Section.Logo src="img.png"/>
-          <Section.Item>
-            Nav Item
-          </Section.Item>
+          <Section.Item>Nav Item</Section.Item>
           <Section.Icon class="nav-icon" @icon="code" />
-          <Section.Control>
-            Nav Control
-          </Section.Control>
+          <Section.Control>Nav Control</Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
           <Section.Menu as |Menu|>
-            <Menu.Trigger>
-              Test Trigger
-            </Menu.Trigger>
-            <Menu.Content >
+            <Menu.Trigger>Test Trigger</Menu.Trigger>
+            <Menu.Content>
               <DenaliLink href="http://denali.design">Link1</DenaliLink>
               <DenaliLink href="http://denali.design">Link2</DenaliLink>
             </Menu.Content>
@@ -233,26 +197,17 @@ module('Integration | Component | denali-navbar', function (hooks) {
 
   test('right can yield sub components', async function (assert) {
     await render(hbs`
-      <DenaliNavbar
-        class="test-nav"
-        as |Nav|
-      >
+      <DenaliNavbar class="test-nav" as |Nav|>
         <Nav.Right as |Section|>
           <Section.Logo src="img.png"/>
-          <Section.Item>
-            Nav Item
-          </Section.Item>
+          <Section.Item>Nav Item</Section.Item>
           <Section.Icon class="nav-icon" @icon="code" />
-          <Section.Control>
-            Nav Control
-          </Section.Control>
+          <Section.Control>Nav Control</Section.Control>
           <Section.Link href="http://denali.design" />
           <Section.LinkTo @route="four-oh-four" />
           <Section.Menu as |Menu|>
-            <Menu.Trigger>
-              Test Trigger
-            </Menu.Trigger>
-            <Menu.Content >
+            <Menu.Trigger>Test Trigger</Menu.Trigger>
+            <Menu.Content>
               <DenaliLink href="http://denali.design">Link1</DenaliLink>
               <DenaliLink href="http://denali.design">Link2</DenaliLink>
             </Menu.Content>

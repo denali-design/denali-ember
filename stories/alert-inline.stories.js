@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { STYLES } from '../addon/components/denali-alert-enums';
-import { argument, attribute } from './knob-categories';
+import { rootName, argument, attribute } from './knob-categories';
 
 export default {
-  title: 'DenaliAlertInline',
+  title: `${rootName}/DenaliAlertInline`,
   component: 'DenaliAlertInline',
   decorators: [withKnobs],
 };

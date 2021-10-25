@@ -1,9 +1,9 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { attribute, content } from './knob-categories';
+import { attribute, content, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliCheckbox',
+  title: `${rootName}/DenaliCheckbox`,
   component: 'DenaliCheckbox',
   decorators: [withKnobs],
 };
@@ -19,7 +19,7 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliCheckbox 
+    <DenaliCheckbox
       checked={{checked}}
       disabled={{disabled}}
       data-partial={{dataPartial}}

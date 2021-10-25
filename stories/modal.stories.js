@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
-import { argument, attribute, content } from './knob-categories';
+import { argument, attribute, content, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliModal',
+  title: `${rootName}/DenaliModal`,
   component: 'DenaliModal',
   decorators: [withKnobs],
 };

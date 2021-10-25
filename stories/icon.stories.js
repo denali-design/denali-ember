@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
-import { argument, attribute } from './knob-categories';
+import { argument, attribute, rootName } from './knob-categories';
 import { SIZES } from '../addon/components/denali-icon-enums';
 
 export default {
-  title: 'DenaliIcon',
+  title: `${rootName}/DenaliIcon`,
   component: 'DenaliIcon',
   decorators: [withKnobs],
 };
@@ -16,13 +16,7 @@ export const Default = () => ({
 });
 
 export const Playground = () => ({
-  template: hbs`
-    <DenaliIcon 
-      @icon={{icon}}
-      @size={{size}}
-      @class={{class}}
-    />
-  `,
+  template: hbs`<DenaliIcon @icon={{icon}} @size={{size}} @class={{class}} />`,
   context: {
     icon: text('icon', 'ember', argument),
     size: select('size', SIZES, SIZES[0], argument),

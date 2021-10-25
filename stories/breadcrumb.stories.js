@@ -1,19 +1,16 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, array, text } from '@storybook/addon-knobs';
-import { attribute, argument } from './knob-categories';
+import { attribute, argument, rootName } from './knob-categories';
 
 export default {
-  title: 'DenaliBreadcrumb',
+  title: `${rootName}/DenaliBreadcrumb`,
   component: 'DenaliBreadcrumb',
   decorators: [withKnobs],
 };
 
 export const Default = () => ({
   template: hbs`
-    <DenaliBreadcrumb 
-      @items={{items}}
-      as |item|
-    >
+    <DenaliBreadcrumb @items={{items}} as |item|>
       <span class="link">{{item}}</span>
     </DenaliBreadcrumb>
   `,
@@ -24,11 +21,7 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliBreadcrumb 
-      @items={{items}}
-      class={{class}}
-      as |item|
-    >
+    <DenaliBreadcrumb @items={{items}} class={{class}} as |item|>
       <span class="link">{{item}}</span>
     </DenaliBreadcrumb>
   `,

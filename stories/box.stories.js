@@ -1,9 +1,9 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import { attribute, content } from './knob-categories';
+import { rootName, attribute, content } from './knob-categories';
 
 export default {
-  title: 'DenaliBox',
+  title: `${rootName}/DenaliBox`,
   component: 'DenaliBox',
   decorators: [withKnobs],
 };
@@ -22,9 +22,7 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliBox 
-      class={{class}}
-    as |Box|>
+    <DenaliBox class={{class}} as |Box|>
       <Box.Header>{{headerContent}}</Box.Header>
       <Box.SubHeader>{{subHeaderContent}}</Box.SubHeader>
       <p>{{bodyContent}}</p>

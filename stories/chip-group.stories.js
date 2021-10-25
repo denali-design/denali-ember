@@ -1,9 +1,9 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, array, text } from '@storybook/addon-knobs';
-import { attribute, example } from './knob-categories';
+import { rootName, attribute, example } from './knob-categories';
 
 export default {
-  title: 'DenaliChipGroup',
+  title: `${rootName}/DenaliChipGroup`,
   component: 'DenaliChipGroup',
   decorators: [withKnobs],
 };
@@ -11,15 +11,10 @@ export default {
 export const Default = () => ({
   template: hbs`
     <DenaliChipGroup as |Group|>
-      <Group.Chip 
-        @backgroundColor="purple"
-      >
+      <Group.Chip @backgroundColor="purple" >
         Denali
       </Group.Chip>
-      <Group.Chip 
-        @backgroundColor="purple"
-        @backgroundShade="300"
-      >
+      <Group.Chip @backgroundColor="purple" @backgroundShade="300" >
         Chip Group
       </Group.Chip>
     </DenaliChipGroup>
@@ -28,16 +23,10 @@ export const Default = () => ({
 
 export const Playground = () => ({
   template: hbs`
-    <DenaliChipGroup 
-      class={{class}}
-      as |Group|
-    >
+    <DenaliChipGroup class={{class}} as |Group| >
       {{#each items as |item index|}}
-        <Group.Chip 
-          @backgroundColor="purple" 
-          @backgroundShade={{if index "500" "300"}}
-        >
-          {{item}} 
+        <Group.Chip @backgroundColor="purple" @backgroundShade={{if index "500" "300"}} >
+          {{item}}
         </Group.Chip>
       {{/each}}
     </DenaliChipGroup>

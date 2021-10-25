@@ -1,10 +1,10 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
-import { argument, content, attribute } from './knob-categories';
+import { argument, content, attribute, rootName } from './knob-categories';
 import { SIZES, STATES } from '../addon/components/denali-link-enums';
 
 export default {
-  title: 'DenaliLink',
+  title: `${rootName}/DenaliLink`,
   component: 'DenaliLink',
   decorators: [withKnobs],
 };
