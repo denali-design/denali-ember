@@ -5,6 +5,7 @@ const { embroiderSafe, embroiderOptimized } = require('@embroider/test-setup');
 
 module.exports = async function () {
   return {
+    command: 'ember exam --parallel 5 --load-balance',
     useYarn: true,
     scenarios: [
       {
