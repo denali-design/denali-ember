@@ -1,0 +1,10 @@
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+<table class="table {{this.isStripedClass}} {{this.isCardsClass}}" ...attributes>
+  {{yield
+    (hash
+      Header=(component "denali-table/header")
+      Body=(component "denali-table/body")
+      Footer=(component "denali-table/footer")
+    )
+  }}
+</table>
