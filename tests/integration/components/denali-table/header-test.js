@@ -3,14 +3,14 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | denali-table/head', function (hooks) {
+module('Integration | Component | denali-table/header', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`
-      <DenaliTable::Head as |Head|>
-        <Head.Row>row</Head.Row>
-      </DenaliTable::Head>
+      <DenaliTable::Header as |Header|>
+        <Header.Row>row</Header.Row>
+      </DenaliTable::Header>
     `);
 
     assert.dom('thead').exists('A table head is rendered');
