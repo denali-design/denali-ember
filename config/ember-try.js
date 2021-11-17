@@ -23,6 +23,7 @@ module.exports = async function () {
           },
         },
       },
+      /*
       {
         name: 'ember-release',
         npm: {
@@ -31,7 +32,6 @@ module.exports = async function () {
           },
         },
       },
-      /*
       {
         name: 'ember-beta',
         npm: {
