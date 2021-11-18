@@ -1,5 +1,5 @@
 /**
- * Copyright 2020, Verizon Media
+ * Copyright Yahoo 2021
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 
@@ -7,6 +7,7 @@
 import LinkComponent from '@ember/routing/link-component';
 import { computed } from '@ember/object';
 
+// do not forbid extra args from being passed to the link-to component
 export default class DenaliLinkToComponent extends LinkComponent {
   classNames = ['denali-link'];
 

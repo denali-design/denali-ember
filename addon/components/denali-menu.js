@@ -1,14 +1,15 @@
 /**
- * Copyright 2021, Verizon Media
+ * Copyright Yahoo 2021
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { oneOf, string } from 'prop-types';
 import { tracked } from '@glimmer/tracking';
 import { ALIGNMENTS } from './denali-menu-enums';
 import { action } from '@ember/object';
 
+@forbidExtraArgs
 export default class DenaliMenuComponent extends Component {
   @tracked isActive = false;
 

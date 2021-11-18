@@ -1,9 +1,10 @@
 import { htmlSafe } from '@ember/string';
 import Component from '@glimmer/component';
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { SHADES, COLORS } from '../color-enums';
 import { oneOf, number } from 'prop-types';
 
+@forbidExtraArgs
 export default class DenaliProgressBarComponent extends Component {
   @arg(number)
   value = 0;

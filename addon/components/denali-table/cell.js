@@ -3,10 +3,11 @@
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
 import Component from '@glimmer/component';
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { bool, oneOf } from 'prop-types';
 import { POSITIONS } from './cell-enums';
 
+@forbidExtraArgs
 export default class DenaliTableCellComponent extends Component {
   @arg(oneOf(POSITIONS))
   position = POSITIONS[0];

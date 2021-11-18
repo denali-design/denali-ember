@@ -1,8 +1,13 @@
-{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <div class="toggle {{this.isSmallClass}} {{this.isInverseClass}}" ...attributes>
   <ul>
     {{#each this.options as |option|}}
-      <li role="button" class="{{if (includes option this.disabledOptions) "is-disabled"}} {{if (eq this.activeOption option) "is-active"}}" {{on "click" (fn this.onClick option)}}>
+      <li
+        role="button"
+        class="{{if (includes option this.disabledOptions) "is-disabled"}}
+          {{if (eq this.activeOption option) "is-active"}}"
+        {{on "click" (fn this.onClick option)}}
+      >
         {{yield option}}
       </li>
     {{/each}}

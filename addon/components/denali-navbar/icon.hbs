@@ -1,7 +1,7 @@
-{{! Copyright 2020, Verizon Media. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
+{{! Copyright Yahoo 2021. Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms. }}
 <span class="nav-item" ...attributes>
-  <DenaliIcon @icon={{@icon}} />
-  {{#if @name}}
-    <span class="icon-name">{{@name}}</span>
+  <DenaliIcon @icon={{this.icon}} />
+  {{#if this.name}}
+    <span class="icon-name">{{this.name}}</span>
   {{/if}}
 </span>

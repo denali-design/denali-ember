@@ -1,13 +1,14 @@
 /**
- * Copyright 2020, Verizon Media
+ * Copyright Yahoo 2021
  * Licensed under the terms of the MIT license. See accompanying LICENSE.md file for terms.
  */
-import { arg } from 'ember-arg-types';
+import { arg, forbidExtraArgs } from 'ember-arg-types';
 import { oneOf } from 'prop-types';
 import Component from '@glimmer/component';
 import { COLORS, SHADES } from './color-enums';
 import { SIZES } from './denali-chip-enums';
 
+@forbidExtraArgs
 export default class DenaliChipComponent extends Component {
   @arg(oneOf(SIZES))
   size;

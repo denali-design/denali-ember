@@ -1409,7 +1409,7 @@
     walk-sync "^1.1.3"
     wrap-legacy-hbs-plugin-if-needed "^1.0.1"
 
-"@embroider/macros@0.33.0":
+"@embroider/macros@0.33.0", "@embroider/macros@^0.33.0":
   version "0.33.0"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.33.0.tgz#d5826ea7565bb69b57ba81ed528315fe77acbf9d"
   integrity sha512-nl/1zRn+Wd3MO8Bb+YPqHmFl/2vwQLTsEB6Zt+K9bWXsM/kA+dPCeeCReLN6PbkMP16xxqtNSIrQ8Y49hnWjpg==
@@ -7657,11 +7657,12 @@ elliptic@^6.5.3:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-ember-arg-types@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/ember-arg-types/-/ember-arg-types-0.3.0.tgz#6349da61ebe45be292f8ae9d79230ae36ac7ccc0"
-  integrity sha512-X/WUC4UX9RleeAKkD2fy5KcKdiCnfsaPRzJL6+k+EL7Y8s1k5bv8uhHferhSohVh8uVK7HmPyuo282x1fLQlqw==
+ember-arg-types@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/ember-arg-types/-/ember-arg-types-0.4.0.tgz#b5a72837c416292d0891dcb30ad0a4b927f3e3b3"
+  integrity sha512-8kmzZHjjcX9fFkqVRWq3njoRqV2+pUk0BSPQ8i1xkx5K5LnmUMDkAu62wooAmQHDq2vDf5+JIhOtDkMafX27hA==
   dependencies:
+    "@embroider/macros" "^0.33.0"
     ember-auto-import "^1.10.1"
     ember-cli-babel "^7.23.1"
     ember-cli-htmlbars "^5.3.2"
