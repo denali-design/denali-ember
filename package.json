@@ -114,12 +114,7 @@
   "release": {
     "repositoryUrl": "git@github.com:denali-design/denali-ember.git",
     "branches": [
-      "next",
-      {
-        "name": "master",
-        "channel": "alpha",
-        "prerelease": "alpha"
-      }
+      "master"
     ]
   },
   "publishConfig": {
