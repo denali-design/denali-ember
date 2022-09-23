@@ -36,7 +36,7 @@
     "broccoli-merge-trees": "^4.1.0",
     "denali-css": "^2.5.1",
     "denali-icon-font": "^1.8.0",
-    "ember-arg-types": "^0.3.0",
+    "ember-arg-types": "^1.0.0",
     "ember-auto-import": "^2.4.2",
     "ember-cli-babel": "^7.26.6",
     "ember-cli-htmlbars": "^5.7.1",
