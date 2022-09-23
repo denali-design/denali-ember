@@ -36,8 +36,8 @@
     "broccoli-merge-trees": "^4.1.0",
     "denali-css": "^2.5.1",
     "denali-icon-font": "^1.8.0",
-    "ember-arg-types": "^0.3.0",
-    "ember-auto-import": "^1.10.1",
+    "ember-arg-types": "^1.0.0",
+    "ember-auto-import": "^2.4.2",
     "ember-cli-babel": "^7.26.6",
     "ember-cli-htmlbars": "^5.7.1",
     "ember-composable-helpers": "^4.3.0",
@@ -64,6 +64,7 @@
     "babel-plugin-htmlbars-inline-precompile": "^4.2.0",
     "broccoli-asset-rev": "^3.0.0",
     "core-js": "^3.6.5",
+    "cz-conventional-changelog": "3.3.0",
     "ember-cli": "~3.28.0",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-inject-live-reload": "^2.1.0",
@@ -96,7 +97,8 @@
     "qunit": "^2.16.0",
     "qunit-dom": "^1.6.0",
     "sass": "^1.25.0",
-    "semantic-release": "^17.4.2"
+    "semantic-release": "^17.4.2",
+    "webpack": "^5.74.0"
   },
   "husky": {
     "hooks": {
@@ -112,12 +114,7 @@
   "release": {
     "repositoryUrl": "git@github.com:denali-design/denali-ember.git",
     "branches": [
-      "next",
-      {
-        "name": "master",
-        "channel": "alpha",
-        "prerelease": "alpha"
-      }
+      "master"
     ]
   },
   "publishConfig": {
@@ -136,5 +133,10 @@
     "gitUsername": "denali-bot",
     "gitEmail": "denali@verizonmedia.com",
     "commitMessage": "Deploy Storybook to GitHub Pages"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
