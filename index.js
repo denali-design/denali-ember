@@ -60,8 +60,8 @@ module.exports = {
 
     this.includeIcons = addonConfig.includeIcons !== false;
 
-    this.hasSass =
-      !!app.registry.availablePlugins['ember-cli-sass'] || !!app.registry.availablePlugins['ember-cli-sass-less'];
+    const addons = app.project?.addonPackages || app.registry?.availablePlugins;
+    this.hasSass = !!addons['ember-cli-sass'] || !!addons['ember-cli-sass-less'];
 
     // CSS Files
     if (!this.hasSass) {
